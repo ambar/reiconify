@@ -1,0 +1,25 @@
+{
+  "plugins": ["transform-object-rest-spread"],
+  "env": {
+    "node6": {
+      "presets": [["env", {"targets": {"node": "6.4"}}]]
+    },
+    "docs": {
+      "presets": [["env", {"modules": false}], "react"],
+      "plugins": ["transform-class-properties", "transform-object-rest-spread"]
+    },
+    "test": {
+      "presets": ["env", "react"]
+    },
+    "cjs": {
+      "presets": [
+        ["env", {"modules": "commonjs", "loose": true, "useBuiltIns": true}],
+        "react"
+      ]
+    },
+    "es": {
+      "presets": [["env", {"modules": false}], "react"],
+      "plugins": ["transform-react-jsx"]
+    }
+  }
+}
