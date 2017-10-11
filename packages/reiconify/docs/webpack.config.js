@@ -25,7 +25,9 @@ module.exports = {
     },
     modules: ['node_modules', resolvePath('../node_modules')],
   },
-  resolveLoader: {modules: [resolvePath('../node_modules')]},
+  resolveLoader: {
+    modules: ['node_modules', resolvePath('../node_modules')],
+  },
   module: {
     rules: [
       {
