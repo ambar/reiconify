@@ -1,0 +1,23 @@
+.blueprint {
+  background-color: #fff;
+  background-image: linear-gradient(
+      rgba(17, 133, 250, 0.4) 0.5px,
+      transparent 0.5px
+    ),
+    linear-gradient(90deg, rgba(17, 133, 250, 0.4) 0.5px, transparent 0.5px),
+    linear-gradient(rgba(0, 0, 0, 0.2) 0.5px, transparent 0.5px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.2) 0.5px, transparent 0.5px);
+  background-size: 24px 24px, 24px 24px, 8px 8px, 8px 8px;
+  background-position: -1px -1px, -1px -1px, -1px -1px, -1px -1px;
+}
+
+.simple {
+  background-color: #fff;
+  background-image: linear-gradient(
+      rgba(0, 0, 0, 0.3) 0.5px,
+      transparent 0.5px
+    ),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.3) 0.5px, transparent 0.5px);
+  background-size: 0.5em 0.5em, 0.5em 0.5em;
+  background-position: -1px -1px, -1px -1px;
+}

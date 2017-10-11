@@ -1,0 +1,73 @@
+.lineBox {
+  position: relative;
+  font-size: 5em;
+  white-space: nowrap;
+}
+
+.abs {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.content {
+  display: inline-block;
+  width: 100%;
+  margin-right: -100%;
+  text-align: center;
+}
+
+.line {
+  position: relative;
+  z-index: 2;
+  display: inline-block;
+  width: 100%;
+  margin-right: -100%;
+  border-top: 1px dashed;
+  opacity: 0.5;
+}
+
+.top {
+  composes: line;
+  vertical-align: top;
+  border-color: gray;
+}
+
+.textTop {
+  composes: line;
+  vertical-align: text-top;
+  border-color: lightgray;
+}
+
+.middle {
+  composes: line;
+  vertical-align: middle;
+  border-color: green;
+}
+
+.baseline {
+  composes: line;
+  vertical-align: baseline;
+  border-color: red;
+}
+
+.textBottom {
+  composes: line;
+  vertical-align: text-bottom;
+  border-color: lightgray;
+}
+
+.bottom {
+  composes: line;
+  vertical-align: bottom;
+  border-color: gray;
+}
+
+.cap {
+  composes: line;
+  /* 假想的 cap line（平均高度），不一定准确（不同字体不同） */
+  vertical-align: 0.7em;
+  border-color: lightsteelblue;
+}
