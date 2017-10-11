@@ -2,6 +2,7 @@
   "name": "md.icons",
   "version": "0.0.1",
   "description": "Material icons for React",
+  "homepage": "https://github.com/ambar/reiconify",
   "main": "cjs/index.js",
   "module": "es/index.js",
   "files": [
@@ -10,17 +11,20 @@
     "cjs"
   ],
   "scripts": {
-    "start": "node ../reiconify/bin/reiconify --serve",
+    "reiconify": "node ../reiconify/bin/reiconify",
+    "start": "npm run reiconify --  --serve",
     "copy": "mkdir -p icons && rm -rf icons/** && node ./scripts/copyIcons",
     "clean": "rm -rf src/** es/** cjs/**",
-    "build:static": "npm run build:src && rm -rf static/** && NODE_ENV=production node ../reiconify/bin/reiconify --static",
-    "build:src": "rm -rf src/** && node ../reiconify/bin/reiconify --src icons/*.svg",
-    "build": "npm run clean && npm run copy && node ../reiconify/bin/reiconify --src --es --cjs icons/*.svg",
+    "build:static": "npm run build:src && rm -rf dist && NODE_ENV=production npm run reiconify -- --static",
+    "build:src": "rm -rf src/** && npm run reiconify -- --src 'icons/*.svg'",
+    "build": "npm run clean && npm run copy && npm run reiconify -- --src --es --cjs 'icons/*.svg'",
     "prepare": "npm run build",
+    "ghpages": "PUBLIC_PATH=/reiconify/md.icons/ npm run build:static && gh-pages -o github -d dist -e md.icons",
     "test": "echo 'ok'"
   },
   "license": "MIT",
   "devDependencies": {
+    "gh-pages": "^1.0.0",
     "globby": "^6.1.0",
     "material-design-icons": "^3.0.1"
   }

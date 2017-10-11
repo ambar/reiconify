@@ -2,6 +2,7 @@
   "name": "reiconify",
   "version": "0.0.1",
   "description": "Convert SVG icons to React components",
+  "homepage": "https://github.com/ambar/reiconify",
   "bin": "bin/reiconify",
   "main": "index.js",
   "license": "MIT",

@@ -13,6 +13,9 @@ const defaultBabelOptions = {
 }
 
 module.exports = {
+  output: {
+    publicPath: process.env.PUBLIC_PATH || '/',
+  },
   node: {
     fs: 'empty',
   },
