@@ -3,6 +3,7 @@ const path = require('path')
 const {promisify} = require('util')
 const babel = require('babel-core')
 const globby = require('globby')
+const mkdirp = require('mkdirp')
 const svgReactTransformer = require('@mapbox/svg-react-transformer')
 const log = require('fancy-log')
 const prettier = require('./prettier')
@@ -18,6 +19,10 @@ const getIndex = async names => {
 }
 
 const writeFiles = async (contents, path) => {
+  if (!fs.existsSync(path)) {
+    await promisify(mkdirp)(path)
+  }
+
   return await Promise.all(
     contents.map(({name, code}) =>
       promisify(fs.writeFile)(`${path}/${name}.js`, code)
