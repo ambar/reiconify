@@ -23,7 +23,8 @@
   ],
   "scripts": {
     "build:node6": "BABEL_ENV=node6 babel lib --out-dir lib_node6",
-    "prepare": "npm run build:node6"
+    "prepare": "npm test && npm run build:node6",
+    "test": "jest"
   },
   "dependencies": {
     "@mapbox/svg-react-transformer": "^1.0.1",
@@ -50,5 +51,9 @@
     "shelljs": "^0.7.8",
     "util.promisify": "^1.0.0",
     "yargs": "^9.0.1"
+  },
+  "devDependencies": {
+    "jest": "^21.2.1",
+    "rimraf": "^2.6.2"
   }
 }

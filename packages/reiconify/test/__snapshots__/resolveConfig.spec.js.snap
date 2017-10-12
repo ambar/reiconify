@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`resolveConfig gets default config 1`] = `
+Object {
+  "baseDefaultProps": Object {
+    "defaultCenterStyle": Object {
+      "position": "relative",
+      "top": "calc(-1em * 1/6)",
+      "verticalAlign": "middle",
+    },
+    "defaultClassName": "Icon",
+    "fill": "currentColor",
+    "height": "1em",
+    "width": "1em",
+  },
+  "baseTemplate": [Function],
+  "defaultProps": Object {},
+  "filenameTemplate": [Function],
+  "svgoPlugins": Array [],
+  "template": [Function],
+}
+`;
+
+exports[`resolveConfig overwrites default config 1`] = `
+Object {
+  "baseDefaultProps": Object {
+    "defaultCenterStyle": Object {
+      "position": "relative",
+      "top": "calc(-1em * 1/6)",
+      "verticalAlign": "middle",
+    },
+    "defaultClassName": "MyIcon",
+    "fill": "currentColor",
+    "height": "1em",
+    "width": "1em",
+  },
+  "baseTemplate": [Function],
+  "defaultProps": Object {},
+  "filenameTemplate": [Function],
+  "svgoPlugins": Array [
+    Object {
+      "removeAttrs": Object {
+        "attrs": "fill",
+      },
+    },
+  ],
+  "template": [Function],
+}
+`;

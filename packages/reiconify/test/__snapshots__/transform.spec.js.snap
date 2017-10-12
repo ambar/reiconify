@@ -1,0 +1,321 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`transform throws if no inputs 1`] = `[Error: Missing input files]`;
+
+exports[`transform throws if no matched files 1`] = `[Error: Cannot find source files]`;
+
+exports[`transform throws if no output dir 1`] = `[Error: Missing output directory]`;
+
+exports[`transform transforms icons to src only 1`] = `
+Array [
+  "Check.js",
+  "Icon.js",
+  "ThumbUp.js",
+  "index.js",
+]
+`;
+
+exports[`transform transforms icons to src/es/cjs 1`] = `
+Array [
+  Object {
+    "dir": "fixtures/transform/src",
+    "files": Array [
+      "Check.js",
+      "Icon.js",
+      "ThumbUp.js",
+      "index.js",
+    ],
+  },
+  Object {
+    "dir": "fixtures/transform/es",
+    "files": Array [
+      "Check.js",
+      "Icon.js",
+      "ThumbUp.js",
+      "index.js",
+    ],
+  },
+  Object {
+    "dir": "fixtures/transform/cjs",
+    "files": Array [
+      "Check.js",
+      "Icon.js",
+      "ThumbUp.js",
+      "index.js",
+    ],
+  },
+]
+`;
+
+exports[`transform transforms icons to src/es/cjs 2`] = `
+Array [
+  Object {
+    "fixtures/transform/src": Array [
+      "import React from 'react'
+import Icon from './Icon'
+
+const Check = props => (
+  <Icon width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" {...props}>
+    <path d=\\"M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z\\" />
+  </Icon>
+)
+
+Check.defaultProps = {name: 'Check'}
+
+export default Check
+",
+      "import React from 'react'
+
+const Icon = ({
+  name,
+  className,
+  defaultClassName,
+  defaultCenterStyle,
+  size,
+  align,
+  ...props
+}) => (
+  <svg
+    className={\`\${defaultClassName} \${defaultClassName}--\${name}\${className
+      ? \` \${className}\`
+      : ''}\`}
+    {...props}
+    {...size && {width: size, height: size}}
+    style={{
+      ...(align === 'center' ? defaultCenterStyle : {verticalAlign: align}),
+      ...props.style,
+    }}
+  />
+)
+
+Icon.defaultProps = {
+  defaultClassName: 'Icon',
+  defaultCenterStyle: {
+    verticalAlign: 'middle',
+    position: 'relative',
+    top: 'calc(-1em * 1/6)',
+  },
+  width: '1em',
+  height: '1em',
+  fill: 'currentColor',
+}
+
+export default Icon
+",
+      "import React from 'react'
+import Icon from './Icon'
+
+const ThumbUp = props => (
+  <Icon width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" {...props}>
+    <path d=\\"M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-1.91l-.01-.01L23 10z\\" />
+  </Icon>
+)
+
+ThumbUp.defaultProps = {name: 'ThumbUp'}
+
+export default ThumbUp
+",
+      "export {default as Check} from './Check'
+export {default as ThumbUp} from './ThumbUp'
+",
+    ],
+  },
+  Object {
+    "fixtures/transform/es": Array [
+      "var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+import React from 'react';
+import Icon from './Icon';
+
+var Check = function Check(props) {
+  return React.createElement(
+    Icon,
+    _extends({ width: '24', height: '24', viewBox: '0 0 24 24' }, props),
+    React.createElement('path', { d: 'M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z' })
+  );
+};
+
+Check.defaultProps = { name: 'Check' };
+
+export default Check;",
+      "var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+import React from 'react';
+
+var Icon = function Icon(_ref) {
+  var name = _ref.name,
+      className = _ref.className,
+      defaultClassName = _ref.defaultClassName,
+      defaultCenterStyle = _ref.defaultCenterStyle,
+      size = _ref.size,
+      align = _ref.align,
+      props = _objectWithoutProperties(_ref, ['name', 'className', 'defaultClassName', 'defaultCenterStyle', 'size', 'align']);
+
+  return React.createElement('svg', _extends({
+    className: defaultClassName + ' ' + defaultClassName + '--' + name + (className ? ' ' + className : '')
+  }, props, size && { width: size, height: size }, {
+    style: _extends({}, align === 'center' ? defaultCenterStyle : { verticalAlign: align }, props.style)
+  }));
+};
+
+Icon.defaultProps = {
+  defaultClassName: 'Icon',
+  defaultCenterStyle: {
+    verticalAlign: 'middle',
+    position: 'relative',
+    top: 'calc(-1em * 1/6)'
+  },
+  width: '1em',
+  height: '1em',
+  fill: 'currentColor'
+};
+
+export default Icon;",
+      "var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+import React from 'react';
+import Icon from './Icon';
+
+var ThumbUp = function ThumbUp(props) {
+  return React.createElement(
+    Icon,
+    _extends({ width: '24', height: '24', viewBox: '0 0 24 24' }, props),
+    React.createElement('path', { d: 'M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-1.91l-.01-.01L23 10z' })
+  );
+};
+
+ThumbUp.defaultProps = { name: 'ThumbUp' };
+
+export default ThumbUp;",
+      "export { default as Check } from './Check';
+export { default as ThumbUp } from './ThumbUp';",
+    ],
+  },
+  Object {
+    "fixtures/transform/cjs": Array [
+      "'use strict';
+
+exports.__esModule = true;
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _Icon = require('./Icon');
+
+var _Icon2 = _interopRequireDefault(_Icon);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Check = function Check(props) {
+  return _react2.default.createElement(
+    _Icon2.default,
+    _extends({ width: '24', height: '24', viewBox: '0 0 24 24' }, props),
+    _react2.default.createElement('path', { d: 'M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z' })
+  );
+};
+
+Check.defaultProps = { name: 'Check' };
+
+exports.default = Check;",
+      "'use strict';
+
+exports.__esModule = true;
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+var Icon = function Icon(_ref) {
+  var name = _ref.name,
+      className = _ref.className,
+      defaultClassName = _ref.defaultClassName,
+      defaultCenterStyle = _ref.defaultCenterStyle,
+      size = _ref.size,
+      align = _ref.align,
+      props = _objectWithoutProperties(_ref, ['name', 'className', 'defaultClassName', 'defaultCenterStyle', 'size', 'align']);
+
+  return _react2.default.createElement('svg', _extends({
+    className: defaultClassName + ' ' + defaultClassName + '--' + name + (className ? ' ' + className : '')
+  }, props, size && { width: size, height: size }, {
+    style: _extends({}, align === 'center' ? defaultCenterStyle : { verticalAlign: align }, props.style)
+  }));
+};
+
+Icon.defaultProps = {
+  defaultClassName: 'Icon',
+  defaultCenterStyle: {
+    verticalAlign: 'middle',
+    position: 'relative',
+    top: 'calc(-1em * 1/6)'
+  },
+  width: '1em',
+  height: '1em',
+  fill: 'currentColor'
+};
+
+exports.default = Icon;",
+      "'use strict';
+
+exports.__esModule = true;
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _Icon = require('./Icon');
+
+var _Icon2 = _interopRequireDefault(_Icon);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var ThumbUp = function ThumbUp(props) {
+  return _react2.default.createElement(
+    _Icon2.default,
+    _extends({ width: '24', height: '24', viewBox: '0 0 24 24' }, props),
+    _react2.default.createElement('path', { d: 'M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-1.91l-.01-.01L23 10z' })
+  );
+};
+
+ThumbUp.defaultProps = { name: 'ThumbUp' };
+
+exports.default = ThumbUp;",
+      "'use strict';
+
+exports.__esModule = true;
+
+var _Check = require('./Check');
+
+Object.defineProperty(exports, 'Check', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_Check).default;
+  }
+});
+
+var _ThumbUp = require('./ThumbUp');
+
+Object.defineProperty(exports, 'ThumbUp', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_ThumbUp).default;
+  }
+});
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }",
+    ],
+  },
+]
+`;

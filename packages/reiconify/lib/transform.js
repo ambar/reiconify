@@ -56,7 +56,7 @@ const transform = async (options = {}) => {
     throw new Error('Missing input files')
   }
 
-  if (!options.srcDir || !options.esDir || !options.cjsDir) {
+  if (!options.srcDir && !options.esDir && !options.cjsDir) {
     throw new Error('Missing output directory')
   }
 
