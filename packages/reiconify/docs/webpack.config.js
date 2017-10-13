@@ -23,10 +23,10 @@ module.exports = {
     alias: {
       '~icons': srcDir,
     },
-    modules: ['node_modules', resolvePath('../node_modules')],
+    modules: [resolvePath('../node_modules')],
   },
   resolveLoader: {
-    modules: ['node_modules', resolvePath('../node_modules')],
+    modules: [resolvePath('../node_modules')],
   },
   module: {
     rules: [
