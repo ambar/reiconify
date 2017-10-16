@@ -48,6 +48,9 @@ const babelTransform = (contents, env) => {
   }))
 }
 
+const resolveDir = dir =>
+  path.isAbsolute(dir) ? dir : path.resolve(process.cwd(), dir)
+
 const transform = async (options = {}) => {
   if (
     !options.inputs ||
@@ -78,7 +81,7 @@ const transform = async (options = {}) => {
   const contents = await Promise.all(
     files.map(async file => {
       const svg = await promisify(fs.readFile)(file)
-      const name = filenameTemplate(path.basename(file, 'svg'))
+      const name = filenameTemplate(path.basename(file, '.svg'))
       const code = await svgReactTransformer.toComponentModule(svg, {
         name,
         template,
@@ -97,20 +100,20 @@ const transform = async (options = {}) => {
 
   if (options.src) {
     log('writing src files...')
-    const srcPath = path.resolve(process.cwd(), options.srcDir)
+    const srcPath = resolveDir(options.srcDir)
     await writeFiles(contents, srcPath)
   }
 
   if (options.es) {
     log('writing es files...')
-    const esPath = path.resolve(process.cwd(), options.esDir)
+    const esPath = resolveDir(options.esDir)
     const transformedContents = babelTransform(contents, 'es')
     await writeFiles(transformedContents, esPath)
   }
 
   if (options.cjs) {
     log('writing cjs files...')
-    const cjsPath = path.resolve(process.cwd(), options.cjsDir)
+    const cjsPath = resolveDir(options.cjsDir)
     const transformedContents = babelTransform(contents, 'cjs')
     await writeFiles(transformedContents, cjsPath)
   }
