@@ -1,3 +1,5 @@
+const React = require('react')
+const renderer = require('react-test-renderer')
 const fs = require('fs')
 const path = require('path')
 const {promisify} = require('util')
@@ -71,15 +73,20 @@ describe('transform', () => {
     const groups = await Promise.all([srcDir, esDir, cjsDir].map(readDir))
     expect(groups).toMatchSnapshot()
 
-    const contents = await Promise.all(
-      groups.map(({dir, files}) =>
-        Promise.all(
-          files.map(file =>
-            promisify(fs.readFile)(path.join(dir, file)).then(f => f.toString())
-          )
-        ).then(data => ({[dir]: data}))
-      )
-    )
-    expect(contents).toMatchSnapshot()
+    const Icons = require(path.resolve(srcDir))
+    const EsIcons = require(path.resolve(esDir))
+    const CjsIcons = require(path.resolve(cjsDir))
+    Object.keys(Icons).forEach(name => {
+      const tree = renderer.create(React.createElement(Icons[name])).toJSON()
+      const esTree = renderer
+        .create(React.createElement(EsIcons[name]))
+        .toJSON()
+      const cjsTree = renderer
+        .create(React.createElement(CjsIcons[name]))
+        .toJSON()
+      expect(tree).toMatchSnapshot()
+      expect(tree).toEqual(esTree)
+      expect(tree).toEqual(cjsTree)
+    })
   })
 })
