@@ -4,10 +4,10 @@ const {promisify} = require('util')
 const babel = require('babel-core')
 const globby = require('globby')
 const mkdirp = require('mkdirp')
-const svgReactTransformer = require('@mapbox/svg-react-transformer')
 const log = require('fancy-log')
 const prettier = require('./prettier')
 const resolveConfig = require('./resolveConfig')
+const {createSvg2jsx} = require('./svg2jsx')
 
 const getIndex = async names => {
   names = names.slice().sort()
@@ -76,19 +76,17 @@ const transform = async (options = {}) => {
     baseMapProps,
     filenameTemplate,
     svgoPlugins,
+    camelCaseProps,
   } = await resolveConfig()
 
   log('transforming icons...')
+  const svg2jsx = createSvg2jsx({svgoPlugins, camelCaseProps})
   const contents = await Promise.all(
     files.map(async file => {
       const svg = await promisify(fs.readFile)(file)
       const name = filenameTemplate(path.basename(file, '.svg'))
-      const code = await svgReactTransformer.toComponentModule(svg, {
-        name,
-        template,
-        defaultProps,
-        svgoPlugins,
-      })
+      const jsxString = await svg2jsx(svg)
+      const code = template(Object.assign({name, defaultProps, jsxString}))
       return {name, code}
     })
   )

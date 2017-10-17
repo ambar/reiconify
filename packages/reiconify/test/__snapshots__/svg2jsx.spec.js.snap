@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`svg2jsx converts svg to jsx (React <= 15) 1`] = `"<svg width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\"><path d=\\"M0 0h24v24H0z\\" fillOpacity=\\".5\\" pointerEvents=\\"none\\"/></svg>"`;
+
+exports[`svg2jsx converts svg to jsx 1`] = `"<svg width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\"><path fill-opacity=\\".5\\" d=\\"M0 0h24v24H0z\\" pointer-events=\\"none\\"/></svg>"`;
+
+exports[`svg2jsx reuses svgo instance 1`] = `"<svg width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\"><path d=\\"M0 0h24v24H0z\\" pointerEvents=\\"none\\"/></svg>"`;
+
+exports[`svg2jsx uses \`removeAttrs\` plugin 1`] = `"<svg><path fill-opacity=\\".5\\" d=\\"M0 0h24v24H0z\\" pointer-events=\\"none\\"/></svg>"`;

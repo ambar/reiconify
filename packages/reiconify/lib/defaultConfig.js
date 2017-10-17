@@ -1,25 +1,16 @@
 const pascalCase = require('pascal-case')
 const prettier = require('./prettier')
 
-// https://github.com/mapbox/svg-react-transformer/blob/master/lib/templates/default.js
 const template = data => {
-  let propTypesRequire = ''
-  let propTypes = ''
-  if (data.propTypes !== undefined) {
-    propTypesRequire = `\nimport PropTypes from 'prop-types'`
-    propTypes = `${data.name}.propTypes = ${data.propTypes}`
-  }
-  const jsxSvgWithProps = data.jsxSvg
+  const jsxWithProps = data.jsxString
     .replace(/<svg([\s\S]*?)>/, (match, group) => `<Icon${group} {...props}>`)
     .replace(/<\/svg>$/, '</Icon>')
 
   return prettier(`
-    import React from 'react'${propTypesRequire}
+    import React from 'react'
     import Icon from './Icon'
 
-    const ${data.name} = props => ${jsxSvgWithProps}
-
-    ${propTypes}
+    const ${data.name} = props => ${jsxWithProps}
 
     ${data.name}.defaultProps = ${JSON.stringify(
     Object.assign(
@@ -125,6 +116,7 @@ const defaults = {
   baseMapProps,
   filenameTemplate,
   svgoPlugins: [],
+  camelCaseProps: true,
 }
 
 module.exports = defaults

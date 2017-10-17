@@ -19,6 +19,7 @@ Object {
     },
   },
   "baseTemplate": [Function],
+  "camelCaseProps": true,
   "defaultProps": Object {},
   "filenameTemplate": [Function],
   "svgoPlugins": Array [],
@@ -45,6 +46,7 @@ Object {
     },
   },
   "baseTemplate": [Function],
+  "camelCaseProps": true,
   "defaultProps": Object {},
   "filenameTemplate": [Function],
   "svgoPlugins": Array [

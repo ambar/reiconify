@@ -27,7 +27,6 @@
     "test": "jest"
   },
   "dependencies": {
-    "@mapbox/svg-react-transformer": "^1.0.1",
     "@uifabric/icons": "^5.0.1",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
@@ -49,6 +48,7 @@
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "shelljs": "^0.7.8",
+    "svgo": "^0.7.2",
     "util.promisify": "^1.0.0",
     "yargs": "^9.0.1"
   },
