@@ -6,28 +6,18 @@ Object {
     "defaultClassName": "Icon",
     "fill": "currentColor",
   },
-  "baseMapProps": "({center, text, ...props}) => {
-  if (center) {
-    props = {
-      ...props,
-      style: {
-        ...props.style,
-        verticalAlign: 'middle',
-        position: 'relative',
-        top: 'calc(-1em * 1/6)',
+  "baseMapProps": Object {
+    "center": Object {
+      "style": Object {
+        "position": "relative",
+        "top": "calc(-1em * 1/6)",
+        "verticalAlign": "middle",
       },
-    }
-  }
-
-  if (text) {
-    props = {
-      ...props,
-      size: '1.2em',
-    }
-  }
-
-  return props
-}",
+    },
+    "text": Object {
+      "size": "1.2em",
+    },
+  },
   "baseTemplate": [Function],
   "defaultProps": Object {},
   "filenameTemplate": [Function],
@@ -42,28 +32,18 @@ Object {
     "defaultClassName": "MyIcon",
     "fill": "currentColor",
   },
-  "baseMapProps": "({center, text, ...props}) => {
-  if (center) {
-    props = {
-      ...props,
-      style: {
-        ...props.style,
-        verticalAlign: 'middle',
-        position: 'relative',
-        top: 'calc(-1em * 1/6)',
+  "baseMapProps": Object {
+    "center": Object {
+      "style": Object {
+        "position": "relative",
+        "top": "calc(-1em * 1/6)",
+        "verticalAlign": "middle",
       },
-    }
-  }
-
-  if (text) {
-    props = {
-      ...props,
-      size: '1.2em',
-    }
-  }
-
-  return props
-}",
+    },
+    "text": Object {
+      "size": "1.2em",
+    },
+  },
   "baseTemplate": [Function],
   "defaultProps": Object {},
   "filenameTemplate": [Function],

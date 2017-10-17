@@ -35,8 +35,39 @@ const template = data => {
 }
 
 const baseTemplate = data => {
+  // deserialize function values
+  const stringify = obj =>
+    JSON.stringify(
+      obj,
+      (k, v) => (typeof v === 'function' ? `λ${v}λ` : v)
+    ).replace(/("λ)((.|\n)*?)(λ")/g, '$2')
+
+  const reduceProps = `const reduceProps = (props, reducers) =>
+    Object.keys(reducers).reduce((o, k) => {
+      if (o[k]) {
+        const reducer = reducers[k]
+        const value = typeof reducer === 'function' ? reducer(o) : reducer
+        delete o[k]
+        return {
+          ...o,
+          ...value,
+          ...(value &&
+            value.style && {
+              style: {
+                ...o.style,
+                ...value.style,
+              },
+            }),
+        }
+      }
+      return o
+    }, {...props})
+  `
+
   return prettier(`
     import React from 'react'
+
+    ${data.baseMapProps ? reduceProps : ''}
 
     const Icon = (props) => {
       const {
@@ -45,9 +76,7 @@ const baseTemplate = data => {
         defaultClassName,
         size,
         ...rest
-      } = ${data.baseMapProps
-        ? `(${String(data.baseMapProps)})(props)`
-        : 'props'}
+      } = ${data.baseMapProps ? `reduceProps(props, Icon.mapProps)` : 'props'}
 
       return (
         <svg
@@ -62,6 +91,10 @@ const baseTemplate = data => {
 
     Icon.defaultProps = ${JSON.stringify(data.baseDefaultProps)}
 
+    ${data.baseMapProps
+      ? `Icon.mapProps = ${stringify(data.baseMapProps)}`
+      : ''}
+
     export default Icon
   `)
 }
@@ -71,28 +104,16 @@ const baseDefaultProps = {
   fill: 'currentColor',
 }
 
-const baseMapProps = `({center, text, ...props}) => {
-  if (center) {
-    props = {
-      ...props,
-      style: {
-        ...props.style,
-        verticalAlign: 'middle',
-        position: 'relative',
-        top: 'calc(-1em * 1/6)',
-      },
-    }
-  }
-
-  if (text) {
-    props = {
-      ...props,
-      size: '1.2em',
-    }
-  }
-
-  return props
-}`
+const baseMapProps = {
+  center: {
+    style: {
+      verticalAlign: 'middle',
+      position: 'relative',
+      top: 'calc(-1em * 1/6)',
+    },
+  },
+  text: {size: '1.2em'},
+}
 
 const filenameTemplate = name => pascalCase(name).replace(/_/g, '')
 
