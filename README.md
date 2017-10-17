@@ -37,6 +37,7 @@ module.exports = {
     defaultClassName: 'Icon',
     viewBox: '0 0 24 24',
   },
+  baseMapProps: Function,
   svgoPlugins: [
     {
       removeAttrs: {attrs: ['fill', 'svg:(viewBox)']},

@@ -38,27 +38,27 @@ const baseTemplate = data => {
   return prettier(`
     import React from 'react'
 
-    const Icon = ({
-      name,
-      className,
-      defaultClassName,
-      defaultCenterStyle,
-      size,
-      align,
-      ...props
-    }) => (
-      <svg
-        className={\`\${defaultClassName} \${defaultClassName}--\${name}\${className
-          ? \` \${className}\`
-          : ''}\`}
-        {...props}
-        {...size && {width: size, height: size}}
-        style={{
-          ...(align === 'center' ? defaultCenterStyle : {verticalAlign: align}),
-          ...props.style,
-        }}
-      />
-    )
+    const Icon = (props) => {
+      const {
+        name,
+        className,
+        defaultClassName,
+        size,
+        ...rest
+      } = ${data.baseMapProps
+        ? `(${String(data.baseMapProps)})(props)`
+        : 'props'}
+
+      return (
+        <svg
+          className={\`\${defaultClassName} \${defaultClassName}--\${name}\${className
+            ? \` \${className}\`
+            : ''}\`}
+          {...rest}
+          {...size && {width: size, height: size}}
+        />
+      )
+    }
 
     Icon.defaultProps = ${JSON.stringify(data.baseDefaultProps)}
 
@@ -68,15 +68,31 @@ const baseTemplate = data => {
 
 const baseDefaultProps = {
   defaultClassName: 'Icon',
-  defaultCenterStyle: {
-    verticalAlign: 'middle',
-    position: 'relative',
-    top: 'calc(-1em * 1/6)',
-  },
-  width: '1em',
-  height: '1em',
   fill: 'currentColor',
 }
+
+const baseMapProps = `({center, text, ...props}) => {
+  if (center) {
+    props = {
+      ...props,
+      style: {
+        ...props.style,
+        verticalAlign: 'middle',
+        position: 'relative',
+        top: 'calc(-1em * 1/6)',
+      },
+    }
+  }
+
+  if (text) {
+    props = {
+      ...props,
+      size: '1.2em',
+    }
+  }
+
+  return props
+}`
 
 const filenameTemplate = name => pascalCase(name).replace(/_/g, '')
 
@@ -85,6 +101,7 @@ const defaults = {
   baseTemplate,
   defaultProps: {},
   baseDefaultProps,
+  baseMapProps,
   filenameTemplate,
   svgoPlugins: [],
 }

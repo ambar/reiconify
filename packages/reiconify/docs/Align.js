@@ -5,7 +5,7 @@ import DebugGrid from './components/DebugGrid'
 import LineBox from './components/LineBox'
 import styles from './Align.css'
 
-const size = '90'
+const size = '1.2em'
 const iconKeys = Object.keys(Icons)
   // filter CJS `__esModule: true`
   .filter(k => typeof Icons[k] === 'function')
@@ -16,13 +16,13 @@ export default () => (
   <div>
     <Markdown text={require('./HowToAlign.md')} />
 
-    <h3>align=center</h3>
+    <h3>a: center prop</h3>
     <LineBox>
-      <RandomIcon size={size} align="center" />
+      <RandomIcon size={size} center />
       ️️️东西南北 Styles
     </LineBox>
 
-    <h3>flex center</h3>
+    <h3>b: flex center</h3>
     <LineBox abs>
       <div
         style={{
@@ -36,9 +36,13 @@ export default () => (
       </div>
     </LineBox>
 
-    <h3>vertical-align middle</h3>
+    <h3>c: vertical-align middle</h3>
     <LineBox>
-      <RandomIcon size={size} align="middle" />
+      <RandomIcon
+        size={size}
+        align="middle"
+        style={{verticalAlign: 'middle'}}
+      />
       <span style={{verticalAlign: 'middle'}}>东西南北 Styles</span>
     </LineBox>
 

@@ -26,7 +26,7 @@ const Cell = ({name, Icon, color, large}) => (
         maxWidth: 600,
         onRenderContent: () => (
           <LineBox style={{padding: '2rem 1.5rem', fontSize: '4em', color}}>
-            <Icon align="center" size={large ? '2em' : '1.2em'} /> {name}
+            <Icon center size={large ? '2em' : '1.2em'} /> {name}
           </LineBox>
         ),
       }}

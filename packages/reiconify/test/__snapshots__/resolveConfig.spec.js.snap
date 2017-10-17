@@ -3,16 +3,31 @@
 exports[`resolveConfig gets default config 1`] = `
 Object {
   "baseDefaultProps": Object {
-    "defaultCenterStyle": Object {
-      "position": "relative",
-      "top": "calc(-1em * 1/6)",
-      "verticalAlign": "middle",
-    },
     "defaultClassName": "Icon",
     "fill": "currentColor",
-    "height": "1em",
-    "width": "1em",
   },
+  "baseMapProps": "({center, text, ...props}) => {
+  if (center) {
+    props = {
+      ...props,
+      style: {
+        ...props.style,
+        verticalAlign: 'middle',
+        position: 'relative',
+        top: 'calc(-1em * 1/6)',
+      },
+    }
+  }
+
+  if (text) {
+    props = {
+      ...props,
+      size: '1.2em',
+    }
+  }
+
+  return props
+}",
   "baseTemplate": [Function],
   "defaultProps": Object {},
   "filenameTemplate": [Function],
@@ -24,16 +39,31 @@ Object {
 exports[`resolveConfig overwrites default config 1`] = `
 Object {
   "baseDefaultProps": Object {
-    "defaultCenterStyle": Object {
-      "position": "relative",
-      "top": "calc(-1em * 1/6)",
-      "verticalAlign": "middle",
-    },
     "defaultClassName": "MyIcon",
     "fill": "currentColor",
-    "height": "1em",
-    "width": "1em",
   },
+  "baseMapProps": "({center, text, ...props}) => {
+  if (center) {
+    props = {
+      ...props,
+      style: {
+        ...props.style,
+        verticalAlign: 'middle',
+        position: 'relative',
+        top: 'calc(-1em * 1/6)',
+      },
+    }
+  }
+
+  if (text) {
+    props = {
+      ...props,
+      size: '1.2em',
+    }
+  }
+
+  return props
+}",
   "baseTemplate": [Function],
   "defaultProps": Object {},
   "filenameTemplate": [Function],

@@ -14,25 +14,16 @@ npm install md.icons
 import * as Icons from 'md.icons'
 
 <Icons.Check />
-<Icons.ThumbUp size={20} />
+<Icons.ThumbUp size={20} fill="gray" />
 ```
 
 ## Props
 
-### `size: number | string`
-
-Set `width` and `height` prop.
-
-### `align: string`
-
-Align icon to text.
-
-```js
-<Button>
-  <Icons.Comment align="center" />
-  Comment
-</Button>
-```
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `size` | `number, string` | `void` | Set `width` and `height` prop |
+| `center` | `boolean` | `false` | Align icon to text |
+| `text` | `boolean` | `false` | Shortcut for `size="1.2em"` |
 
 ## Development
 

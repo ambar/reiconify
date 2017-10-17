@@ -66,39 +66,46 @@ export default Check
 ",
       "import React from 'react'
 
-const Icon = ({
-  name,
-  className,
-  defaultClassName,
-  defaultCenterStyle,
-  size,
-  align,
-  ...props
-}) => (
-  <svg
-    className={\`\${defaultClassName} \${defaultClassName}--\${name}\${className
-      ? \` \${className}\`
-      : ''}\`}
-    {...props}
-    {...size && {width: size, height: size}}
-    style={{
-      ...(align === 'center' ? defaultCenterStyle : {verticalAlign: align}),
-      ...props.style,
-    }}
-  />
-)
+const Icon = props => {
+  const {name, className, defaultClassName, size, ...rest} = (({
+    center,
+    text,
+    ...props
+  }) => {
+    if (center) {
+      props = {
+        ...props,
+        style: {
+          ...props.style,
+          verticalAlign: 'middle',
+          position: 'relative',
+          top: 'calc(-1em * 1/6)',
+        },
+      }
+    }
 
-Icon.defaultProps = {
-  defaultClassName: 'Icon',
-  defaultCenterStyle: {
-    verticalAlign: 'middle',
-    position: 'relative',
-    top: 'calc(-1em * 1/6)',
-  },
-  width: '1em',
-  height: '1em',
-  fill: 'currentColor',
+    if (text) {
+      props = {
+        ...props,
+        size: '1.2em',
+      }
+    }
+
+    return props
+  })(props)
+
+  return (
+    <svg
+      className={\`\${defaultClassName} \${defaultClassName}--\${name}\${className
+        ? \` \${className}\`
+        : ''}\`}
+      {...rest}
+      {...size && {width: size, height: size}}
+    />
+  )
 }
+
+Icon.defaultProps = {defaultClassName: 'Icon', fill: 'currentColor'}
 
 export default Icon
 ",
@@ -144,33 +151,42 @@ function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in ob
 
 import React from 'react';
 
-var Icon = function Icon(_ref) {
-  var name = _ref.name,
+var Icon = function Icon(props) {
+  var _ref = function (_ref2) {
+    var center = _ref2.center,
+        text = _ref2.text,
+        props = _objectWithoutProperties(_ref2, ['center', 'text']);
+
+    if (center) {
+      props = _extends({}, props, {
+        style: _extends({}, props.style, {
+          verticalAlign: 'middle',
+          position: 'relative',
+          top: 'calc(-1em * 1/6)'
+        })
+      });
+    }
+
+    if (text) {
+      props = _extends({}, props, {
+        size: '1.2em'
+      });
+    }
+
+    return props;
+  }(props),
+      name = _ref.name,
       className = _ref.className,
       defaultClassName = _ref.defaultClassName,
-      defaultCenterStyle = _ref.defaultCenterStyle,
       size = _ref.size,
-      align = _ref.align,
-      props = _objectWithoutProperties(_ref, ['name', 'className', 'defaultClassName', 'defaultCenterStyle', 'size', 'align']);
+      rest = _objectWithoutProperties(_ref, ['name', 'className', 'defaultClassName', 'size']);
 
   return React.createElement('svg', _extends({
     className: defaultClassName + ' ' + defaultClassName + '--' + name + (className ? ' ' + className : '')
-  }, props, size && { width: size, height: size }, {
-    style: _extends({}, align === 'center' ? defaultCenterStyle : { verticalAlign: align }, props.style)
-  }));
+  }, rest, size && { width: size, height: size }));
 };
 
-Icon.defaultProps = {
-  defaultClassName: 'Icon',
-  defaultCenterStyle: {
-    verticalAlign: 'middle',
-    position: 'relative',
-    top: 'calc(-1em * 1/6)'
-  },
-  width: '1em',
-  height: '1em',
-  fill: 'currentColor'
-};
+Icon.defaultProps = { defaultClassName: 'Icon', fill: 'currentColor' };
 
 export default Icon;",
       "var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -236,33 +252,42 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 
-var Icon = function Icon(_ref) {
-  var name = _ref.name,
+var Icon = function Icon(props) {
+  var _ref = function (_ref2) {
+    var center = _ref2.center,
+        text = _ref2.text,
+        props = _objectWithoutProperties(_ref2, ['center', 'text']);
+
+    if (center) {
+      props = _extends({}, props, {
+        style: _extends({}, props.style, {
+          verticalAlign: 'middle',
+          position: 'relative',
+          top: 'calc(-1em * 1/6)'
+        })
+      });
+    }
+
+    if (text) {
+      props = _extends({}, props, {
+        size: '1.2em'
+      });
+    }
+
+    return props;
+  }(props),
+      name = _ref.name,
       className = _ref.className,
       defaultClassName = _ref.defaultClassName,
-      defaultCenterStyle = _ref.defaultCenterStyle,
       size = _ref.size,
-      align = _ref.align,
-      props = _objectWithoutProperties(_ref, ['name', 'className', 'defaultClassName', 'defaultCenterStyle', 'size', 'align']);
+      rest = _objectWithoutProperties(_ref, ['name', 'className', 'defaultClassName', 'size']);
 
   return _react2.default.createElement('svg', _extends({
     className: defaultClassName + ' ' + defaultClassName + '--' + name + (className ? ' ' + className : '')
-  }, props, size && { width: size, height: size }, {
-    style: _extends({}, align === 'center' ? defaultCenterStyle : { verticalAlign: align }, props.style)
-  }));
+  }, rest, size && { width: size, height: size }));
 };
 
-Icon.defaultProps = {
-  defaultClassName: 'Icon',
-  defaultCenterStyle: {
-    verticalAlign: 'middle',
-    position: 'relative',
-    top: 'calc(-1em * 1/6)'
-  },
-  width: '1em',
-  height: '1em',
-  fill: 'currentColor'
-};
+Icon.defaultProps = { defaultClassName: 'Icon', fill: 'currentColor' };
 
 exports.default = Icon;",
       "'use strict';

@@ -73,6 +73,7 @@ const transform = async (options = {}) => {
     baseTemplate,
     defaultProps,
     baseDefaultProps,
+    baseMapProps,
     filenameTemplate,
     svgoPlugins,
   } = await resolveConfig()
@@ -94,7 +95,7 @@ const transform = async (options = {}) => {
 
   const namesToExport = contents.map(({name}) => name)
   contents.push(
-    {name: 'Icon', code: baseTemplate({baseDefaultProps})},
+    {name: 'Icon', code: baseTemplate({baseDefaultProps, baseMapProps})},
     {name: 'index', code: await getIndex(namesToExport)}
   )
 
