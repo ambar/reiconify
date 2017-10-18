@@ -26,8 +26,9 @@ const template = data => {
 }
 
 const baseTemplate = data => {
-  // deserialize function values
-  const stringify = obj =>
+  // serialize object, preserve function values
+  // {foo: props => {}, bar: true} ➡ `{"foo": props => {}, "bar": true}`
+  const serialize = obj =>
     JSON.stringify(
       obj,
       (k, v) => (typeof v === 'function' ? `λ${v}λ` : v)
@@ -83,7 +84,7 @@ const baseTemplate = data => {
     Icon.defaultProps = ${JSON.stringify(data.baseDefaultProps)}
 
     ${data.baseMapProps
-      ? `Icon.mapProps = ${stringify(data.baseMapProps)}`
+      ? `Icon.mapProps = ${serialize(data.baseMapProps)}`
       : ''}
 
     export default Icon
