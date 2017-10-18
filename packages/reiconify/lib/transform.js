@@ -7,7 +7,7 @@ const mkdirp = require('mkdirp')
 const log = require('fancy-log')
 const prettier = require('./prettier')
 const resolveConfig = require('./resolveConfig')
-const {createSvg2jsx} = require('./svg2jsx')
+const svg2jsx = require('./svg2jsx')
 
 const getIndex = async names => {
   names = names.slice().sort()
@@ -80,12 +80,11 @@ const transform = async (options = {}) => {
   } = await resolveConfig()
 
   log('transforming icons...')
-  const svg2jsx = createSvg2jsx({svgoPlugins, camelCaseProps})
   const contents = await Promise.all(
     files.map(async file => {
-      const svg = await promisify(fs.readFile)(file)
+      const svg = String(await promisify(fs.readFile)(file))
       const name = filenameTemplate(path.basename(file, '.svg'))
-      const jsxString = await svg2jsx(svg)
+      const jsxString = await svg2jsx(svg, {svgoPlugins, camelCaseProps})
       const code = template(Object.assign({name, defaultProps, jsxString}))
       return {name, code}
     })

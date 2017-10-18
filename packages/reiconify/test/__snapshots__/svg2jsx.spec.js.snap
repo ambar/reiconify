@@ -1,9 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`svg2jsx adds unique id prefix 1`] = `"<svg width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\"><defs><linearGradient id=\\"id-2703904526-a\\" x1=\\"63.313%\\" x2=\\"46.604%\\" y1=\\"-13.472%\\" y2=\\"117.368%\\"><stop offset=\\"2.35%\\" stop-color=\\"#EC471E\\"/><stop offset=\\"100%\\" stop-color=\\"#FF6DC4\\"/></linearGradient></defs><path fill=\\"url(#id-2703904526-a)\\" fill-rule=\\"evenodd\\" d=\\"M0 0h24v24H0z\\"/></svg>"`;
+
 exports[`svg2jsx converts svg to jsx (React <= 15) 1`] = `"<svg width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\"><path d=\\"M0 0h24v24H0z\\" fillOpacity=\\".5\\" pointerEvents=\\"none\\"/></svg>"`;
 
 exports[`svg2jsx converts svg to jsx 1`] = `"<svg width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\"><path fill-opacity=\\".5\\" d=\\"M0 0h24v24H0z\\" pointer-events=\\"none\\"/></svg>"`;
 
 exports[`svg2jsx reuses svgo instance 1`] = `"<svg width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\"><path d=\\"M0 0h24v24H0z\\" pointerEvents=\\"none\\"/></svg>"`;
 
-exports[`svg2jsx uses \`removeAttrs\` plugin 1`] = `"<svg><path fill-opacity=\\".5\\" d=\\"M0 0h24v24H0z\\" pointer-events=\\"none\\"/></svg>"`;
+exports[`svg2jsx uses \`removeAttrs\` plugin 1`] = `"<svg><path fill=\\"red\\" stroke=\\"red\\" d=\\"M0 0h24v24H0z\\"/></svg>"`;

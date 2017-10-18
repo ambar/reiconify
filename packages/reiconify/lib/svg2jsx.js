@@ -1,4 +1,5 @@
 const SVGO = require('svgo')
+const hash = require('string-hash')
 
 const toCamelCase = s =>
   s.replace(/([-_])([a-z])/g, (s, a, b) => b.toUpperCase())
@@ -30,20 +31,22 @@ const camelCaseProps = {
 // svgo 默认就会启用一批插件，参考：
 // https://github.com/svg/svgo/issues/646
 // https://github.com/BohemianCoding/svgo-compressor/blob/development/src/plugin.js#L130
-const extraSvgoPlugins = [
+const createExtraSvgoPlugins = ({idPrefix}) => [
   {removeDesc: {removeAny: true}},
   {removeXMLNS: true},
   {sortAttrs: true},
+  {cleanupIDs: {prefix: idPrefix}},
 ]
 
 const defaults = {
   svgoPlugins: [],
   camelCaseProps: false,
+  idPrefix: '',
 }
 
 const createSvg2jsx = options => {
   options = Object.assign({}, defaults, options)
-  const plugins = extraSvgoPlugins
+  const plugins = createExtraSvgoPlugins({idPrefix: options.idPrefix})
     .concat(options.svgoPlugins)
     .concat(options.camelCaseProps ? camelCaseProps : [])
   const svgo = new SVGO({plugins})
@@ -58,7 +61,10 @@ const createSvg2jsx = options => {
     )
 }
 
-const svg2jsx = (svg, options) => createSvg2jsx(options)(svg)
+const svg2jsx = (svg, options) => {
+  const idPrefix = `id-${hash(svg)}-`
+  return createSvg2jsx(Object.assign({idPrefix}, options))(svg)
+}
 
 module.exports = svg2jsx
 module.exports.createSvg2jsx = createSvg2jsx
