@@ -12,21 +12,24 @@
     "cjs"
   ],
   "scripts": {
-    "reiconify": "node ../reiconify/bin/reiconify",
-    "start": "npm run reiconify --  --serve",
+    "start": "reiconify  --serve",
     "copy": "mkdir -p icons && rm -rf icons/** && node ./scripts/copyIcons",
     "clean": "rm -rf src/** es/** cjs/**",
-    "build:static": "npm run build:src && rm -rf dist && NODE_ENV=production npm run reiconify -- --static",
-    "build:src": "rm -rf src/** && npm run reiconify -- --src 'icons/*.svg'",
-    "build": "npm run clean && npm run copy && npm run reiconify -- --src --es --cjs 'icons/*.svg'",
-    "prepare": "npm run build",
+    "build:static": "npm run build:src && rm -rf dist && NODE_ENV=production reiconify --static",
+    "build:src": "rm -rf src/** && reiconify --src 'icons/*.svg'",
+    "build": "npm run clean && npm run copy && reiconify --src --es --cjs 'icons/*.svg'",
+    "prepare": "npm run build && npm test",
     "ghpages": "PUBLIC_PATH=/reiconify/md.icons/ npm run build:static && gh-pages -o github -d dist -e md.icons",
-    "test": "echo 'ok'"
+    "test": "jest"
   },
   "license": "MIT",
   "devDependencies": {
     "gh-pages": "^1.0.0",
     "globby": "^6.1.0",
-    "material-design-icons": "^3.0.1"
+    "jest": "^21.2.1",
+    "material-design-icons": "^3.0.1",
+    "react": "^16.0.0",
+    "react-test-renderer": "^16.0.0",
+    "reiconify": "file:../reiconify"
   }
 }
