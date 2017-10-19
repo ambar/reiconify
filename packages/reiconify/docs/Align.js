@@ -19,7 +19,7 @@ export default () => (
     <h3>a: center prop</h3>
     <LineBox>
       <RandomIcon size={size} center />
-      ️️️东西南北 Styles
+      东西南北 Styles
     </LineBox>
 
     <h3>b: flex center</h3>
