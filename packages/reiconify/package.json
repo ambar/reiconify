@@ -43,7 +43,7 @@
     "mkdirp": "^0.5.1",
     "office-ui-fabric-react": "^5.0.1",
     "pascal-case": "^2.0.1",
-    "playland": "0.0.13",
+    "playland": "0.0.14",
     "prettier": "^1.7.4",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
