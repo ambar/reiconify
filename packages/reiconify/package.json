@@ -1,6 +1,6 @@
 {
   "name": "reiconify",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "description": "Convert SVG icons to React components",
   "repository": "ambar/reiconify",
   "homepage": "https://github.com/ambar/reiconify",
@@ -43,7 +43,7 @@
     "mkdirp": "^0.5.1",
     "office-ui-fabric-react": "^5.0.1",
     "pascal-case": "^2.0.1",
-    "playland": "0.0.14",
+    "playland": "0.0.15",
     "prettier": "^1.7.4",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",

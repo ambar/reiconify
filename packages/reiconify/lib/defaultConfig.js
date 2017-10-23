@@ -101,7 +101,12 @@ const baseMapProps = {
     style: {
       verticalAlign: 'middle',
       position: 'relative',
-      top: 'calc(-1em * 1/6)',
+      // move to the middle of cap, https://opentype.js.org/font-inspector.html
+      //   (xHeight / 2 - capHeight / 2) / unitsPerEm ≈ .5em/2 - .7em/2
+      // alternatives:
+      //   - calc(0.5ex - var(--capHeight, .7em) / 2) ≈ calc(0.5ex - .35em)
+      //   - var(--iconOffset, -.1em)
+      top: '-.1em',
     },
   },
   text: {size: '1.2em'},

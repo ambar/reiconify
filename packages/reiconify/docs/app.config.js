@@ -1,7 +1,7 @@
 import React from 'react'
 import {Fabric} from 'office-ui-fabric-react/lib/Fabric'
 import {initializeIcons} from '@uifabric/icons'
-import './app.css'
+import styles from './app.css'
 
 // 阻止 hot reload 重复初始化
 if (!global.initialized) {
@@ -17,7 +17,7 @@ const routes = ['Browser', 'Align'].map(name => {
     name,
     path: `/${name}`,
     component: () => (
-      <Fabric style={{marginTop: '2rem'}}>
+      <Fabric className={styles.fabric}>
         <Page />
       </Fabric>
     ),

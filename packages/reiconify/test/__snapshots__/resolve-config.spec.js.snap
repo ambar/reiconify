@@ -10,7 +10,7 @@ Object {
     "center": Object {
       "style": Object {
         "position": "relative",
-        "top": "calc(-1em * 1/6)",
+        "top": "-.1em",
         "verticalAlign": "middle",
       },
     },
@@ -37,7 +37,7 @@ Object {
     "center": Object {
       "style": Object {
         "position": "relative",
-        "top": "calc(-1em * 1/6)",
+        "top": "-.1em",
         "verticalAlign": "middle",
       },
     },

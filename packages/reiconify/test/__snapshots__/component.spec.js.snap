@@ -9,7 +9,7 @@ exports[`component renders \`center\` and \`style\` prop 1`] = `
     Object {
       "color": "red",
       "position": "relative",
-      "top": "calc(-1em * 1/6)",
+      "top": "-.1em",
       "verticalAlign": "middle",
     }
   }
@@ -30,7 +30,7 @@ exports[`component renders \`center\` prop 1`] = `
   style={
     Object {
       "position": "relative",
-      "top": "calc(-1em * 1/6)",
+      "top": "-.1em",
       "verticalAlign": "middle",
     }
   }
@@ -79,7 +79,7 @@ exports[`component renders \`text\` and \`center\` prop 1`] = `
   style={
     Object {
       "position": "relative",
-      "top": "calc(-1em * 1/6)",
+      "top": "-.1em",
       "verticalAlign": "middle",
     }
   }

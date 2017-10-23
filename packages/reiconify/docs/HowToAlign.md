@@ -23,6 +23,6 @@ c. Using `vertical-align`(requires extra tag):
 ```js
 <button>
   <Icons.Heart text style={{verticalAlign: 'middle'}} />
-  ️️️<span style={{verticalAlign: 'middle'}}>Like</span>
+  <span style={{verticalAlign: 'middle'}}>Like</span>
 </button>
 ```
