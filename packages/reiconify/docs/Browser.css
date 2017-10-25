@@ -5,7 +5,7 @@
   &.isNameShown {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(150px, 230px));
-    grid-gap: 0.5rem;
+    grid-gap: 0.1rem 0;
   }
 }
 

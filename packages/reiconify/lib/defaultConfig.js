@@ -59,6 +59,9 @@ const baseTemplate = data => {
   return prettier(`
     import React from 'react'
 
+    // use zero-width space to mock [strut](https://www.w3.org/TR/CSS22/visudet.html#strut), &#8203;
+    const ZWSP = '\\u200b'
+
     ${data.baseMapProps ? reduceProps : ''}
 
     const Icon = (props) => {
@@ -67,10 +70,11 @@ const baseTemplate = data => {
         className,
         defaultClassName,
         size,
+        center,
         ...rest
       } = ${data.baseMapProps ? `reduceProps(props, Icon.mapProps)` : 'props'}
 
-      return (
+      const svg = (
         <svg
           className={\`\${defaultClassName} \${defaultClassName}--\${name}\${className
             ? \` \${className}\`
@@ -79,6 +83,15 @@ const baseTemplate = data => {
           {...size && {width: size, height: size}}
         />
       )
+
+      return center ? (
+        <span style={Icon.strutStyle}>
+          {ZWSP}
+          {svg}
+        </span>
+      ) : (
+        svg
+      )
     }
 
     Icon.defaultProps = ${JSON.stringify(data.baseDefaultProps)}
@@ -86,6 +99,11 @@ const baseTemplate = data => {
     ${data.baseMapProps
       ? `Icon.mapProps = ${serialize(data.baseMapProps)}`
       : ''}
+
+    Icon.strutStyle = {
+      display: 'inline-flex',
+      alignItems: 'center',
+    }
 
     export default Icon
   `)
@@ -97,18 +115,6 @@ const baseDefaultProps = {
 }
 
 const baseMapProps = {
-  center: {
-    style: {
-      verticalAlign: 'middle',
-      position: 'relative',
-      // move to the middle of cap, https://opentype.js.org/font-inspector.html
-      //   (xHeight / 2 - capHeight / 2) / unitsPerEm ≈ .5em/2 - .7em/2
-      // alternatives:
-      //   - calc(0.5ex - var(--capHeight, .7em) / 2) ≈ calc(0.5ex - .35em)
-      //   - var(--iconOffset, -.1em)
-      top: '-.1em',
-    },
-  },
   text: {size: '1.2em'},
 }
 

@@ -16,23 +16,25 @@ export default () => (
   <div>
     <Markdown text={require('./HowToAlign.md')} />
 
-    <h3>a: center prop</h3>
+    <h2>Demos</h2>
+
+    <h3>a: inline-flex wrapper and strut hack</h3>
     <LineBox>
       <RandomIcon size={size} center />
-      东西南北 Styles
+      东西南北 Stylex
     </LineBox>
 
-    <h3>b: flex center</h3>
+    <h3>b: flex container</h3>
     <LineBox abs>
       <div
         style={{
-          display: 'flex',
+          display: 'inline-flex',
           alignItems: 'center',
           justifyContent: 'center',
         }}
       >
         <RandomIcon size={size} />
-        东西南北 Styles
+        东西南北 Stylex
       </div>
     </LineBox>
 
@@ -43,7 +45,16 @@ export default () => (
         align="middle"
         style={{verticalAlign: 'middle'}}
       />
-      <span style={{verticalAlign: 'middle'}}>东西南北 Styles</span>
+      <span style={{verticalAlign: 'middle'}}>东西南北 Stylex</span>
+    </LineBox>
+
+    <h3>d: top offset hack</h3>
+    <LineBox>
+      <RandomIcon
+        size={size}
+        style={{verticalAlign: 'middle', position: 'relative', top: '-.1em'}}
+      />
+      东西南北 Stylex
     </LineBox>
 
     {/* <DebugGrid /> */}

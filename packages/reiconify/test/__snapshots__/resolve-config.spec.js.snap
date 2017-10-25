@@ -7,13 +7,6 @@ Object {
     "fill": "currentColor",
   },
   "baseMapProps": Object {
-    "center": Object {
-      "style": Object {
-        "position": "relative",
-        "top": "-.1em",
-        "verticalAlign": "middle",
-      },
-    },
     "text": Object {
       "size": "1.2em",
     },
@@ -34,13 +27,6 @@ Object {
     "fill": "currentColor",
   },
   "baseMapProps": Object {
-    "center": Object {
-      "style": Object {
-        "position": "relative",
-        "top": "-.1em",
-        "verticalAlign": "middle",
-      },
-    },
     "text": Object {
       "size": "1.2em",
     },

@@ -1,46 +1,56 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`component renders \`center\` and \`style\` prop 1`] = `
-<svg
-  className="Icon Icon--Check"
-  fill="currentColor"
-  height="24"
+<span
   style={
     Object {
-      "color": "red",
-      "position": "relative",
-      "top": "-.1em",
-      "verticalAlign": "middle",
+      "alignItems": "center",
+      "display": "inline-flex",
     }
   }
-  viewBox="0 0 24 24"
-  width="24"
 >
-  <path
-    d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"
-  />
-</svg>
+  ​
+  <svg
+    className="Icon Icon--Check"
+    fill="currentColor"
+    height="24"
+    style={
+      Object {
+        "color": "red",
+      }
+    }
+    viewBox="0 0 24 24"
+    width="24"
+  >
+    <path
+      d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"
+    />
+  </svg>
+</span>
 `;
 
 exports[`component renders \`center\` prop 1`] = `
-<svg
-  className="Icon Icon--Check"
-  fill="currentColor"
-  height="24"
+<span
   style={
     Object {
-      "position": "relative",
-      "top": "-.1em",
-      "verticalAlign": "middle",
+      "alignItems": "center",
+      "display": "inline-flex",
     }
   }
-  viewBox="0 0 24 24"
-  width="24"
 >
-  <path
-    d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"
-  />
-</svg>
+  ​
+  <svg
+    className="Icon Icon--Check"
+    fill="currentColor"
+    height="24"
+    viewBox="0 0 24 24"
+    width="24"
+  >
+    <path
+      d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"
+    />
+  </svg>
+</span>
 `;
 
 exports[`component renders \`className\` prop 1`] = `
@@ -72,24 +82,27 @@ exports[`component renders \`size\` prop 1`] = `
 `;
 
 exports[`component renders \`text\` and \`center\` prop 1`] = `
-<svg
-  className="Icon Icon--Check"
-  fill="currentColor"
-  height="1.2em"
+<span
   style={
     Object {
-      "position": "relative",
-      "top": "-.1em",
-      "verticalAlign": "middle",
+      "alignItems": "center",
+      "display": "inline-flex",
     }
   }
-  viewBox="0 0 24 24"
-  width="1.2em"
 >
-  <path
-    d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"
-  />
-</svg>
+  ​
+  <svg
+    className="Icon Icon--Check"
+    fill="currentColor"
+    height="1.2em"
+    viewBox="0 0 24 24"
+    width="1.2em"
+  >
+    <path
+      d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"
+    />
+  </svg>
+</span>
 `;
 
 exports[`component renders \`text\` prop 1`] = `
