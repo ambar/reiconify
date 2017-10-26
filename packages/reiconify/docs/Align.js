@@ -25,12 +25,13 @@ export default () => (
     </LineBox>
 
     <h3>b: flex container</h3>
-    <LineBox abs>
+    <LineBox>
       <div
         style={{
           display: 'inline-flex',
           alignItems: 'center',
           justifyContent: 'center',
+          verticalAlign: 'top',
         }}
       >
         <RandomIcon size={size} />
