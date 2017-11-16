@@ -52,9 +52,9 @@ const run = async () => {
       src: argv.src,
       es: argv.es,
       cjs: argv.cjs,
-      srcDir: 'src',
-      esDir: 'es',
-      cjsDir: 'cjs',
+      srcDir: argv.srcDir || 'src',
+      esDir: argv.esDir || 'es',
+      cjsDir: argv.cjsDir || 'cjs',
     })
   }
 }
