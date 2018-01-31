@@ -9,15 +9,30 @@ yargs
     type: 'boolean',
     default: false,
   })
+  .option('src-dir', {
+    describe: 'JSX output directory',
+    type: 'string',
+    default: 'src',
+  })
   .option('es', {
     describe: 'Build ES module files',
     type: 'boolean',
     default: false,
   })
+  .option('es-dir', {
+    describe: 'ES output directory',
+    type: 'string',
+    default: 'es',
+  })
   .option('cjs', {
     describe: 'Build CommonJS files',
     type: 'boolean',
     default: false,
+  })
+  .option('cjs-dir', {
+    describe: 'CommonJS output directory',
+    type: 'string',
+    default: 'cjs',
   })
   .option('serve', {
     describe: 'Serve source icons',
@@ -52,9 +67,9 @@ const run = async () => {
       src: argv.src,
       es: argv.es,
       cjs: argv.cjs,
-      srcDir: argv.srcDir || 'src',
-      esDir: argv.esDir || 'es',
-      cjsDir: argv.cjsDir || 'cjs',
+      srcDir: argv.srcDir,
+      esDir: argv.esDir,
+      cjsDir: argv.cjsDir,
     })
   }
 }

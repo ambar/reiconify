@@ -16,8 +16,11 @@ reiconify [options] [files]
 Options:
   --version  Show version number                                       [boolean]
   --src      Build JSX source files                   [boolean] [default: false]
+  --src-dir  JSX output directory                      [string] [default: "src"]
   --es       Build ES module files                    [boolean] [default: false]
+  --es-dir   ES output directory                        [string] [default: "es"]
   --cjs      Build CommonJS files                     [boolean] [default: false]
+  --cjs-dir  CommonJS output directory                 [string] [default: "cjs"]
   --serve    Serve source icons                       [boolean] [default: false]
   --static   Build static site                        [boolean] [default: false]
   -h         Show help                                                 [boolean]
@@ -61,7 +64,7 @@ Add npm scripts:
   "files": ["src", "es", "cjs"],
   "scripts": {
     "start": "reiconify --serve",
-    "build": "reiconify --src --es --cjs icons/*.svg",
+    "build": "reiconify --src --es --cjs icons/*.svg"
   }
 }
 ```
