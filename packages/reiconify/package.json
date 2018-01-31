@@ -24,7 +24,8 @@
   "scripts": {
     "build:node6": "BABEL_ENV=node6 babel lib --out-dir lib_node6",
     "prepare": "npm test && npm run build:node6",
-    "test": "jest"
+    "test": "jest",
+    "release": "standard-version"
   },
   "dependencies": {
     "@uifabric/icons": "^5.0.1",
@@ -56,6 +57,7 @@
   "devDependencies": {
     "jest": "^21.2.1",
     "react-test-renderer": "^16.0.0",
-    "rimraf": "^2.6.2"
+    "rimraf": "^2.6.2",
+    "standard-version": "^4.3.0"
   }
 }
