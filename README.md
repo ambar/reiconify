@@ -2,6 +2,14 @@
 
 Convert SVG icons to React components.
 
+## Features
+
+- Custom component templates, includes base class.
+- Export both ES modules and CommonJS modules.
+- Provide `center` prop for aligning icon with text，see [how it works](http://ambar.li/reiconify/md.icons/#/Align).
+- Provide dev tool for generating static icon site.
+
+
 ## Install
 
 ```
