@@ -71,6 +71,7 @@ const baseTemplate = data => {
         defaultClassName,
         size,
         center,
+        text,
         ...rest
       } = ${data.baseMapProps ? `reduceProps(props, Icon.mapProps)` : 'props'}
 
