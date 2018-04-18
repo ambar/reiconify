@@ -42,6 +42,9 @@ describe('component', () => {
   it('renders `text` prop', () => {
     const tree = renderer.create(<Icons.Check text />).toJSON()
     expect(tree).toMatchSnapshot()
+
+    const tree2 = renderer.create(<Icons.Check text={false} />).toJSON()
+    expect(tree2).toMatchSnapshot()
   })
 
   it('renders `center` prop', () => {
