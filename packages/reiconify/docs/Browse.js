@@ -7,7 +7,7 @@ import * as Icons from '~icons'
 import mm from 'micromatch'
 import Batch from './components/Batch'
 import LineBox from './components/LineBox'
-import styles from './Browser.css'
+import styles from './Browse.css'
 
 const iconNames = Object.keys(Icons)
   // filter CJS `__esModule: true`

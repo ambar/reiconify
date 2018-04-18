@@ -10,7 +10,7 @@ if (!global.initialized) {
   initializeIcons()
 }
 
-const routes = ['Browser', 'Align'].map(name => {
+const routes = ['Browse', 'Align'].map(name => {
   const Page = require(`./${name}`).default
 
   return {
