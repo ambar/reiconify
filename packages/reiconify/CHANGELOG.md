@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.1.2"></a>
+## [0.1.2](https://github.com/ambar/reiconify/compare/v0.1.1...v0.1.2) (2018-04-18)
+
+
+### Bug Fixes
+
+* use `npm-which` to resolve bin path ([ee75789](https://github.com/ambar/reiconify/commit/ee75789))
+
+
+
 <a name="0.1.1"></a>
 ## [0.1.1](https://github.com/ambar/reiconify/compare/v0.1.0...v0.1.1) (2018-04-18)
 
