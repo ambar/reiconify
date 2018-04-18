@@ -1,6 +1,7 @@
 const path = require('path')
 const yargs = require('yargs')
 const shell = require('shelljs')
+const which = require('npm-which')(__dirname)
 const transform = require('./transform')
 
 yargs
@@ -51,7 +52,7 @@ const argv = yargs.argv
 
 const run = async () => {
   const resolveRelative = path.resolve.bind(null, __dirname)
-  const resolveBin = name => resolveRelative('../node_modules/.bin', name)
+  const resolveBin = name => which.sync(name)
 
   if (argv.serve) {
     const config = resolveRelative('../playland.config.js')
