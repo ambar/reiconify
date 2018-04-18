@@ -36,10 +36,11 @@ const baseTemplate = data => {
 
   const reduceProps = `const reduceProps = (props, reducers) =>
     Object.keys(reducers).reduce((o, k) => {
-      if (o[k]) {
+      const thisProp = o[k]
+      delete o[k]
+      if (thisProp) {
         const reducer = reducers[k]
         const value = typeof reducer === 'function' ? reducer(o) : reducer
-        delete o[k]
         return {
           ...o,
           ...value,
