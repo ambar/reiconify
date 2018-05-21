@@ -1,12 +1,11 @@
 const pascalCase = require('pascal-case')
-const prettier = require('./prettier')
 
 const template = data => {
   const jsxWithProps = data.jsxString
     .replace(/<svg([\s\S]*?)>/, (match, group) => `<Icon${group} {...props}>`)
     .replace(/<\/svg>$/, '</Icon>')
 
-  return prettier(`
+  return `
     import React from 'react'
     import Icon from './Icon'
 
@@ -22,7 +21,7 @@ const template = data => {
   )}
 
     export default ${data.name}
-  `)
+  `
 }
 
 const baseTemplate = data => {
@@ -56,7 +55,7 @@ const baseTemplate = data => {
     }, {...props})
   `
 
-  return prettier(`
+  return `
     import React from 'react'
 
     // use zero-width space to mock [strut](https://www.w3.org/TR/CSS22/visudet.html#strut), &#8203;
@@ -106,7 +105,7 @@ const baseTemplate = data => {
     }
 
     export default Icon
-  `)
+  `
 }
 
 const baseDefaultProps = {
