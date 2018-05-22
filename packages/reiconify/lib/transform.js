@@ -85,14 +85,17 @@ const transform = async (options = {}) => {
       const svg = String(await promisify(fs.readFile)(file))
       const name = filenameTemplate(path.basename(file, '.svg'))
       const jsxString = await svg2jsx(svg, {svgoPlugins, camelCaseProps})
-      const code = template(Object.assign({name, defaultProps, jsxString}))
+      const code = prettier(template({name, defaultProps, jsxString}))
       return {name, code}
     })
   )
 
   const namesToExport = contents.map(({name}) => name)
   contents.push(
-    {name: 'Icon', code: baseTemplate({baseDefaultProps, baseMapProps})},
+    {
+      name: 'Icon',
+      code: prettier(baseTemplate({baseDefaultProps, baseMapProps})),
+    },
     {name: 'index', code: await getIndex(namesToExport)}
   )
 
