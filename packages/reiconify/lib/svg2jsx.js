@@ -1,5 +1,8 @@
 const SVGO = require('svgo')
 const hash = require('string-hash')
+const JSON5 = require('json5')
+const postcss = require('postcss')
+const postcssJs = require('postcss-js')
 
 const toCamelCase = s =>
   s.replace(/([-_])([a-z])/g, (s, a, b) => b.toUpperCase())
@@ -44,6 +47,17 @@ const defaults = {
   idPrefix: '',
 }
 
+const styleToObject = styleText => {
+  const styleObject = postcssJs.objectify(postcss.parse(styleText))
+  return JSON5.stringify(styleObject)
+}
+
+const replaceInlineStyles = jsx =>
+  jsx.replace(
+    /style="([^"]+)"/g,
+    (match, str) => `style={${styleToObject(str)}}`
+  )
+
 const createSvg2jsx = options => {
   options = Object.assign({}, defaults, options)
   const plugins = createExtraSvgoPlugins({idPrefix: options.idPrefix})
@@ -56,7 +70,8 @@ const createSvg2jsx = options => {
     new Promise((resolve, reject) =>
       svgo.optimize(
         svg,
-        ({error, data}) => (error ? reject(error) : resolve(data))
+        ({error, data}) =>
+          error ? reject(error) : resolve(replaceInlineStyles(data))
       )
     )
 }
