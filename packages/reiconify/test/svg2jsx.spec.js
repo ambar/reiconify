@@ -30,6 +30,13 @@ const svgWithId = `
 </svg>
 `
 
+const svgWithStyles = `
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <path d="M0 0h24v24H0z" style="background: red" />
+  <path d="M0 0h24v24H0z" style="background: red;mix-blend-mode:overlay" />
+</svg>
+`
+
 describe('svg2jsx', () => {
   it('converts svg to jsx', async () => {
     expect(await svg2jsx(svg)).toMatchSnapshot()
@@ -64,5 +71,9 @@ describe('svg2jsx', () => {
 
   it('adds unique id prefix', async () => {
     expect(await svg2jsx(svgWithId)).toMatchSnapshot()
+  })
+
+  it('converts inline styles to style objects', async () => {
+    expect(await svg2jsx(svgWithStyles)).toMatchSnapshot()
   })
 })
