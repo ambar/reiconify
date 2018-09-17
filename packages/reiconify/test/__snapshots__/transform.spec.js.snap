@@ -1,5 +1,23 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`transform no files output if shouldWriteFiles to be false 1`] = `[Error: ENOENT: no such file or directory, scandir 'fixtures/transform/src']`;
+
+exports[`transform return promise 1`] = `
+"import React from 'react'
+import Icon from './Icon'
+
+const Check = props => (
+  <Icon width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" {...props}>
+    <path d=\\"M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z\\" />
+  </Icon>
+)
+
+Check.defaultProps = {name: 'Check'}
+
+export default Check
+"
+`;
+
 exports[`transform throws if no inputs 1`] = `[Error: Missing input files]`;
 
 exports[`transform throws if no matched files 1`] = `[Error: Cannot find source files]`;
@@ -140,4 +158,22 @@ exports[`transform transforms icons to src/es/cjs 4`] = `
     d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-1.91l-.01-.01L23 10z"
   />
 </svg>
+`;
+
+exports[`transform use options template 1`] = `
+"import React from 'react'
+import Icon from 'foo'
+
+const Check = props => (
+  <Icon width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" {...props}>
+    <path d=\\"M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z\\" />
+  </Icon>
+)
+
+Check.defaultProps = {name: 'Check'}
+
+export default bar
+
+export const ReactComponent = Check
+"
 `;
