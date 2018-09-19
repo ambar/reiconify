@@ -5,9 +5,8 @@ const globby = require('globby')
 // Node v8.5.0+
 const copyFile = util.promisify(fs.copyFile)
 ;(async () => {
-  const files = await globby(
-    'node_modules/material-design-icons/*/svg/production/*_24px.svg'
-  )
+  const mdRoot = path.resolve(require.resolve('material-design-icons'), '..')
+  const files = await globby(path.join(mdRoot, '*/svg/production/*_24px.svg'))
 
   const names = await files.map(file => {
     const name = path.basename(file, '.svg')
