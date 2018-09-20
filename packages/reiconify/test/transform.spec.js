@@ -37,6 +37,16 @@ describe('transform', () => {
     await expect(transform({inputs: '*.svg'})).rejects.toMatchSnapshot()
   })
 
+  it('return promise', async () => {
+    const [{name, code}] = await transform({
+      inputs: 'fixtures/transform/icons/*.svg',
+      src: true,
+      srcDir,
+    })
+    expect(name).toBeTruthy()
+    expect(code).toMatchSnapshot()
+  })
+
   it('throws if no matched files', async () => {
     await expect(
       transform({inputs: 'xyz.svg', srcDir: 'src'})
@@ -52,6 +62,31 @@ describe('transform', () => {
 
     const files = await promisify(fs.readdir)(srcDir)
     expect(files).toMatchSnapshot()
+  })
+
+  it('no files output if shouldWriteFiles to be false', async () => {
+    await transform({
+      inputs: 'fixtures/transform/icons/*.svg',
+      src: true,
+      srcDir,
+      shouldWriteFiles: false,
+    })
+    expect(promisify(fs.readdir)(srcDir)).rejects.toMatchSnapshot()
+  })
+
+  it('use options template', async () => {
+    const [{code}] = await
+      transform({
+        inputs: 'fixtures/transform/icons/*.svg',
+        src: true,
+        srcDir,
+        shouldWriteFiles: false,
+        template: require('./fixtures/transform/createOptionsTemplate')({
+          baseTemplatePath: 'foo',
+          filePath: 'bar',
+        }),
+      })
+    expect(code).toMatchSnapshot()
   })
 
   it('transforms icons to src/es/cjs', async () => {

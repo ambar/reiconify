@@ -9,7 +9,7 @@ const prettier = require('./prettier')
 const resolveConfig = require('./resolveConfig')
 const svg2jsx = require('./svg2jsx')
 
-const getIndex = async names => {
+const getIndex = async (names, log = log) => {
   names = names.slice().sort()
   const lines = names.map(
     name => `export {default as ${name}} from './${name}'`
@@ -51,25 +51,33 @@ const babelTransform = (contents, env) => {
 const resolveDir = dir =>
   path.isAbsolute(dir) ? dir : path.resolve(process.cwd(), dir)
 
-const transform = async (options = {}) => {
-  if (
-    !options.inputs ||
-    (Array.isArray(options.inputs) && !options.inputs.length)
-  ) {
+const transform = async (options = {shouldWriteFiles: true}) => {
+  const {
+    inputs,
+    src,
+    es,
+    cjs,
+    srcDir,
+    esDir,
+    cjsDir,
+    shouldWriteFiles = true,
+    template: optionsTemplate,
+  } = options
+  if (!inputs || (Array.isArray(inputs) && !inputs.length)) {
     throw new Error('Missing input files')
   }
 
-  if (!options.srcDir && !options.esDir && !options.cjsDir) {
+  if (!srcDir && !esDir && !cjsDir && shouldWriteFiles) {
     throw new Error('Missing output directory')
   }
 
-  const files = await globby(options.inputs)
+  const files = await globby(inputs)
   if (!files.length) {
     throw new Error('Cannot find source files')
   }
 
   const {
-    template,
+    template: configTemplate,
     baseTemplate,
     defaultProps,
     baseDefaultProps,
@@ -79,7 +87,10 @@ const transform = async (options = {}) => {
     camelCaseProps,
   } = await resolveConfig()
 
-  log('transforming icons...')
+  const transFormLog = shouldWriteFiles ? log : () => {}
+  const template = optionsTemplate || configTemplate
+
+  transFormLog('transforming icons...')
   const contents = await Promise.all(
     files.map(async file => {
       const svg = String(await promisify(fs.readFile)(file))
@@ -96,28 +107,31 @@ const transform = async (options = {}) => {
       name: 'Icon',
       code: prettier(baseTemplate({baseDefaultProps, baseMapProps})),
     },
-    {name: 'index', code: await getIndex(namesToExport)}
+    {name: 'index', code: await getIndex(namesToExport, transFormLog)}
   )
 
-  if (options.src) {
-    log('writing src files...')
-    const srcPath = resolveDir(options.srcDir)
-    await writeFiles(contents, srcPath)
-  }
+  if (shouldWriteFiles) {
+    if (src) {
+      log('writing src files...')
+      const srcPath = resolveDir(srcDir)
+      await writeFiles(contents, srcPath)
+    }
 
-  if (options.es) {
-    log('writing es files...')
-    const esPath = resolveDir(options.esDir)
-    const transformedContents = babelTransform(contents, 'es')
-    await writeFiles(transformedContents, esPath)
-  }
+    if (es) {
+      log('writing es files...')
+      const esPath = resolveDir(esDir)
+      const transformedContents = babelTransform(contents, 'es')
+      await writeFiles(transformedContents, esPath)
+    }
 
-  if (options.cjs) {
-    log('writing cjs files...')
-    const cjsPath = resolveDir(options.cjsDir)
-    const transformedContents = babelTransform(contents, 'cjs')
-    await writeFiles(transformedContents, cjsPath)
+    if (cjs) {
+      log('writing cjs files...')
+      const cjsPath = resolveDir(cjsDir)
+      const transformedContents = babelTransform(contents, 'cjs')
+      await writeFiles(transformedContents, cjsPath)
+    }
   }
+  return contents
 }
 
 module.exports = transform
