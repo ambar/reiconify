@@ -1,3 +1,4 @@
+const fs = require('fs')
 const path = require('path')
 
 const resolvePath = path.resolve.bind(null, __dirname)
@@ -5,11 +6,8 @@ const docDir = resolvePath('.')
 const srcDir = path.resolve(process.cwd(), 'src')
 
 const defaultBabelOptions = {
-  presets: [['env', {modules: false}], 'react'],
-  plugins: [
-    require('babel-plugin-transform-class-properties'),
-    require('babel-plugin-transform-object-rest-spread'),
-  ],
+  presets: [['@babel/preset-env', {modules: false}], '@babel/preset-react'],
+  plugins: ['@babel/plugin-proposal-class-properties'],
 }
 
 module.exports = {
@@ -34,12 +32,13 @@ module.exports = {
         test: /\.js$/,
         include: [docDir, srcDir],
         exclude: [resolvePath('./webpack.config.js')],
-        use: require('fs').existsSync('./.babelrc')
-          ? 'babel-loader'
-          : {
-              loader: 'babel-loader',
-              options: defaultBabelOptions,
-            },
+        use:
+          fs.existsSync('./.babelrc') || fs.existsSync('babel.config.js')
+            ? 'babel-loader'
+            : {
+                loader: 'babel-loader',
+                options: defaultBabelOptions,
+              },
       },
       {
         test: /\.css$/,

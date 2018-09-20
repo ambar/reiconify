@@ -1,25 +1,41 @@
 {
-  "plugins": ["transform-object-rest-spread"],
+  "plugins": [
+    [
+      "@babel/plugin-proposal-object-rest-spread",
+      {"loose": true, "useBuiltIns": true}
+    ]
+  ],
   "env": {
     "node6": {
-      "presets": [["env", {"targets": {"node": "6.4"}}]]
+      "presets": [["@babel/preset-env", {"targets": {"node": "6.4"}}]]
     },
     "docs": {
-      "presets": [["env", {"modules": false}], "react"],
-      "plugins": ["transform-class-properties", "transform-object-rest-spread"]
+      "presets": [
+        ["@babel/preset-env", {"modules": false}],
+        "@babel/preset-react"
+      ],
+      "plugins": [
+        "@babel/plugin-proposal-class-properties",
+        [
+          "@babel/plugin-proposal-object-rest-spread",
+          {"loose": true, "useBuiltIns": true}
+        ]
+      ]
     },
     "test": {
-      "presets": ["env", "react"]
+      "presets": ["@babel/preset-env", "@babel/preset-react"]
     },
     "cjs": {
       "presets": [
-        ["env", {"modules": "commonjs", "loose": true, "useBuiltIns": true}],
-        "react"
+        ["@babel/preset-env", {"modules": "commonjs", "loose": true}],
+        "@babel/preset-react"
       ]
     },
     "es": {
-      "presets": [["env", {"modules": false}], "react"],
-      "plugins": ["transform-react-jsx"]
+      "presets": [
+        ["@babel/preset-env", {"modules": false, "loose": true}],
+        "@babel/preset-react"
+      ]
     }
   }
 }
