@@ -2,7 +2,7 @@ const fs = require('fs')
 const path = require('path')
 const {promisify} = require('util')
 const rimraf = require('rimraf')
-const {transformFiles} = require('..')
+const {transformFiles} = require('../lib')
 
 describe('transform-filename', () => {
   const orignalCwd = process.cwd()
