@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.0.1"></a>
+## [1.0.1](https://github.com/ambar/reiconify/compare/v1.0.0...v1.0.1) (2018-09-21)
+
+
+### Bug Fixes
+
+* use babel.config.js in example ([51ac714](https://github.com/ambar/reiconify/commit/51ac714))
+
+
+
 <a name="1.0.0"></a>
 # [1.0.0](https://github.com/ambar/reiconify/compare/v0.2.1...v1.0.0) (2018-09-21)
 
