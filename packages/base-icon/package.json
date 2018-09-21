@@ -1,0 +1,23 @@
+{
+  "name": "base-icon",
+  "version": "0.0.1",
+  "description": "React base icon",
+  "main": "lib/BaseIcon.js",
+  "license": "MIT",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "prepare": "npm test && npm run build",
+    "build": "NODE_ENV=production babel src --out-dir lib",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.1.0",
+    "@babel/core": "^7.1.0",
+    "@babel/plugin-proposal-class-properties": "^7.1.0",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/preset-react": "^7.0.0",
+    "jest": "^23.6.0"
+  }
+}
