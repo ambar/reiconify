@@ -1,7 +1,7 @@
-require('util.promisify/shim')()
-
 exports.cli = require('./cli')
+exports.babelTransform = require('./babelTransform')
 exports.transform = require('./transform')
+exports.transformFiles = require('./transformFiles')
 exports.defaultConfig = require('./defaultConfig')
 exports.resolveConfig = require('./resolveConfig')
 exports.svg2jsx = require('./svg2jsx')

@@ -1,143 +1,33 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`transform throws if no inputs 1`] = `[Error: Missing input files]`;
+exports[`component transforms svg 1`] = `
+"import React from 'react'
+import Icon from './Icon'
 
-exports[`transform throws if no matched files 1`] = `[Error: Cannot find source files]`;
+const Icon = props => (
+  <Icon width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" {...props}>
+    <path d=\\"M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z\\" />
+  </Icon>
+)
 
-exports[`transform throws if no output dir 1`] = `[Error: Missing output directory]`;
+Icon.defaultProps = {name: 'Icon'}
 
-exports[`transform transforms icons to src only 1`] = `
-Array [
-  "Check.js",
-  "Gold.js",
-  "Icon.js",
-  "ThumbUp.js",
-  "index.js",
-]
+export default Icon
+"
 `;
 
-exports[`transform transforms icons to src/es/cjs 1`] = `
-Array [
-  Object {
-    "dir": "fixtures/transform/src",
-    "files": Array [
-      "Check.js",
-      "Gold.js",
-      "Icon.js",
-      "ThumbUp.js",
-      "index.js",
-    ],
-  },
-  Object {
-    "dir": "fixtures/transform/es",
-    "files": Array [
-      "Check.js",
-      "Gold.js",
-      "Icon.js",
-      "ThumbUp.js",
-      "index.js",
-    ],
-  },
-  Object {
-    "dir": "fixtures/transform/cjs",
-    "files": Array [
-      "Check.js",
-      "Gold.js",
-      "Icon.js",
-      "ThumbUp.js",
-      "index.js",
-    ],
-  },
-]
-`;
+exports[`component transforms svg with options 1`] = `
+"import React from 'react'
+import Icon from 'base-icon'
 
-exports[`transform transforms icons to src/es/cjs 2`] = `
-<svg
-  className="Icon Icon--Check"
-  fill="currentColor"
-  height="24"
-  viewBox="0 0 24 24"
-  width="24"
->
-  <path
-    d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"
-  />
-</svg>
-`;
+const Component = props => (
+  <Icon width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" {...props}>
+    <path d=\\"M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z\\" />
+  </Icon>
+)
 
-exports[`transform transforms icons to src/es/cjs 3`] = `
-<svg
-  className="Icon Icon--Gold"
-  fill="currentColor"
-  height="20"
-  viewBox="0 0 19 20"
-  width="19"
->
-  <defs>
-    <linearGradient
-      id="id-3589647846-a"
-      x1="50%"
-      x2="50%"
-      y1="0%"
-      y2="100%"
-    >
-      <stop
-        offset="0%"
-        stopColor="#FFF"
-        stopOpacity=".5"
-      />
-      <stop
-        offset="100%"
-        stopColor="#FFF"
-        stopOpacity=".5"
-      />
-    </linearGradient>
-  </defs>
-  <g
-    fill="none"
-    fillRule="evenodd"
-  >
-    <path
-      d="M9.975 2.12l5.474 3.16c.557.322.9.916.9 1.56v6.32a1.8 1.8 0 0 1-.9 1.56l-5.474 3.16a1.8 1.8 0 0 1-1.8 0L2.7 14.72a1.8 1.8 0 0 1-.9-1.56V6.84a1.8 1.8 0 0 1 .9-1.56l5.475-3.16a1.8 1.8 0 0 1 1.8 0z"
-      fill="#FC0"
-      fillRule="nonzero"
-    />
-    <path
-      d="M8.975 1.12l5.474 3.16c.557.322.9.916.9 1.56v6.32a1.8 1.8 0 0 1-.9 1.56l-5.474 3.16a1.8 1.8 0 0 1-1.8 0L1.7 13.72a1.8 1.8 0 0 1-.9-1.56V5.84a1.8 1.8 0 0 1 .9-1.56l5.475-3.16a1.8 1.8 0 0 1 1.8 0z"
-      fill="url(#id-3589647846-a)"
-      fillOpacity=".59"
-      fillRule="nonzero"
-      style={
-        Object {
-          "mixBlendMode": "overlay",
-        }
-      }
-      transform="translate(1 1)"
-    />
-    <path
-      d="M10.425 1.34l5.474 3.161a2.7 2.7 0 0 1 1.35 2.338v6.322a2.7 2.7 0 0 1-1.35 2.338l-5.474 3.16a2.7 2.7 0 0 1-2.7 0L2.25 15.5A2.7 2.7 0 0 1 .9 13.161V6.839a2.7 2.7 0 0 1 1.35-2.338l5.475-3.16a2.7 2.7 0 0 1 2.7 0z"
-      stroke="#FFF"
-      strokeWidth="1.8"
-    />
-    <path
-      d="M7.41 12.376l-2.08.02a.3.3 0 0 1-.26-.453l1.055-1.79a.3.3 0 0 0 0-.305L5.07 8.058a.3.3 0 0 1 .26-.453l2.08.019a.3.3 0 0 0 .263-.152l1.023-1.81a.3.3 0 0 1 .522 0l1.023 1.81a.3.3 0 0 0 .264.152l2.078-.02a.3.3 0 0 1 .261.453l-1.056 1.79a.3.3 0 0 0 0 .305l1.056 1.79a.3.3 0 0 1-.261.453l-2.078-.019a.3.3 0 0 0-.264.152l-1.023 1.81a.3.3 0 0 1-.522 0l-1.023-1.81a.3.3 0 0 0-.264-.152z"
-      fill="#FFF"
-      fillRule="nonzero"
-    />
-  </g>
-</svg>
-`;
+Component.defaultProps = {name: 'Component'}
 
-exports[`transform transforms icons to src/es/cjs 4`] = `
-<svg
-  className="Icon Icon--ThumbUp"
-  fill="currentColor"
-  height="24"
-  viewBox="0 0 24 24"
-  width="24"
->
-  <path
-    d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-1.91l-.01-.01L23 10z"
-  />
-</svg>
+export default Component
+"
 `;

@@ -2,7 +2,7 @@ const path = require('path')
 const yargs = require('yargs')
 const shell = require('shelljs')
 const which = require('npm-which')(__dirname)
-const transform = require('./transform')
+const transformFiles = require('./transformFiles')
 
 yargs
   .option('src', {
@@ -63,7 +63,7 @@ const run = async () => {
       `BABEL_ENV=docs ${resolveBin('playland')} --build --config ${config}`
     )
   } else if (argv.src || argv.es || argv.cjs) {
-    await transform({
+    await transformFiles({
       inputs: argv._,
       src: argv.src,
       es: argv.es,
