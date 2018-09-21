@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.0.0"></a>
+# [1.0.0](https://github.com/ambar/reiconify/compare/v0.2.1...v1.0.0) (2018-09-21)
+
+
+### Features
+
+* add `useBuiltIns` to [@babel](https://github.com/babel)/preset-react ([8b07f8d](https://github.com/ambar/reiconify/commit/8b07f8d))
+* add transform API ([7536f0d](https://github.com/ambar/reiconify/commit/7536f0d))
+* drop Node 6 support ([bbd775d](https://github.com/ambar/reiconify/commit/bbd775d))
+* update babel to v7, use yarn workspaces ([41f9ec6](https://github.com/ambar/reiconify/commit/41f9ec6))
+
+
+### BREAKING CHANGES
+
+* please use Node 8+
+
+
+
 <a name="0.2.1"></a>
 ## [0.2.1](https://github.com/ambar/reiconify/compare/v0.2.0...v0.2.1) (2018-06-04)
 
