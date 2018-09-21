@@ -1,4 +1,5 @@
 exports.cli = require('./cli')
+exports.babelTransform = require('./babelTransform')
 exports.transform = require('./transform')
 exports.transformFiles = require('./transformFiles')
 exports.defaultConfig = require('./defaultConfig')

@@ -1,13 +1,13 @@
 const fs = require('fs')
 const path = require('path')
 const {promisify} = require('util')
-const babel = require('@babel/core')
 const globby = require('globby')
 const mkdirp = require('mkdirp')
 const log = require('fancy-log')
 const prettier = require('./prettier')
 const resolveConfig = require('./resolveConfig')
 const transform = require('./transform')
+const babelTransform = require('./babelTransform')
 
 const getIndex = async names => {
   names = names.slice().sort()
@@ -30,21 +30,10 @@ const writeFiles = async (contents, path) => {
   )
 }
 
-const babelRc = JSON.parse(
-  fs.readFileSync(path.resolve(__dirname, '../.babelrc'))
-)
-
-const getBabelOptions = env => {
-  const options = babelRc.env[env] || {}
-  return Object.assign({}, options, {
-    plugins: (babelRc.plugins || []).concat(options.plugins || []),
-  })
-}
-
-const babelTransform = (contents, env) => {
+const babelTransformContents = (contents, env) => {
   return contents.map(({name, code}) => ({
     name,
-    code: babel.transform(code, getBabelOptions(env)).code,
+    code: babelTransform(code, env),
   }))
 }
 
@@ -115,14 +104,14 @@ const transformFiles = async (options = {}) => {
   if (options.es) {
     log('writing es files...')
     const esPath = resolveDir(options.esDir)
-    const transformedContents = babelTransform(contents, 'es')
+    const transformedContents = babelTransformContents(contents, 'es')
     await writeFiles(transformedContents, esPath)
   }
 
   if (options.cjs) {
     log('writing cjs files...')
     const cjsPath = resolveDir(options.cjsDir)
-    const transformedContents = babelTransform(contents, 'cjs')
+    const transformedContents = babelTransformContents(contents, 'cjs')
     await writeFiles(transformedContents, cjsPath)
   }
 }
