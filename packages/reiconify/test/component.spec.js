@@ -3,7 +3,7 @@ const renderer = require('react-test-renderer')
 const path = require('path')
 const {promisify} = require('util')
 const rimraf = require('rimraf')
-const {transform} = require('..')
+const {transformFiles} = require('..')
 
 describe('component', () => {
   const orignalCwd = process.cwd()
@@ -13,7 +13,7 @@ describe('component', () => {
 
   beforeAll(async () => {
     process.chdir(cwd)
-    await transform({
+    await transformFiles({
       inputs: 'icons/*.svg',
       src: true,
       srcDir,

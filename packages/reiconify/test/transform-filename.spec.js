@@ -2,7 +2,7 @@ const fs = require('fs')
 const path = require('path')
 const {promisify} = require('util')
 const rimraf = require('rimraf')
-const {transform} = require('..')
+const {transformFiles} = require('..')
 
 describe('transform-filename', () => {
   const orignalCwd = process.cwd()
@@ -25,7 +25,7 @@ describe('transform-filename', () => {
   })
 
   it('transforms icons', async () => {
-    await transform({
+    await transformFiles({
       inputs: 'icons/*.svg',
       src: true,
       srcDir,

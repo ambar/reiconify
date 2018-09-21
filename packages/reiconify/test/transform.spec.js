@@ -4,7 +4,7 @@ const fs = require('fs')
 const path = require('path')
 const {promisify} = require('util')
 const rimraf = require('rimraf')
-const {transform} = require('..')
+const {transformFiles} = require('..')
 
 describe('transform', () => {
   const cwd = process.cwd()
@@ -30,21 +30,21 @@ describe('transform', () => {
   })
 
   it('throws if no inputs', async () => {
-    await expect(transform()).rejects.toMatchSnapshot()
+    await expect(transformFiles()).rejects.toMatchSnapshot()
   })
 
   it('throws if no output dir', async () => {
-    await expect(transform({inputs: '*.svg'})).rejects.toMatchSnapshot()
+    await expect(transformFiles({inputs: '*.svg'})).rejects.toMatchSnapshot()
   })
 
   it('throws if no matched files', async () => {
     await expect(
-      transform({inputs: 'xyz.svg', srcDir: 'src'})
+      transformFiles({inputs: 'xyz.svg', srcDir: 'src'})
     ).rejects.toMatchSnapshot()
   })
 
   it('transforms icons to src only', async () => {
-    await transform({
+    await transformFiles({
       inputs: 'fixtures/transform/icons/*.svg',
       src: true,
       srcDir,
@@ -55,7 +55,7 @@ describe('transform', () => {
   })
 
   it('transforms icons to src/es/cjs', async () => {
-    await transform({
+    await transformFiles({
       inputs: 'fixtures/transform/icons/*.svg',
       src: true,
       es: true,
