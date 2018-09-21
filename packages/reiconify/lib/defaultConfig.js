@@ -7,7 +7,7 @@ const template = data => {
 
   return `
     import React from 'react'
-    import Icon from './Icon'
+    import Icon from '${data.baseName}'
 
     const ${data.name} = props => ${jsxWithProps}
 
@@ -96,9 +96,9 @@ const baseTemplate = data => {
 
     Icon.defaultProps = ${JSON.stringify(data.baseDefaultProps)}
 
-    ${data.baseMapProps
-      ? `Icon.mapProps = ${serialize(data.baseMapProps)}`
-      : ''}
+    ${
+      data.baseMapProps ? `Icon.mapProps = ${serialize(data.baseMapProps)}` : ''
+    }
 
     Icon.strutStyle = {
       display: 'inline-flex',
@@ -121,6 +121,8 @@ const baseMapProps = {
 const filenameTemplate = name => pascalCase(name).replace(/_/g, '')
 
 const defaults = {
+  name: 'Icon',
+  baseName: './Icon',
   template,
   baseTemplate,
   defaultProps: {},

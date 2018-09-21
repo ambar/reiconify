@@ -7,7 +7,7 @@ const mkdirp = require('mkdirp')
 const log = require('fancy-log')
 const prettier = require('./prettier')
 const resolveConfig = require('./resolveConfig')
-const svg2jsx = require('./svg2jsx')
+const transform = require('./transform')
 
 const getIndex = async names => {
   names = names.slice().sort()
@@ -51,7 +51,7 @@ const babelTransform = (contents, env) => {
 const resolveDir = dir =>
   path.isAbsolute(dir) ? dir : path.resolve(process.cwd(), dir)
 
-const transform = async (options = {}) => {
+const transformFiles = async (options = {}) => {
   if (
     !options.inputs ||
     (Array.isArray(options.inputs) && !options.inputs.length)
@@ -69,6 +69,7 @@ const transform = async (options = {}) => {
   }
 
   const {
+    baseName,
     template,
     baseTemplate,
     defaultProps,
@@ -84,8 +85,14 @@ const transform = async (options = {}) => {
     files.map(async file => {
       const svg = String(await promisify(fs.readFile)(file))
       const name = filenameTemplate(path.basename(file, '.svg'))
-      const jsxString = await svg2jsx(svg, {svgoPlugins, camelCaseProps})
-      const code = prettier(template({name, defaultProps, jsxString}))
+      const code = await transform(svg, {
+        name,
+        baseName,
+        template,
+        defaultProps,
+        svgoPlugins,
+        camelCaseProps,
+      })
       return {name, code}
     })
   )
@@ -120,4 +127,4 @@ const transform = async (options = {}) => {
   }
 }
 
-module.exports = transform
+module.exports = transformFiles

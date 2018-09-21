@@ -1,4 +1,5 @@
 exports.cli = require('./cli')
+exports.transform = require('./transform')
 exports.transformFiles = require('./transformFiles')
 exports.defaultConfig = require('./defaultConfig')
 exports.resolveConfig = require('./resolveConfig')
