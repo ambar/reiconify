@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BaseIcon renders icon 1`] = `
+Array [
+  <svg
+    className="Icon Icon--Heart"
+    fill="currentColor"
+  >
+    <path />
+  </svg>,
+  <svg
+    className="Icon Icon--Heart MyIcon"
+    fill="currentColor"
+  >
+    <path />
+  </svg>,
+  <svg
+    className="Icon Icon--Heart"
+    fill="red"
+  >
+    <path />
+  </svg>,
+  <svg
+    className="Icon Icon--Heart"
+    fill="currentColor"
+    height={40}
+    width={40}
+  >
+    <path />
+  </svg>,
+  <svg
+    className="Icon Icon--Heart"
+    fill="currentColor"
+    height={20}
+    width={10}
+  >
+    <path />
+  </svg>,
+  <span
+    style={
+      Object {
+        "alignItems": "center",
+        "display": "inline-flex",
+      }
+    }
+  >
+    ​
+    <svg
+      className="Icon Icon--Heart"
+      fill="currentColor"
+      height="1.2em"
+      width="1.2em"
+    >
+      <path />
+    </svg>
+  </span>,
+]
+`;
