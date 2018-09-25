@@ -2,6 +2,8 @@
   "name": "base-icon",
   "version": "0.0.1",
   "description": "React base icon",
+  "repository": "ambar/reiconify",
+  "homepage": "https://github.com/ambar/reiconify/tree/master/packages/base-icon",
   "main": "lib/BaseIcon.js",
   "license": "MIT",
   "files": [
@@ -9,7 +11,7 @@
   ],
   "scripts": {
     "prepare": "npm test && npm run build",
-    "build": "NODE_ENV=production babel src --out-dir lib",
+    "build": "rm -rf lib && NODE_ENV=production babel src --out-dir lib",
     "test": "jest"
   },
   "devDependencies": {

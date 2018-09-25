@@ -25,6 +25,12 @@ describe('BaseIcon', () => {
           <BaseIcon name="Heart" text center>
             <path />
           </BaseIcon>
+          <BaseIcon name="Heart" text>
+            <path />
+          </BaseIcon>
+          <BaseIcon name="Heart" center>
+            <path />
+          </BaseIcon>
         </>
       )
       .toJSON()

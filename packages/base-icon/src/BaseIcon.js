@@ -1,43 +1,48 @@
 import React from 'react'
 
-// use zero-width space to mock [strut](https://www.w3.org/TR/CSS22/visudet.html#strut), &#8203;
-const ZWSP = '\u200b'
+const ZWSP = '\u200b' // use zero-width space to mock [strut](https://www.w3.org/TR/CSS22/visudet.html#strut), &#8203;
 
-const BaseIcon = props => {
-  let {name, className, defaultClassName, size, text, center, ...rest} = props
-
-  if (text) {
-    size = '1.2em'
+const withCenterProp = (
+  strutStyle = {
+    display: 'inline-flex',
+    alignItems: 'center',
   }
-
-  const svg = (
-    <svg
-      className={`${defaultClassName} ${defaultClassName}--${name}${
-        className ? ` ${className}` : ''
-      }`}
-      {...rest}
-      {...size && {width: size, height: size}}
-    />
-  )
-
-  return center ? (
-    <span style={BaseIcon.strutStyle}>
+) => Component => ({center, ...props}) =>
+  center ? (
+    <span style={strutStyle}>
       {ZWSP}
-      {svg}
+      <Component {...props} />
     </span>
   ) : (
-    svg
+    <Component {...props} />
   )
-}
+
+const withTextProp = (size = '1.2em') => Component => ({text, ...props}) => (
+  <Component {...props} {...text && {size}} />
+)
+
+const withNameProp = (baseClassName = 'BaseIcon') => Component => ({
+  name,
+  className,
+  ...props
+}) => (
+  <Component
+    {...props}
+    {...name && {
+      className: `${baseClassName} ${baseClassName}--${name}${
+        className ? ` ${className}` : ''
+      }`,
+    }}
+  />
+)
+
+const BaseIcon = ({size, ...props}) => (
+  <svg {...props} {...size && {width: size, height: size}} />
+)
 
 BaseIcon.defaultProps = {
-  defaultClassName: 'Icon',
   fill: 'currentColor',
 }
 
-BaseIcon.strutStyle = {
-  display: 'inline-flex',
-  alignItems: 'center',
-}
-
-export default BaseIcon
+export {withCenterProp, withTextProp, withNameProp}
+export default withNameProp()(withTextProp()(withCenterProp()(BaseIcon)))

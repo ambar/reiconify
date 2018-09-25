@@ -3,25 +3,25 @@
 exports[`BaseIcon renders icon 1`] = `
 Array [
   <svg
-    className="Icon Icon--Heart"
+    className="BaseIcon BaseIcon--Heart"
     fill="currentColor"
   >
     <path />
   </svg>,
   <svg
-    className="Icon Icon--Heart MyIcon"
+    className="BaseIcon BaseIcon--Heart MyIcon"
     fill="currentColor"
   >
     <path />
   </svg>,
   <svg
-    className="Icon Icon--Heart"
+    className="BaseIcon BaseIcon--Heart"
     fill="red"
   >
     <path />
   </svg>,
   <svg
-    className="Icon Icon--Heart"
+    className="BaseIcon BaseIcon--Heart"
     fill="currentColor"
     height={40}
     width={40}
@@ -29,7 +29,7 @@ Array [
     <path />
   </svg>,
   <svg
-    className="Icon Icon--Heart"
+    className="BaseIcon BaseIcon--Heart"
     fill="currentColor"
     height={20}
     width={10}
@@ -46,10 +46,34 @@ Array [
   >
     ​
     <svg
-      className="Icon Icon--Heart"
+      className="BaseIcon BaseIcon--Heart"
       fill="currentColor"
       height="1.2em"
       width="1.2em"
+    >
+      <path />
+    </svg>
+  </span>,
+  <svg
+    className="BaseIcon BaseIcon--Heart"
+    fill="currentColor"
+    height="1.2em"
+    width="1.2em"
+  >
+    <path />
+  </svg>,
+  <span
+    style={
+      Object {
+        "alignItems": "center",
+        "display": "inline-flex",
+      }
+    }
+  >
+    ​
+    <svg
+      className="BaseIcon BaseIcon--Heart"
+      fill="currentColor"
     >
       <path />
     </svg>
