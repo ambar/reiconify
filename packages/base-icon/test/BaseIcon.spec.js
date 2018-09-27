@@ -7,28 +7,28 @@ describe('BaseIcon', () => {
     const tree = renderer
       .create(
         <>
-          <BaseIcon name="Heart">
+          <BaseIcon>
             <path />
           </BaseIcon>
-          <BaseIcon name="Heart" className="MyIcon">
+          <BaseIcon className="MyIcon">
             <path />
           </BaseIcon>
-          <BaseIcon name="Heart" fill={'red'}>
+          <BaseIcon fill={'red'}>
             <path />
           </BaseIcon>
-          <BaseIcon name="Heart" size={40}>
+          <BaseIcon size={40}>
             <path />
           </BaseIcon>
-          <BaseIcon name="Heart" width={10} height={20}>
+          <BaseIcon width={10} height={20}>
             <path />
           </BaseIcon>
-          <BaseIcon name="Heart" text center>
+          <BaseIcon text center>
             <path />
           </BaseIcon>
-          <BaseIcon name="Heart" text>
+          <BaseIcon text>
             <path />
           </BaseIcon>
-          <BaseIcon name="Heart" center>
+          <BaseIcon center>
             <path />
           </BaseIcon>
         </>
