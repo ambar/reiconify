@@ -2,8 +2,8 @@
 
 exports[`resolveConfig gets default config 1`] = `
 Object {
+  "baseClassName": "",
   "baseDefaultProps": Object {
-    "defaultClassName": "Icon",
     "fill": "currentColor",
   },
   "baseMapProps": Object {
@@ -24,8 +24,8 @@ Object {
 
 exports[`resolveConfig overwrites default config 1`] = `
 Object {
+  "baseClassName": "MyIcon",
   "baseDefaultProps": Object {
-    "defaultClassName": "MyIcon",
     "fill": "currentColor",
   },
   "baseMapProps": Object {

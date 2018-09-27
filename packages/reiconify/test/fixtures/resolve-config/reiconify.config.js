@@ -1,6 +1,4 @@
 module.exports = {
-  baseDefaultProps: {
-    defaultClassName: 'MyIcon',
-  },
+  baseClassName: 'MyIcon',
   svgoPlugins: [{removeAttrs: {attrs: 'fill'}}],
 }
