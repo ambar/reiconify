@@ -59,6 +59,7 @@ const transformFiles = async (options = {}) => {
 
   const {
     baseName,
+    baseClassName,
     template,
     baseTemplate,
     defaultProps,
@@ -77,6 +78,7 @@ const transformFiles = async (options = {}) => {
       const code = await transform(svg, {
         name,
         baseName,
+        baseClassName,
         template,
         defaultProps,
         svgoPlugins,

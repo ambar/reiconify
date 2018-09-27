@@ -36,8 +36,8 @@ module.exports = {
   baseTemplate: Function,
   filenameTemplate: Function,
   defaultProps: {},
+  baseClassName: 'Icon',
   baseDefaultProps: {
-    defaultClassName: 'Icon',
     viewBox: '0 0 24 24',
   },
   baseMapProps: {
@@ -64,7 +64,7 @@ Add npm scripts:
   "files": ["src", "es", "cjs"],
   "scripts": {
     "start": "reiconify --serve",
-    "build": "reiconify --src --es --cjs icons/*.svg",
+    "build": "reiconify --src --es --cjs icons/*.svg"
   }
 }
 ```

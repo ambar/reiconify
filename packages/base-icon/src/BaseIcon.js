@@ -21,21 +21,6 @@ const withTextProp = (size = '1.2em') => Component => ({text, ...props}) => (
   <Component {...props} {...text && {size}} />
 )
 
-const withNameProp = (baseClassName = 'BaseIcon') => Component => ({
-  name,
-  className,
-  ...props
-}) => (
-  <Component
-    {...props}
-    {...name && {
-      className: `${baseClassName} ${baseClassName}--${name}${
-        className ? ` ${className}` : ''
-      }`,
-    }}
-  />
-)
-
 const BaseIcon = ({size, ...props}) => (
   <svg {...props} {...size && {width: size, height: size}} />
 )
@@ -44,5 +29,5 @@ BaseIcon.defaultProps = {
   fill: 'currentColor',
 }
 
-export {withCenterProp, withTextProp, withNameProp}
-export default withNameProp()(withTextProp()(withCenterProp()(BaseIcon)))
+export {withCenterProp, withTextProp}
+export default withTextProp()(withCenterProp()(BaseIcon))
