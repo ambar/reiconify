@@ -2,7 +2,17 @@ const pascalCase = require('pascal-case')
 
 const template = data => {
   const jsxWithProps = data.jsxString
-    .replace(/<svg([\s\S]*?)>/, (match, group) => `<Icon${group} {...props}>`)
+    .replace(
+      /<svg([\s\S]*?)>/,
+      (match, group) =>
+        `<Icon${group} {...props} ${
+          data.baseClassName
+            ? `className={'${data.baseClassName} ${data.baseClassName}--${
+                data.name
+              }' + (props.className ? \` \${props.className}\` : '')}`
+            : ``
+        }>`
+    )
     .replace(/<\/svg>$/, '</Icon>')
 
   return `
@@ -11,14 +21,11 @@ const template = data => {
 
     const ${data.name} = props => ${jsxWithProps}
 
-    ${data.name}.defaultProps = ${JSON.stringify(
-    Object.assign(
-      {
-        name: data.name,
-      },
-      data.defaultProps
-    )
-  )}
+    ${
+      data.defaultProps && Object.keys(data.defaultProps).length
+        ? `${data.name}.defaultProps = ${JSON.stringify(data.defaultProps)}`
+        : ''
+    }
 
     export default ${data.name}
   `
@@ -66,9 +73,6 @@ const baseTemplate = data => {
 
     const Icon = (props) => {
       const {
-        name,
-        className,
-        defaultClassName,
         size,
         center,
         ...rest
@@ -76,9 +80,6 @@ const baseTemplate = data => {
 
       const svg = (
         <svg
-          className={\`\${defaultClassName} \${defaultClassName}--\${name}\${className
-            ? \` \${className}\`
-            : ''}\`}
           {...rest}
           {...size && {width: size, height: size}}
         />
@@ -110,7 +111,6 @@ const baseTemplate = data => {
 }
 
 const baseDefaultProps = {
-  defaultClassName: 'Icon',
   fill: 'currentColor',
 }
 
@@ -123,6 +123,7 @@ const filenameTemplate = name => pascalCase(name).replace(/_/g, '')
 const defaults = {
   name: 'Icon',
   baseName: './Icon',
+  baseClassName: '',
   template,
   baseTemplate,
   defaultProps: {},

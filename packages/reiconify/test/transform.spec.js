@@ -13,6 +13,19 @@ describe('component', () => {
       await transform(sampleSvg, {
         name: 'Component',
         baseName: 'base-icon',
+        defaultProps: {
+          width: 24,
+          height: 24,
+        },
+      })
+    ).toMatchSnapshot()
+  })
+
+  it('transforms svg with baseClassName', async () => {
+    expect(
+      await transform(sampleSvg, {
+        name: 'Heart',
+        baseClassName: 'Mdi',
       })
     ).toMatchSnapshot()
   })
