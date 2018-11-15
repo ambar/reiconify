@@ -64,7 +64,6 @@ const transformFiles = async (options = {}) => {
     baseTemplate,
     defaultProps,
     baseDefaultProps,
-    baseMapProps,
     filenameTemplate,
     svgoPlugins,
     camelCaseProps,
@@ -92,7 +91,7 @@ const transformFiles = async (options = {}) => {
   contents.push(
     {
       name: 'Icon',
-      code: prettier(baseTemplate({baseDefaultProps, baseMapProps})),
+      code: prettier(baseTemplate({baseDefaultProps})),
     },
     {name: 'index', code: await getIndex(namesToExport)}
   )

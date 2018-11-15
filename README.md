@@ -48,10 +48,6 @@ module.exports = {
   baseDefaultProps: {
     viewBox: '0 0 24 24',
   },
-  baseMapProps: {
-    text: {size: '1.2em'},
-    gray: {fill: 'gray'},
-  },
   svgoPlugins: [
     {
       removeAttrs: {attrs: ['fill', 'svg:(viewBox)']},

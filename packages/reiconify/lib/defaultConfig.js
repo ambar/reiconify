@@ -40,43 +40,18 @@ const baseTemplate = data => {
       (k, v) => (typeof v === 'function' ? `λ${v}λ` : v)
     ).replace(/("λ)((.|\n)*?)(λ")/g, '$2')
 
-  const reduceProps = `const reduceProps = (props, reducers) =>
-    Object.keys(reducers).reduce((o, k) => {
-      const thisProp = o[k]
-      delete o[k]
-      if (thisProp) {
-        const reducer = reducers[k]
-        const value = typeof reducer === 'function' ? reducer(o) : reducer
-        return {
-          ...o,
-          ...value,
-          ...(value &&
-            value.style && {
-              style: {
-                ...o.style,
-                ...value.style,
-              },
-            }),
-        }
-      }
-      return o
-    }, {...props})
-  `
-
   return `
     import React from 'react'
 
     // use zero-width space to mock [strut](https://www.w3.org/TR/CSS22/visudet.html#strut), &#8203;
     const ZWSP = '\\u200b'
 
-    ${data.baseMapProps ? reduceProps : ''}
-
     const Icon = (props) => {
-      const {
-        size,
-        center,
-        ...rest
-      } = ${data.baseMapProps ? `reduceProps(props, Icon.mapProps)` : 'props'}
+      let {size, text, center, ...rest} = props
+
+      if (text) {
+        size = '1.2em'
+      }
 
       const svg = (
         <svg
@@ -97,10 +72,6 @@ const baseTemplate = data => {
 
     Icon.defaultProps = ${JSON.stringify(data.baseDefaultProps)}
 
-    ${
-      data.baseMapProps ? `Icon.mapProps = ${serialize(data.baseMapProps)}` : ''
-    }
-
     Icon.strutStyle = {
       display: 'inline-flex',
       alignItems: 'center',
@@ -114,10 +85,6 @@ const baseDefaultProps = {
   fill: 'currentColor',
 }
 
-const baseMapProps = {
-  text: {size: '1.2em'},
-}
-
 const filenameTemplate = name => pascalCase(name).replace(/_/g, '')
 
 const defaults = {
@@ -128,7 +95,6 @@ const defaults = {
   baseTemplate,
   defaultProps: {},
   baseDefaultProps,
-  baseMapProps,
   filenameTemplate,
   svgoPlugins: [],
   camelCaseProps: true,

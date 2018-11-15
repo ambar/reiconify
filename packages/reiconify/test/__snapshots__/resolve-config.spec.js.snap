@@ -6,11 +6,6 @@ Object {
   "baseDefaultProps": Object {
     "fill": "currentColor",
   },
-  "baseMapProps": Object {
-    "text": Object {
-      "size": "1.2em",
-    },
-  },
   "baseName": "./Icon",
   "baseTemplate": [Function],
   "camelCaseProps": true,
@@ -27,11 +22,6 @@ Object {
   "baseClassName": "MyIcon",
   "baseDefaultProps": Object {
     "fill": "currentColor",
-  },
-  "baseMapProps": Object {
-    "text": Object {
-      "size": "1.2em",
-    },
   },
   "baseName": "./Icon",
   "baseTemplate": [Function],

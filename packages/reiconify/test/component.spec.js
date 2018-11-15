@@ -63,14 +63,4 @@ describe('component', () => {
       .toJSON()
     expect(tree).toMatchSnapshot()
   })
-
-  it('renders custom `x2` prop (literal mapper)', () => {
-    const tree = renderer.create(<Icons.Check x2 />).toJSON()
-    expect(tree).toMatchSnapshot()
-  })
-
-  it('renders custom `gray` prop (function mapper)', () => {
-    const tree = renderer.create(<Icons.Check gray />).toJSON()
-    expect(tree).toMatchSnapshot()
-  })
 })
