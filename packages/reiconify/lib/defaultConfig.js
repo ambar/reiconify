@@ -5,7 +5,7 @@ const template = data => {
     .replace(
       /<svg([\s\S]*?)>/,
       (match, group) =>
-        `<Icon${group} {...props} ${
+        `<SVG${group} {...props} ${
           data.baseClassName
             ? `className={'${data.baseClassName} ${data.baseClassName}--${
                 data.name
@@ -13,11 +13,11 @@ const template = data => {
             : ``
         }>`
     )
-    .replace(/<\/svg>$/, '</Icon>')
+    .replace(/<\/svg>$/, '</SVG>')
 
   return `
     import React from 'react'
-    import Icon from '${data.baseName}'
+    import SVG from '${data.baseName}'
 
     const ${data.name} = props => ${jsxWithProps}
 

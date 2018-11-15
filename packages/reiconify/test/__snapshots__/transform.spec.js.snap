@@ -2,12 +2,12 @@
 
 exports[`component transforms svg 1`] = `
 "import React from 'react'
-import Icon from './Icon'
+import SVG from './Icon'
 
 const Icon = props => (
-  <Icon width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" {...props}>
+  <SVG width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" {...props}>
     <path d=\\"M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z\\" />
-  </Icon>
+  </SVG>
 )
 
 export default Icon
@@ -16,10 +16,10 @@ export default Icon
 
 exports[`component transforms svg with baseClassName 1`] = `
 "import React from 'react'
-import Icon from './Icon'
+import SVG from './Icon'
 
 const Heart = props => (
-  <Icon
+  <SVG
     width=\\"24\\"
     height=\\"24\\"
     viewBox=\\"0 0 24 24\\"
@@ -29,7 +29,7 @@ const Heart = props => (
     }
   >
     <path d=\\"M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z\\" />
-  </Icon>
+  </SVG>
 )
 
 export default Heart
@@ -38,12 +38,12 @@ export default Heart
 
 exports[`component transforms svg with options 1`] = `
 "import React from 'react'
-import Icon from 'base-icon'
+import SVG from 'base-icon'
 
 const Component = props => (
-  <Icon width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" {...props}>
+  <SVG width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" {...props}>
     <path d=\\"M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z\\" />
-  </Icon>
+  </SVG>
 )
 
 Component.defaultProps = {width: 24, height: 24}
