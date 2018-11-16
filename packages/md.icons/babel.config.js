@@ -1,1 +1,1 @@
-module.exports = require('reiconify/.babelrc.js')
+module.exports = require('reiconify/babel.config')

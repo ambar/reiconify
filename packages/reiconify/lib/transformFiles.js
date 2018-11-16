@@ -30,10 +30,10 @@ const writeFiles = async (contents, path) => {
   )
 }
 
-const babelTransformContents = (contents, env) => {
+const babelTransformContents = (contents, envOptions) => {
   return contents.map(({name, code}) => ({
     name,
-    code: babelTransform(code, env),
+    code: babelTransform(code, envOptions),
   }))
 }
 
@@ -105,14 +105,18 @@ const transformFiles = async (options = {}) => {
   if (options.es) {
     log('writing es files...')
     const esPath = resolveDir(options.esDir)
-    const transformedContents = babelTransformContents(contents, 'es')
+    const transformedContents = babelTransformContents(contents, {
+      modules: false,
+    })
     await writeFiles(transformedContents, esPath)
   }
 
   if (options.cjs) {
     log('writing cjs files...')
     const cjsPath = resolveDir(options.cjsDir)
-    const transformedContents = babelTransformContents(contents, 'cjs')
+    const transformedContents = babelTransformContents(contents, {
+      modules: 'commonjs',
+    })
     await writeFiles(transformedContents, cjsPath)
   }
 }

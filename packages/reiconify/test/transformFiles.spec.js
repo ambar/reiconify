@@ -7,26 +7,17 @@ const rimraf = require('rimraf')
 const {transformFiles} = require('../lib')
 
 describe('transform', () => {
-  const cwd = process.cwd()
-  const srcDir = 'fixtures/transform/src'
-  const esDir = 'fixtures/transform/es'
-  const cjsDir = 'fixtures/transform/cjs'
+  const srcDir = 'test/fixtures/transform/src'
+  const esDir = 'test/fixtures/transform/es'
+  const cjsDir = 'test/fixtures/transform/cjs'
   const cleanup = async () => {
     await Promise.all(
       [srcDir, esDir, cjsDir].map(dir => promisify(rimraf)(dir))
     )
   }
 
-  beforeAll(() => {
-    process.chdir(__dirname)
-  })
-
-  afterEach(async () => {
+  beforeAll(async () => {
     await cleanup()
-  })
-
-  afterAll(() => {
-    process.chdir(cwd)
   })
 
   it('throws if no inputs', async () => {
@@ -45,7 +36,7 @@ describe('transform', () => {
 
   it('transforms icons to src only', async () => {
     await transformFiles({
-      inputs: 'fixtures/transform/icons/*.svg',
+      inputs: 'test/fixtures/transform/icons/*.svg',
       src: true,
       srcDir,
     })
@@ -56,7 +47,7 @@ describe('transform', () => {
 
   it('transforms icons to src/es/cjs', async () => {
     await transformFiles({
-      inputs: 'fixtures/transform/icons/*.svg',
+      inputs: 'test/fixtures/transform/icons/*.svg',
       src: true,
       es: true,
       cjs: true,

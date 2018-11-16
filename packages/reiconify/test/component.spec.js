@@ -6,27 +6,25 @@ const rimraf = require('rimraf')
 const {transformFiles} = require('..')
 
 describe('component', () => {
-  const orignalCwd = process.cwd()
-  const cwd = path.resolve(__dirname, 'fixtures/component')
-  const srcDir = path.resolve(cwd, 'src')
+  const cwd = process.cwd()
+  const fixtureDir = path.resolve(path.resolve(__dirname, 'fixtures/component'))
+  const srcDir = path.resolve(fixtureDir, 'src')
   let Icons
 
   beforeAll(async () => {
-    process.chdir(cwd)
+    process.chdir(fixtureDir)
     await transformFiles({
       inputs: 'icons/*.svg',
       src: true,
       srcDir,
     })
-  })
-
-  beforeEach(() => {
+    // NOTE: fixes jest Error: "Object.<anonymous>": ...SyntaxError: Unexpected token export
+    process.chdir(cwd)
     Icons = require(srcDir)
   })
 
   afterAll(async () => {
     await promisify(rimraf)(srcDir)
-    process.chdir(orignalCwd)
   })
 
   it('renders `size` prop', () => {

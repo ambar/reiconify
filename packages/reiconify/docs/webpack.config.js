@@ -31,7 +31,7 @@ module.exports = {
           ? 'babel-loader'
           : {
               loader: 'babel-loader',
-              options: require('../.babelrc.js'),
+              options: require('../babel.config.js'),
             },
       },
       {

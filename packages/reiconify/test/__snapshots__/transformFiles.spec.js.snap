@@ -19,7 +19,7 @@ Array [
 exports[`transform transforms icons to src/es/cjs 1`] = `
 Array [
   Object {
-    "dir": "fixtures/transform/src",
+    "dir": "test/fixtures/transform/src",
     "files": Array [
       "Check.js",
       "Gold.js",
@@ -29,7 +29,7 @@ Array [
     ],
   },
   Object {
-    "dir": "fixtures/transform/es",
+    "dir": "test/fixtures/transform/es",
     "files": Array [
       "Check.js",
       "Gold.js",
@@ -39,7 +39,7 @@ Array [
     ],
   },
   Object {
-    "dir": "fixtures/transform/cjs",
+    "dir": "test/fixtures/transform/cjs",
     "files": Array [
       "Check.js",
       "Gold.js",
