@@ -18,7 +18,7 @@
     "playland.config.js",
     "prettier.config.js",
     "postcss.config.js",
-    ".babelrc.js"
+    "babel.config.js"
   ],
   "scripts": {
     "prepare": "npm test",
