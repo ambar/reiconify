@@ -13,7 +13,7 @@ Convert SVG icons to React components.
 ## Install
 
 ```
-npm install reiconify --save-dev
+npm install reiconify-cli --save-dev
 ```
 
 ## CLI Options
@@ -56,7 +56,7 @@ module.exports = {
 }
 ```
 
-## Usage
+## CLI Usage
 
 Add npm scripts:
 
@@ -95,4 +95,12 @@ import * as Icons from 'my-icons'
 
 <Icons.Check />
 <Icons.ThumbUp size={20} fill={'#rgb'} />
+```
+
+## API Usage
+
+```js
+import {transform} from 'reiconify'
+
+const code = transform(svg)
 ```

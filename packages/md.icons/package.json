@@ -12,7 +12,7 @@
     "cjs"
   ],
   "scripts": {
-    "start": "reiconify  --serve",
+    "start": "reiconify --serve",
     "copy": "mkdir -p icons && rm -rf icons/** && node ./scripts/copyIcons",
     "clean": "rm -rf src/** es/** cjs/**",
     "build:static": "npm run build:src && rm -rf dist && NODE_ENV=production reiconify --static",

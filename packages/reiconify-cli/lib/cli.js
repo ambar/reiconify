@@ -2,7 +2,7 @@ const path = require('path')
 const yargs = require('yargs')
 const shell = require('shelljs')
 const which = require('npm-which')(__dirname)
-const transformFiles = require('./transformFiles')
+const transformFiles = require('reiconify/lib/transformFiles')
 
 yargs
   .option('src', {
@@ -56,22 +56,17 @@ const run = async () => {
 
   if (argv.serve) {
     const config = resolveRelative('../playland.config.js')
-    shell.exec(`BABEL_ENV=docs ${resolveBin('playland')} --config ${config}`)
+    shell.exec(`${resolveBin('playland')} --config ${config}`)
   } else if (argv.static) {
     const config = resolveRelative('../playland.config.js')
-    shell.exec(
-      `BABEL_ENV=docs ${resolveBin('playland')} --build --config ${config}`
-    )
+    shell.exec(`${resolveBin('playland')} --build --config ${config}`)
   } else if (argv.src || argv.es || argv.cjs) {
     await transformFiles({
+      ...argv,
       inputs: argv._,
-      src: argv.src,
-      es: argv.es,
-      cjs: argv.cjs,
-      srcDir: argv.srcDir,
-      esDir: argv.esDir,
-      cjsDir: argv.cjsDir,
     })
+  } else {
+    yargs.showHelp()
   }
 }
 

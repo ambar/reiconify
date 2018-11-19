@@ -1,0 +1,46 @@
+{
+  "name": "reiconify-cli",
+  "version": "1.0.0",
+  "description": "Convert SVG icons to React components",
+  "repository": "ambar/reiconify",
+  "homepage": "https://github.com/ambar/reiconify",
+  "bin": {
+    "reiconify": "./bin/reiconify.js"
+  },
+  "main": "lib/index.js",
+  "license": "MIT",
+  "engines": {
+    "node": ">=8"
+  },
+  "files": [
+    "bin",
+    "docs",
+    "lib",
+    "playland.config.js",
+    "postcss.config.js",
+    "babel.config.js"
+  ],
+  "scripts": {
+    "prepare": "npm test",
+    "test": "jest"
+  },
+  "dependencies": {
+    "@uifabric/icons": "^5.0.1",
+    "classnames": "^2.2.5",
+    "npm-which": "^3.0.1",
+    "office-ui-fabric-react": "^5.0.1",
+    "playland": "^1.2.0",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
+    "reiconify": "^1.2.0",
+    "shelljs": "^0.7.8",
+    "yargs": "^9.0.1"
+  },
+  "devDependencies": {
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-jest": "^23.6.0",
+    "jest": "^21.2.1",
+    "react-test-renderer": "^16.0.0",
+    "rimraf": "^2.6.2"
+  }
+}
