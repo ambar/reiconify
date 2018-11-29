@@ -37,6 +37,12 @@ const svgWithStyles = `
 </svg>
 `
 
+const svgWithNamespace = `
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" viewBox="0 0 24 24">
+    <path id="a" d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+    <use xlink:href="#a"/>
+</svg>`
+
 describe('svg2jsx', () => {
   it('converts svg to jsx', async () => {
     expect(await svg2jsx(svg)).toMatchSnapshot()
@@ -75,5 +81,9 @@ describe('svg2jsx', () => {
 
   it('converts inline styles to style objects', async () => {
     expect(await svg2jsx(svgWithStyles)).toMatchSnapshot()
+  })
+
+  it('converts namespaced attrs to camel case', async () => {
+    expect(await svg2jsx(svgWithNamespace)).toMatchSnapshot()
   })
 })

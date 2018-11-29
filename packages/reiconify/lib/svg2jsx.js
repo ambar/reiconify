@@ -5,7 +5,7 @@ const postcss = require('postcss')
 const postcssJs = require('postcss-js')
 
 const toCamelCase = s =>
-  s.replace(/([-_])([a-z])/g, (s, a, b) => b.toUpperCase())
+  s.replace(/([-_:])([a-z])/g, (s, a, b) => b.toUpperCase())
 
 // Custom Plugin: https://github.com/svg/svgo/issues/564#issuecomment-241468596
 // 也可以用 DOMParser/cheerio 等遍历 DOM，但用 svgo 插件少一点依赖（更快）
@@ -13,7 +13,7 @@ const toCamelCase = s =>
 const camelCaseProps = {
   camelCaseProps: {
     type: 'perItem',
-    description: 'convert attrs to camelCase',
+    description: 'convert attrs to camel case',
     params: {},
     fn(item) {
       if (item.isElem()) {
@@ -31,14 +31,37 @@ const camelCaseProps = {
   },
 }
 
+// `xlink:href` => `xlinkHref`
+const camelCaseNamespacedProps = {
+  camelCaseProps: {
+    type: 'perItem',
+    description: 'convert namespaced attrs to camel case',
+    params: {},
+    fn(item) {
+      if (item.isElem()) {
+        item.eachAttr(attr => {
+          if (attr.name.includes(':')) {
+            const newAttr = Object.assign({}, attr, {
+              name: toCamelCase(attr.name),
+            })
+            item.attrs[newAttr.name] = newAttr
+            item.removeAttr(attr.name)
+          }
+        })
+      }
+    },
+  },
+}
+
 // svgo 默认就会启用一批插件，参考：
 // https://github.com/svg/svgo/issues/646
-// https://github.com/BohemianCoding/svgo-compressor/blob/development/src/plugin.js#L130
-const createExtraSvgoPlugins = ({idPrefix}) => [
+// https://github.com/BohemianCoding/svgo-compressor/blob/develop/src/defaultConfig.js
+const getDefaultSvgoPlugins = ({idPrefix}) => [
   {removeDesc: {removeAny: true}},
   {removeXMLNS: true},
   {sortAttrs: true},
   {cleanupIDs: {prefix: idPrefix}},
+  camelCaseNamespacedProps,
 ]
 
 const defaults = {
@@ -60,7 +83,7 @@ const replaceInlineStyles = jsx =>
 
 const createSvg2jsx = options => {
   options = Object.assign({}, defaults, options)
-  const plugins = createExtraSvgoPlugins({idPrefix: options.idPrefix})
+  const plugins = getDefaultSvgoPlugins({idPrefix: options.idPrefix})
     .concat(options.svgoPlugins)
     .concat(options.camelCaseProps ? camelCaseProps : [])
   const svgo = new SVGO({plugins})
