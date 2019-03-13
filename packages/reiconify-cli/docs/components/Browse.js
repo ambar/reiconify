@@ -5,9 +5,9 @@ import {TooltipHost} from 'office-ui-fabric-react/lib/Tooltip'
 import cx from 'classnames'
 import * as Icons from '~icons'
 import mm from 'micromatch'
-import Batch from './components/Batch'
-import LineBox from './components/LineBox'
-import styles from './Browse.css'
+import Batch from './Batch'
+import LineBox from './LineBox'
+import styles from './Browse.module.css'
 
 const iconNames = Object.keys(Icons)
   // filter CJS `__esModule: true`
@@ -37,7 +37,7 @@ const Cell = ({name, Icon, color, large}) => (
   </div>
 )
 
-class Search extends React.Component {
+class Browse extends React.Component {
   state = {
     keyword: '',
     isNameShown: true,
@@ -104,4 +104,4 @@ class Search extends React.Component {
   }
 }
 
-export default () => <Search />
+export default Browse

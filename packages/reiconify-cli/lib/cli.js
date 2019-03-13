@@ -1,7 +1,6 @@
 const path = require('path')
 const yargs = require('yargs')
-const shell = require('shelljs')
-const which = require('npm-which')(__dirname)
+const {shell} = require('execa')
 const transformFiles = require('reiconify/lib/transformFiles')
 
 yargs
@@ -51,15 +50,16 @@ yargs
 const argv = yargs.argv
 
 const run = async () => {
-  const resolveRelative = path.resolve.bind(null, __dirname)
-  const resolveBin = name => which.sync(name)
-
+  const root = path.resolve(__dirname, '..')
+  const shellOpts = {
+    cwd: root,
+    stdio: 'inherit',
+    env: {CWD: process.cwd(), SRC_DIR: path.resolve(argv.srcDir)},
+  }
   if (argv.serve) {
-    const config = resolveRelative('../playland.config.js')
-    shell.exec(`${resolveBin('playland')} --config ${config}`)
+    await shell(`playland`, shellOpts)
   } else if (argv.static) {
-    const config = resolveRelative('../playland.config.js')
-    shell.exec(`${resolveBin('playland')} --build --config ${config}`)
+    await shell(`playland --build`, shellOpts)
   } else if (argv.src || argv.es || argv.cjs) {
     await transformFiles({
       ...argv,

@@ -1,9 +1,8 @@
 import React from 'react'
-import {Markdown} from 'playland'
 import * as Icons from '~icons'
-import DebugGrid from './components/DebugGrid'
-import LineBox from './components/LineBox'
-import styles from './Align.css'
+import LineBox from './LineBox'
+// import DebugGrid from './components/DebugGrid'
+// import styles from './Align.module.css'
 
 const size = '1.2em'
 const iconKeys = Object.keys(Icons)
@@ -14,8 +13,6 @@ const RandomIcon =
 
 export default () => (
   <div>
-    <Markdown text={require('./HowToAlign.md')} />
-
     <h2>Demos</h2>
 
     <h3>a: inline-flex wrapper and strut hack</h3>

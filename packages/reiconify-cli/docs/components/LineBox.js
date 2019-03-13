@@ -1,6 +1,6 @@
 import React from 'react'
 import cx from 'classnames'
-import styles from './LineBox.css'
+import styles from './LineBox.module.css'
 
 const LineBox = ({children, className, abs, ...props}) => (
   <div draggable className={cx(styles.lineBox, className)} {...props}>

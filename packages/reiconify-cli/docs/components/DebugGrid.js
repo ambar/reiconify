@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from './DebugGrid.css'
+import styles from './DebugGrid.module.css'
 
 class DebugGrid extends React.Component {
   componentDidMount() {

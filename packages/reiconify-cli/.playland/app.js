@@ -1,7 +1,7 @@
 import React from 'react'
 import {Fabric} from 'office-ui-fabric-react/lib/Fabric'
 import {initializeIcons} from '@uifabric/icons'
-import styles from './app.css'
+import styles from './app.module.css'
 
 // 阻止 hot reload 重复初始化
 if (!global.initialized) {
@@ -10,8 +10,16 @@ if (!global.initialized) {
   initializeIcons()
 }
 
-const routes = ['Browse', 'Align'].map(name => {
-  const Page = require(`./${name}`).default
+const pageRequire = require.context(
+  '../docs/',
+  true,
+  process.env.REICONIFY_SHOW_ALIGN ? /\.mdx$/ : /^\.\/((?!Align).*)\.mdx/
+)
+const pages = pageRequire.keys()
+
+const routes = pages.map(page => {
+  const name = page.replace(/(^\.\/)|(\.mdx$)/g, '')
+  const {default: Page} = pageRequire(page)
 
   return {
     name,
@@ -24,6 +32,4 @@ const routes = ['Browse', 'Align'].map(name => {
   }
 })
 
-export const decorators = {}
-
-export {routes}
+export default {routes}

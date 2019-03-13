@@ -3,7 +3,6 @@
   "version": "1.3.1",
   "description": "Material icons for React",
   "repository": "ambar/reiconify",
-  "homepage": "https://github.com/ambar/reiconify",
   "main": "cjs/index.js",
   "module": "es/index.js",
   "files": [
@@ -12,10 +11,10 @@
     "cjs"
   ],
   "scripts": {
-    "start": "reiconify --serve",
+    "start": "REICONIFY_SHOW_ALIGN=true reiconify --serve",
     "copy": "mkdir -p icons && rm -rf icons/** && node ./scripts/copyIcons",
     "clean": "rm -rf src/** es/** cjs/**",
-    "build:static": "npm run build:src && rm -rf dist && NODE_ENV=production reiconify --static",
+    "build:static": "npm run build:src && rm -rf dist && REICONIFY_SHOW_ALIGN=true reiconify --static",
     "build:src": "rm -rf src/** && reiconify --src 'icons/*.svg'",
     "build": "npm run clean && npm run copy && reiconify --src --es --cjs 'icons/*.svg'",
     "prepare": "npm run build && npm test",

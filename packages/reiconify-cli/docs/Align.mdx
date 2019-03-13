@@ -40,10 +40,17 @@ d. Using `top` offset hack. (Acceptable, font-specific offset.)
 
 ```js
 <button>
-  <Icons.Heart text style={{verticalAlign: 'middle', position: 'relative', top: '-.1em'}} />
+  <Icons.Heart
+    text
+    style={{verticalAlign: 'middle', position: 'relative', top: '-.1em'}}
+  />
   Like
 </button>
 
 // top = (xHeight/2 - capHeight/2) / unitsPerEm ≈ .5em/2 - .7em/2
 // query font metrics: https://opentype.js.org/font-inspector.html
 ```
+
+import Align from './components/Align'
+
+<Align />
