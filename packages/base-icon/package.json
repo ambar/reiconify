@@ -13,12 +13,5 @@
     "prepare": "npm test && npm run build",
     "build": "rm -rf lib && NODE_ENV=production babel src --out-dir lib",
     "test": "jest"
-  },
-  "devDependencies": {
-    "@babel/cli": "^7.1.0",
-    "@babel/core": "^7.1.0",
-    "@babel/preset-env": "^7.1.0",
-    "@babel/preset-react": "^7.0.0",
-    "jest": "^23.6.0"
   }
 }
