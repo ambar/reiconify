@@ -18,7 +18,7 @@
   ],
   "scripts": {
     "prepare": "npm test",
-    "test": "jest"
+    "test": "jest --passWithNoTests"
   },
   "dependencies": {
     "@uifabric/icons": "^5.0.1",
