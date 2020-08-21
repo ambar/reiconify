@@ -3,7 +3,7 @@ const renderer = require('react-test-renderer')
 const path = require('path')
 const {promisify} = require('util')
 const rimraf = require('rimraf')
-const {transformFiles} = require('..')
+const transformFiles = require('../lib/transformFiles')
 
 describe('component', () => {
   const cwd = process.cwd()
@@ -12,14 +12,15 @@ describe('component', () => {
   let Icons
 
   beforeAll(async () => {
-    process.chdir(fixtureDir)
+    // process.chdir(fixtureDir)
     await transformFiles({
+      cwd: fixtureDir,
       inputs: 'icons/*.svg',
       src: true,
       srcDir,
     })
     // NOTE: fixes jest Error: "Object.<anonymous>": ...SyntaxError: Unexpected token export
-    process.chdir(cwd)
+    // process.chdir(cwd)
     Icons = require(srcDir)
   })
 

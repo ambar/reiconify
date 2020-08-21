@@ -5,7 +5,7 @@ const rimraf = require('rimraf')
 const {transformFiles} = require('../lib')
 
 describe('transform-filename', () => {
-  const orignalCwd = process.cwd()
+  // const orignalCwd = process.cwd()
   const cwd = path.resolve(__dirname, 'fixtures/transform-filename')
   const srcDir = path.resolve(cwd, 'src')
   const cleanup = async () => {
@@ -13,7 +13,7 @@ describe('transform-filename', () => {
   }
 
   beforeAll(() => {
-    process.chdir(cwd)
+    // process.chdir(cwd)
   })
 
   afterEach(async () => {
@@ -21,11 +21,12 @@ describe('transform-filename', () => {
   })
 
   afterAll(() => {
-    process.chdir(orignalCwd)
+    // process.chdir(orignalCwd)
   })
 
   it('transforms icons', async () => {
     await transformFiles({
+      cwd,
       inputs: 'icons/*.svg',
       src: true,
       srcDir,

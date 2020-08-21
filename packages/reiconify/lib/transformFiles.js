@@ -52,7 +52,8 @@ const transformFiles = async (options = {}) => {
     throw new Error('Missing output directory')
   }
 
-  const files = await globby(options.inputs)
+  const cwd = options.cwd || process.cwd()
+  const files = await globby(options.inputs, {cwd})
   if (!files.length) {
     throw new Error('Cannot find source files')
   }
@@ -67,12 +68,13 @@ const transformFiles = async (options = {}) => {
     filenameTemplate,
     svgoPlugins,
     camelCaseProps,
-  } = await resolveConfig()
+  } = await resolveConfig(cwd)
 
   log('transforming icons...')
   const contents = await Promise.all(
     files.map(async file => {
-      const svg = String(await promisify(fs.readFile)(file))
+      const filePath = path.resolve(cwd, file)
+      const svg = String(await promisify(fs.readFile)(filePath))
       const name = filenameTemplate(path.basename(file, '.svg'))
       const code = await transform(svg, {
         name,
