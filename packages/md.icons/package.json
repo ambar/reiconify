@@ -1,6 +1,6 @@
 {
   "name": "md.icons",
-  "version": "1.4.1",
+  "version": "1.5.0",
   "description": "Material icons for React",
   "repository": "ambar/reiconify",
   "main": "cjs/index.js",
@@ -26,6 +26,6 @@
     "gh-pages": "^1.0.0",
     "globby": "^6.1.0",
     "material-design-icons": "^3.0.1",
-    "reiconify-cli": "^1.4.1"
+    "reiconify-cli": "^1.5.0"
   }
 }

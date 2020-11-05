@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.5.0](https://github.com/ambar/reiconify/compare/v1.4.1...v1.5.0) (2020-11-05)
+
+
+### Features
+
+* update prettier ([2e02c63](https://github.com/ambar/reiconify/commit/2e02c63))
+
+
+
+
+
 ## [1.4.1](https://github.com/ambar/reiconify/compare/v1.4.0...v1.4.1) (2020-08-21)
 
 **Note:** Version bump only for package reiconify
