@@ -1,7 +1,7 @@
 const prettier = require('prettier')
 
 const prettierConfig = Object.assign(
-  {parser: 'babylon'},
+  {parser: 'babel'},
   require('../prettier.config.js')
 )
 
