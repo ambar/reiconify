@@ -18,6 +18,14 @@ const svgWithFill = `
 </svg>
 `
 
+const svgWithDifferentViewBox = `
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 48 48">
+  <g fill="#f1f1f1" stroke="red">
+    <path fill="red" d="M0 0h24v24H0z" />
+  </g>
+</svg>
+`
+
 const svgWithId = `
 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
   <defs>
@@ -50,6 +58,10 @@ describe('svg2jsx', () => {
 
   it('converts svg to jsx (React <= 15)', async () => {
     expect(await svg2jsx(svg, {camelCaseProps: true})).toMatchSnapshot()
+  })
+
+  it('uses `removeViewBox` plugin by default', async () => {
+    expect(await svg2jsx(svgWithDifferentViewBox)).toMatchSnapshot()
   })
 
   it('uses `removeAttrs` plugin', async () => {

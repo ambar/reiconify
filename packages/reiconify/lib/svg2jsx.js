@@ -88,13 +88,7 @@ const createSvg2jsx = (options) => {
     .concat(options.camelCaseProps ? camelCaseProps : [])
   const svgo = new SVGO({plugins})
 
-  return (svg) =>
-    // 官方已支持 Promise API，但还未发布
-    new Promise((resolve, reject) =>
-      svgo.optimize(svg, ({error, data}) =>
-        error ? reject(error) : resolve(replaceInlineStyles(data))
-      )
-    )
+  return (svg) => svgo.optimize(svg).then(({data}) => replaceInlineStyles(data))
 }
 
 const svg2jsx = (svg, options) => {
