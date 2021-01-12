@@ -19,7 +19,6 @@ exports[`component renders \`center\` and \`style\` prop 1`] = `
         "color": "red",
       }
     }
-    viewBox="0 0 24 24"
     width="24"
   >
     <path
@@ -43,7 +42,6 @@ exports[`component renders \`center\` prop 1`] = `
     className="MyIcon MyIcon--Check"
     fill="currentColor"
     height="24"
-    viewBox="0 0 24 24"
     width="24"
   >
     <path
@@ -58,7 +56,6 @@ exports[`component renders \`className\` prop 1`] = `
   className="MyIcon MyIcon--Check myIcon"
   fill="currentColor"
   height="24"
-  viewBox="0 0 24 24"
   width="24"
 >
   <path
@@ -72,7 +69,6 @@ exports[`component renders \`size\` prop 1`] = `
   className="MyIcon MyIcon--Check"
   fill="currentColor"
   height={20}
-  viewBox="0 0 24 24"
   width={20}
 >
   <path
@@ -95,7 +91,6 @@ exports[`component renders \`text\` and \`center\` prop 1`] = `
     className="MyIcon MyIcon--Check"
     fill="currentColor"
     height="1.2em"
-    viewBox="0 0 24 24"
     width="1.2em"
   >
     <path
@@ -110,7 +105,6 @@ exports[`component renders \`text\` prop 1`] = `
   className="MyIcon MyIcon--Check"
   fill="currentColor"
   height="1.2em"
-  viewBox="0 0 24 24"
   width="1.2em"
 >
   <path
@@ -124,7 +118,6 @@ exports[`component renders \`text\` prop 2`] = `
   className="MyIcon MyIcon--Check"
   fill="currentColor"
   height="24"
-  viewBox="0 0 24 24"
   width="24"
 >
   <path

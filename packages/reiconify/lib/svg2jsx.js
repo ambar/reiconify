@@ -4,7 +4,7 @@ const JSON5 = require('json5')
 const postcss = require('postcss')
 const postcssJs = require('postcss-js')
 
-const toCamelCase = s =>
+const toCamelCase = (s) =>
   s.replace(/([-_:])([a-z])/g, (s, a, b) => b.toUpperCase())
 
 // Custom Plugin: https://github.com/svg/svgo/issues/564#issuecomment-241468596
@@ -17,7 +17,7 @@ const camelCaseProps = {
     params: {},
     fn(item) {
       if (item.isElem()) {
-        item.eachAttr(attr => {
+        item.eachAttr((attr) => {
           if (attr.name.includes('-')) {
             const newAttr = Object.assign({}, attr, {
               name: toCamelCase(attr.name),
@@ -39,7 +39,7 @@ const camelCaseNamespacedProps = {
     params: {},
     fn(item) {
       if (item.isElem()) {
-        item.eachAttr(attr => {
+        item.eachAttr((attr) => {
           if (attr.name.includes(':')) {
             const newAttr = Object.assign({}, attr, {
               name: toCamelCase(attr.name),
@@ -70,33 +70,25 @@ const defaults = {
   idPrefix: '',
 }
 
-const styleToObject = styleText => {
+const styleToObject = (styleText) => {
   const styleObject = postcssJs.objectify(postcss.parse(styleText))
   return JSON5.stringify(styleObject)
 }
 
-const replaceInlineStyles = jsx =>
+const replaceInlineStyles = (jsx) =>
   jsx.replace(
     /style="([^"]+)"/g,
     (match, str) => `style={${styleToObject(str)}}`
   )
 
-const createSvg2jsx = options => {
+const createSvg2jsx = (options) => {
   options = Object.assign({}, defaults, options)
   const plugins = getDefaultSvgoPlugins({idPrefix: options.idPrefix})
     .concat(options.svgoPlugins)
     .concat(options.camelCaseProps ? camelCaseProps : [])
   const svgo = new SVGO({plugins})
 
-  return svg =>
-    // 官方已支持 Promise API，但还未发布
-    new Promise((resolve, reject) =>
-      svgo.optimize(
-        svg,
-        ({error, data}) =>
-          error ? reject(error) : resolve(replaceInlineStyles(data))
-      )
-    )
+  return (svg) => svgo.optimize(svg).then(({data}) => replaceInlineStyles(data))
 }
 
 const svg2jsx = (svg, options) => {

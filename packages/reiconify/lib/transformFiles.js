@@ -9,10 +9,10 @@ const resolveConfig = require('./resolveConfig')
 const transform = require('./transform')
 const babelTransform = require('./babelTransform')
 
-const getIndex = async names => {
+const getIndex = async (names) => {
   names = names.slice().sort()
   const lines = names.map(
-    name => `export {default as ${name}} from './${name}'`
+    (name) => `export {default as ${name}} from './${name}'`
   )
   log(`exporting ${names.length} icons: ${names.join(', ')}`)
   return prettier(lines.join('\n'))
@@ -37,7 +37,7 @@ const babelTransformContents = (contents, envOptions) => {
   }))
 }
 
-const resolveDir = dir =>
+const resolveDir = (dir) =>
   path.isAbsolute(dir) ? dir : path.resolve(process.cwd(), dir)
 
 const transformFiles = async (options = {}) => {
@@ -72,7 +72,7 @@ const transformFiles = async (options = {}) => {
 
   log('transforming icons...')
   const contents = await Promise.all(
-    files.map(async file => {
+    files.map(async (file) => {
       const filePath = path.resolve(cwd, file)
       const svg = String(await promisify(fs.readFile)(filePath))
       const name = filenameTemplate(path.basename(file, '.svg'))
