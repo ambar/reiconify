@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.6.0](https://github.com/ambar/reiconify/compare/v1.5.0...v1.6.0) (2021-01-12)
+
+
+### Features
+
+* upgrade svgo ([16604aa](https://github.com/ambar/reiconify/commit/16604aa))
+
+
+
+
+
 # [1.5.0](https://github.com/ambar/reiconify/compare/v1.4.1...v1.5.0) (2020-11-05)
 
 
