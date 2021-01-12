@@ -12,7 +12,7 @@ describe('transform', () => {
   const cjsDir = 'test/fixtures/transform/cjs'
   const cleanup = async () => {
     await Promise.all(
-      [srcDir, esDir, cjsDir].map(dir => promisify(rimraf)(dir))
+      [srcDir, esDir, cjsDir].map((dir) => promisify(rimraf)(dir))
     )
   }
 
@@ -56,7 +56,7 @@ describe('transform', () => {
       cjsDir,
     })
 
-    const readDir = async dir => {
+    const readDir = async (dir) => {
       const files = await promisify(fs.readdir)(dir)
       return {dir, files}
     }
@@ -67,7 +67,7 @@ describe('transform', () => {
     const Icons = require(path.resolve(srcDir))
     const EsIcons = require(path.resolve(esDir))
     const CjsIcons = require(path.resolve(cjsDir))
-    Object.keys(Icons).forEach(name => {
+    Object.keys(Icons).forEach((name) => {
       const tree = renderer.create(React.createElement(Icons[name])).toJSON()
       const esTree = renderer
         .create(React.createElement(EsIcons[name]))

@@ -1,15 +1,13 @@
 const pascalCase = require('pascal-case')
 
-const template = data => {
+const template = (data) => {
   const jsxWithProps = data.jsxString
     .replace(
       /<svg([\s\S]*?)>/,
       (match, group) =>
         `<SVG${group} {...props} ${
           data.baseClassName
-            ? `className={'${data.baseClassName} ${data.baseClassName}--${
-                data.name
-              }' + (props.className ? \` \${props.className}\` : '')}`
+            ? `className={'${data.baseClassName} ${data.baseClassName}--${data.name}' + (props.className ? \` \${props.className}\` : '')}`
             : ``
         }>`
     )
@@ -31,13 +29,12 @@ const template = data => {
   `
 }
 
-const baseTemplate = data => {
+const baseTemplate = (data) => {
   // serialize object, preserve function values
   // {foo: props => {}, bar: true} ➡ `{"foo": props => {}, "bar": true}`
-  const serialize = obj =>
-    JSON.stringify(
-      obj,
-      (k, v) => (typeof v === 'function' ? `λ${v}λ` : v)
+  const serialize = (obj) =>
+    JSON.stringify(obj, (k, v) =>
+      typeof v === 'function' ? `λ${v}λ` : v
     ).replace(/("λ)((.|\n)*?)(λ")/g, '$2')
 
   return `
@@ -85,7 +82,7 @@ const baseDefaultProps = {
   fill: 'currentColor',
 }
 
-const filenameTemplate = name => pascalCase(name).replace(/_/g, '')
+const filenameTemplate = (name) => pascalCase(name).replace(/_/g, '')
 
 const defaults = {
   name: 'Icon',
