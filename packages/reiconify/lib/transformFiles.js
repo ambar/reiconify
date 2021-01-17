@@ -31,10 +31,12 @@ const writeFiles = async (contents, path) => {
 }
 
 const babelTransformContents = (contents, envOptions) => {
-  return contents.map(({name, code}) => ({
-    name,
-    code: babelTransform(code, envOptions),
-  }))
+  return Promise.all(
+    contents.map(async ({name, code}) => ({
+      name,
+      code: await babelTransform(code, envOptions),
+    }))
+  )
 }
 
 const resolveDir = (dir) =>
@@ -98,29 +100,39 @@ const transformFiles = async (options = {}) => {
     {name: 'index', code: await getIndex(namesToExport)}
   )
 
-  if (options.src) {
-    log('writing src files...')
-    const srcPath = resolveDir(options.srcDir)
-    await writeFiles(contents, srcPath)
-  }
+  const operations = [
+    async () => {
+      if (options.src) {
+        log('writing src files...')
+        const srcPath = resolveDir(options.srcDir)
+        await writeFiles(contents, srcPath)
+      }
+    },
 
-  if (options.es) {
-    log('writing es files...')
-    const esPath = resolveDir(options.esDir)
-    const transformedContents = babelTransformContents(contents, {
-      modules: false,
-    })
-    await writeFiles(transformedContents, esPath)
-  }
+    async () => {
+      if (options.es) {
+        log('writing es files...')
+        const esPath = resolveDir(options.esDir)
+        const transformedContents = await babelTransformContents(contents, {
+          modules: false,
+        })
+        await writeFiles(transformedContents, esPath)
+      }
+    },
 
-  if (options.cjs) {
-    log('writing cjs files...')
-    const cjsPath = resolveDir(options.cjsDir)
-    const transformedContents = babelTransformContents(contents, {
-      modules: 'commonjs',
-    })
-    await writeFiles(transformedContents, cjsPath)
-  }
+    async () => {
+      if (options.cjs) {
+        log('writing cjs files...')
+        const cjsPath = resolveDir(options.cjsDir)
+        const transformedContents = await babelTransformContents(contents, {
+          modules: 'commonjs',
+        })
+        await writeFiles(transformedContents, cjsPath)
+      }
+    },
+  ]
+
+  await Promise.all(operations.map((f) => f()))
 }
 
 module.exports = transformFiles
