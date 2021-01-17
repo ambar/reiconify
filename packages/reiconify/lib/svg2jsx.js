@@ -1,8 +1,9 @@
 const SVGO = require('svgo')
 const hash = require('string-hash')
 const JSON5 = require('json5')
-const postcss = require('postcss')
-const postcssJs = require('postcss-js')
+const mapKeys = require('lodash/mapKeys')
+const camelCase = require('lodash/camelCase')
+const styleToObject = require('style-to-object')
 
 const toCamelCase = (s) =>
   s.replace(/([-_:])([a-z])/g, (s, a, b) => b.toUpperCase())
@@ -70,15 +71,14 @@ const defaults = {
   idPrefix: '',
 }
 
-const styleToObject = (styleText) => {
-  const styleObject = postcssJs.objectify(postcss.parse(styleText))
-  return JSON5.stringify(styleObject)
+const styleToJSXStyle = (style) => {
+  return JSON5.stringify(mapKeys(styleToObject(style), (v, k) => camelCase(k)))
 }
 
 const replaceInlineStyles = (jsx) =>
   jsx.replace(
     /style="([^"]+)"/g,
-    (match, str) => `style={${styleToObject(str)}}`
+    (match, str) => `style={${styleToJSXStyle(str)}}`
   )
 
 const createSvg2jsx = (options) => {
