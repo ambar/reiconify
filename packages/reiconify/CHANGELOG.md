@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.7.0](https://github.com/ambar/reiconify/compare/v1.6.0...v1.7.0) (2021-01-17)
+
+
+### Features
+
+* replace postcss-js with style-to-object ([d7540bc](https://github.com/ambar/reiconify/commit/d7540bc))
+* use babel `transformAsync` ([f7b5028](https://github.com/ambar/reiconify/commit/f7b5028))
+
+
+
+
+
 # [1.6.0](https://github.com/ambar/reiconify/compare/v1.5.0...v1.6.0) (2021-01-12)
 
 
