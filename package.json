@@ -8,12 +8,8 @@
     "test": "lerna run test"
   },
   "devDependencies": {
-    "@babel/cli": "^7.1.0",
-    "@babel/core": "^7.1.0",
-    "@babel/preset-env": "^7.1.0",
-    "@babel/preset-react": "^7.0.0",
-    "babel-core": "^7.0.0-bridge.0",
-    "jest": "^24.5.0",
+    "es-jest": "^0.0.1",
+    "jest": "^26.6.3",
     "lerna": "^3.4.3",
     "react": "^16.0.1",
     "react-test-renderer": "^16.8.4",

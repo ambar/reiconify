@@ -7,7 +7,7 @@ const log = require('fancy-log')
 const prettier = require('./prettier')
 const resolveConfig = require('./resolveConfig')
 const transform = require('./transform')
-const babelTransform = require('./babelTransform')
+const esTransform = require('./esTransform')
 
 const getIndex = async (names) => {
   names = names.slice().sort()
@@ -30,11 +30,11 @@ const writeFiles = async (contents, path) => {
   )
 }
 
-const babelTransformContents = (contents, envOptions) => {
+const esTransformContents = (contents, options) => {
   return Promise.all(
     contents.map(async ({name, code}) => ({
       name,
-      code: await babelTransform(code, envOptions),
+      code: await esTransform(code, options),
     }))
   )
 }
@@ -111,10 +111,10 @@ const transformFiles = async (options = {}) => {
 
     async () => {
       if (options.es) {
-        log('writing es files...')
+        log('writing esm files...')
         const esPath = resolveDir(options.esDir)
-        const transformedContents = await babelTransformContents(contents, {
-          modules: false,
+        const transformedContents = await esTransformContents(contents, {
+          format: 'esm',
         })
         await writeFiles(transformedContents, esPath)
       }
@@ -124,8 +124,8 @@ const transformFiles = async (options = {}) => {
       if (options.cjs) {
         log('writing cjs files...')
         const cjsPath = resolveDir(options.cjsDir)
-        const transformedContents = await babelTransformContents(contents, {
-          modules: 'commonjs',
+        const transformedContents = await esTransformContents(contents, {
+          format: 'cjs',
         })
         await writeFiles(transformedContents, cjsPath)
       }

@@ -1,4 +1,4 @@
-exports.babelTransform = require('./babelTransform')
+exports.esTransform = require('./esTransform')
 exports.transform = require('./transform')
 exports.transformFiles = require('./transformFiles')
 exports.defaultConfig = require('./defaultConfig')
