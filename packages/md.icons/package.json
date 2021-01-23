@@ -1,7 +1,8 @@
 {
   "name": "md.icons",
   "version": "1.7.0",
-  "description": "Material icons for React",
+  "description": "Material design icons for React",
+  "homepage": "https://ambar.li/reiconify/md.icons",
   "repository": "ambar/reiconify",
   "main": "cjs/index.js",
   "module": "es/index.js",

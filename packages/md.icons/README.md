@@ -1,6 +1,8 @@
 # md.icons
 
-Material icons for React.
+Material design icons for React.
+
+> [Demo](https://ambar.li/reiconify/md.icons/#/Browse)
 
 ## Install
 
@@ -11,19 +13,19 @@ npm install md.icons
 ## Usage
 
 ```js
-import * as Icons from 'md.icons'
+import * as mdi from 'md.icons'
 
-<Icons.Check />
-<Icons.ThumbUp size={20} fill="gray" />
+<mdi.Check />
+<mdi.ThumbUp size={20} fill="gray" />
 ```
 
 ## Props
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `size` | `number, string` | `void` | Set `width` and `height` prop |
-| `center` | `boolean` | `false` | Align icon to text |
-| `text` | `boolean` | `false` | Shortcut for `size="1.2em"` |
+| Prop     | Type             | Default | Description                   |
+| -------- | ---------------- | ------- | ----------------------------- |
+| `size`   | `number, string` | `void`  | Set `width` and `height` prop |
+| `center` | `boolean`        | `false` | Align icon to text            |
+| `text`   | `boolean`        | `false` | Shortcut for `size="1.2em"`   |
 
 ## Development
 
