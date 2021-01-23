@@ -21,6 +21,9 @@
     "test": "jest"
   },
   "license": "MIT",
+  "jest": {
+    "preset": "es-jest"
+  },
   "devDependencies": {
     "@ambarli/mdi.svg": "^1.0.2",
     "gh-pages": "^1.0.0",
