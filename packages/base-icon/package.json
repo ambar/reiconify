@@ -9,9 +9,16 @@
   "files": [
     "lib"
   ],
+  "jest": {
+    "preset": "es-jest"
+  },
   "scripts": {
     "prepare": "npm test && npm run build",
-    "build": "rm -rf lib && NODE_ENV=production babel src --out-dir lib",
+    "prebuild": "rm -rf lib",
+    "build": "esbuild src/BaseIcon.jsx --outfile=lib/BaseIcon.js",
     "test": "jest"
+  },
+  "devDependencies": {
+    "esbuild": "^0.8.34"
   }
 }
