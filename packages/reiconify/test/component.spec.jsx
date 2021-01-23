@@ -8,24 +8,21 @@ const transformFiles = require('../lib/transformFiles')
 describe('component', () => {
   const cwd = process.cwd()
   const fixtureDir = path.resolve(path.resolve(__dirname, 'fixtures/component'))
-  const srcDir = path.resolve(fixtureDir, 'src')
+  const esDir = path.resolve(fixtureDir, 'src')
   let Icons
 
   beforeAll(async () => {
-    // process.chdir(fixtureDir)
     await transformFiles({
       cwd: fixtureDir,
       inputs: 'icons/*.svg',
-      src: true,
-      srcDir,
+      es: true,
+      esDir,
     })
-    // NOTE: fixes jest Error: "Object.<anonymous>": ...SyntaxError: Unexpected token export
-    // process.chdir(cwd)
-    Icons = require(srcDir)
+    Icons = require(esDir)
   })
 
   afterAll(async () => {
-    await promisify(rimraf)(srcDir)
+    await promisify(rimraf)(esDir)
   })
 
   it('renders `size` prop', () => {

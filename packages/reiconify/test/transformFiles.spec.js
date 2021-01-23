@@ -64,20 +64,20 @@ describe('transform', () => {
     const groups = await Promise.all([srcDir, esDir, cjsDir].map(readDir))
     expect(groups).toMatchSnapshot()
 
-    const Icons = require(path.resolve(srcDir))
-    const EsIcons = require(path.resolve(esDir))
-    const CjsIcons = require(path.resolve(cjsDir))
-    Object.keys(Icons).forEach((name) => {
-      const tree = renderer.create(React.createElement(Icons[name])).toJSON()
-      const esTree = renderer
-        .create(React.createElement(EsIcons[name]))
-        .toJSON()
-      const cjsTree = renderer
-        .create(React.createElement(CjsIcons[name]))
-        .toJSON()
+    const [first, ...rest] = [
+      // requires jsx loader
+      // require(path.resolve(srcDir))
+      require(path.resolve(esDir)),
+      require(path.resolve(cjsDir)),
+    ]
+    for (const [name, Icon] of Object.entries(first)) {
+      const tree = renderer.create(React.createElement(Icon)).toJSON()
       expect(tree).toMatchSnapshot()
-      expect(tree).toEqual(esTree)
-      expect(tree).toEqual(cjsTree)
-    })
+      rest.forEach((icons) => {
+        expect(
+          renderer.create(React.createElement(icons[name])).toJSON()
+        ).toEqual(tree)
+      })
+    }
   })
 })
