@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0](https://github.com/ambar/reiconify/compare/v1.7.0...v2.0.0) (2021-01-23)
+
+
+### Features
+
+* **base-icon:** support forwardRef ([7fab6de](https://github.com/ambar/reiconify/commit/7fab6de))
+* use esbuild instead of babel ([eb9edea](https://github.com/ambar/reiconify/commit/eb9edea))
+
+
+### BREAKING CHANGES
+
+* **base-icon:** migrate to esbuild
+* migrate to esbuild
+
+
+
+
+
 # [1.7.0](https://github.com/ambar/reiconify/compare/v1.6.0...v1.7.0) (2021-01-17)
 
 
