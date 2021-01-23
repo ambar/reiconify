@@ -29,15 +29,6 @@ import * as mdi from 'md.icons'
 
 ## Development
 
-Pull latest icons, if needed:
-
-```
-npm install material-design-icons --save-dev
-npm run build
-```
-
-Preview:
-
 ```
 npm start
 ```

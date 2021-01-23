@@ -13,20 +13,18 @@
   ],
   "scripts": {
     "start": "REICONIFY_SHOW_ALIGN=true reiconify --serve",
-    "copy": "mkdir -p icons && rm -rf icons/** && node ./scripts/copyIcons",
     "clean": "rm -rf src/** es/** cjs/**",
-    "build:static": "npm run build:src && rm -rf dist && REICONIFY_SHOW_ALIGN=true reiconify --static",
-    "build:src": "rm -rf src/** && reiconify --src 'icons/*.svg'",
-    "build": "npm run clean && npm run copy && reiconify --src --es --cjs 'icons/*.svg'",
+    "build:static": "npm run build && rm -rf dist && REICONIFY_SHOW_ALIGN=true reiconify --static",
+    "build": "npm run clean && reiconify --src --es --cjs '../../node_modules/@ambarli/mdi.svg/icons/*.svg'",
     "prepare": "npm run build && npm test",
     "ghpages": "PUBLIC_PATH=/reiconify/md.icons/ npm run build:static && gh-pages -o github -d dist -e md.icons",
     "test": "jest"
   },
   "license": "MIT",
   "devDependencies": {
+    "@ambarli/mdi.svg": "^1.0.2",
     "gh-pages": "^1.0.0",
     "globby": "^6.1.0",
-    "material-design-icons": "^3.0.1",
     "reiconify-cli": "^1.7.0"
   }
 }

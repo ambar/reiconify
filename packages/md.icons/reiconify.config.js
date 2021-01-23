@@ -1,3 +1,9 @@
+const pascalCase = require('pascal-case')
+
+/* 3d_rotation -> Md3dRotation */
+const filenameTemplate = (name) =>
+  pascalCase(/^\d+/.test(name) ? 'Md' + name : name).replace(/_/g, '')
+
 module.exports = {
   svgoPlugins: [
     {
@@ -16,4 +22,5 @@ module.exports = {
     width: 24,
     height: 24,
   },
+  filenameTemplate,
 }

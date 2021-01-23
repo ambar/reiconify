@@ -2,6 +2,11 @@
 # yarn lockfile v1
 
 
+"@ambarli/mdi.svg@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@ambarli/mdi.svg/-/mdi.svg-1.0.2.tgz#59e4229f7c75f42f66636fe9efc7a9d53df168a2"
+  integrity sha512-RQ0pBI4DZgxCvpI7LOt39KQts8OmMIebR/trcsp0/uDdQ6o1zq7d0eC6+AvoLZ02H+1IfVmO5l0D2iWEEZHXwA==
+
 "@babel/cli@^7.1.0":
   version "7.1.0"
   resolved "https://registry.yarnpkg.com/@babel/cli/-/cli-7.1.0.tgz#a9429fd63911711b0fa93ae50d73beee6c42aef8"
@@ -8963,11 +8968,6 @@ markdown-it@^8.3.1:
     linkify-it "^2.0.0"
     mdurl "^1.0.1"
     uc.micro "^1.0.5"
-
-material-design-icons@^3.0.1:
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/material-design-icons/-/material-design-icons-3.0.1.tgz#9a71c48747218ebca51e51a66da682038cdcb7bf"
-  integrity sha1-mnHEh0chjrylHlGmbaaCA4zct78=
 
 math-random@^1.0.1:
   version "1.0.4"
