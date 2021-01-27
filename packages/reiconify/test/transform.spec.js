@@ -5,12 +5,13 @@ const sampleSvg =
 
 describe('component', () => {
   it('transforms svg', async () => {
-    expect(await transform(sampleSvg)).toMatchSnapshot()
+    expect(await transform(sampleSvg, {usePrettier: true})).toMatchSnapshot()
   })
 
   it('transforms svg with options', async () => {
     expect(
       await transform(sampleSvg, {
+        usePrettier: true,
         name: 'Component',
         baseName: 'base-icon',
         defaultProps: {
@@ -24,6 +25,7 @@ describe('component', () => {
   it('transforms svg with baseClassName', async () => {
     expect(
       await transform(sampleSvg, {
+        usePrettier: true,
         name: 'Heart',
         baseClassName: 'Mdi',
       })

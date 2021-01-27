@@ -86,6 +86,8 @@ const transformFiles = async (options = {}) => {
         defaultProps,
         svgoPlugins,
         camelCaseProps,
+        // format source only
+        usePrettier: true,
       })
       return {name, code}
     })
