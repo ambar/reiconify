@@ -14,6 +14,35 @@ export default Icon
 "
 `;
 
+exports[`component transforms svg to ESM format 1`] = `
+"var __assign = Object.assign
+import React from 'react'
+import SVG from './Icon'
+const Heart = (props) =>
+  /* @__PURE__ */ React.createElement(
+    SVG,
+    __assign(
+      __assign(
+        {
+          width: '24',
+          height: '24',
+        },
+        props
+      ),
+      {
+        className:
+          'Mdi Mdi--Heart' + (props.className ? \` \${props.className}\` : ''),
+      }
+    ),
+    /* @__PURE__ */ React.createElement('path', {
+      d: 'M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z',
+    })
+  )
+var stdin_default = Heart
+export {stdin_default as default}
+"
+`;
+
 exports[`component transforms svg with baseClassName 1`] = `
 "import React from 'react'
 import SVG from './Icon'

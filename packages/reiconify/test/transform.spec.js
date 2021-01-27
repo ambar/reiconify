@@ -31,4 +31,15 @@ describe('component', () => {
       })
     ).toMatchSnapshot()
   })
+
+  it('transforms svg to ESM format', async () => {
+    expect(
+      await transform(sampleSvg, {
+        usePrettier: true,
+        name: 'Heart',
+        baseClassName: 'Mdi',
+        format: 'esm',
+      })
+    ).toMatchSnapshot()
+  })
 })

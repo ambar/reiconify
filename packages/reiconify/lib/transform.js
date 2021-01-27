@@ -1,5 +1,6 @@
 const defaultConfig = require('./defaultConfig')
 const svg2jsx = require('./svg2jsx')
+const esTransform = require('./esTransform')
 
 const transform = async (svg, options) => {
   const {
@@ -11,15 +12,19 @@ const transform = async (svg, options) => {
     svgoPlugins,
     camelCaseProps,
     usePrettier = false,
+    format = null,
   } = Object.assign({}, defaultConfig, options)
   const jsxString = await svg2jsx(svg, {svgoPlugins, camelCaseProps})
-  const code = template({
+  let code = template({
     name,
     baseName,
     baseClassName,
     defaultProps,
     jsxString,
   })
+  if (format) {
+    code = await esTransform(code, {format})
+  }
   return usePrettier ? require('./prettier')(code) : code
 }
 

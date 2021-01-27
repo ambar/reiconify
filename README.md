@@ -103,5 +103,5 @@ import * as Icons from 'my-icons'
 ```js
 import {transform} from 'reiconify'
 
-const code = transform(svg)
+const code = transform(svg, {format: 'esm', baseName: 'base-icon'})
 ```
