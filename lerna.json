@@ -2,12 +2,10 @@
   "version": "2.2.0",
   "npmClient": "yarn",
   "useWorkspaces": true,
-  "packages": [
-    "packages/*"
-  ],
+  "packages": ["packages/*"],
   "command": {
     "publish": {
-      "allowBranch": "master",
+      "allowBranch": "main",
       "conventionalCommits": true,
       "message": "chore(release): publish %s"
     }
