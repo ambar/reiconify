@@ -58,6 +58,7 @@ const camelCaseNamespacedProps = {
 // https://github.com/svg/svgo/issues/646
 // https://github.com/BohemianCoding/svgo-compressor/blob/develop/src/defaultConfig.js
 const getDefaultSvgoPlugins = ({idPrefix}) => [
+  {removeViewBox: false},
   {removeDesc: {removeAny: true}},
   {removeXMLNS: true},
   {sortAttrs: true},

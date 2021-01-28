@@ -55,6 +55,7 @@ exports[`transform transforms icons to src/es/cjs 2`] = `
 <svg
   fill="currentColor"
   height="24"
+  viewBox="0 0 24 24"
   width="24"
 >
   <path
@@ -67,6 +68,7 @@ exports[`transform transforms icons to src/es/cjs 3`] = `
 <svg
   fill="currentColor"
   height="20"
+  viewBox="0 0 19 20"
   width="19"
 >
   <defs>
@@ -128,6 +130,7 @@ exports[`transform transforms icons to src/es/cjs 4`] = `
 <svg
   fill="currentColor"
   height="24"
+  viewBox="0 0 24 24"
   width="24"
 >
   <path
