@@ -17,7 +17,9 @@ const template = (data) => {
     import React from 'react'
     import SVG from '${data.baseName}'
 
-    const ${data.name} = props => ${jsxWithProps}
+    function ${data.name}(props) {
+      return ${jsxWithProps}
+    }
 
     ${
       data.defaultProps && Object.keys(data.defaultProps).length
