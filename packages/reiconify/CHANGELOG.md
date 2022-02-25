@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.3.0](https://github.com/ambar/reiconify/compare/v2.2.2...v2.3.0) (2022-02-25)
+
+
+### Features
+
+* add template for index file ([ed079a0](https://github.com/ambar/reiconify/commit/ed079a0))
+
+
+
+
+
 ## [2.2.2](https://github.com/ambar/reiconify/compare/v2.2.1...v2.2.2) (2021-01-28)
 
 

@@ -1,6 +1,6 @@
 {
   "name": "md.icons",
-  "version": "2.2.2",
+  "version": "2.3.0",
   "description": "Material design icons for React",
   "homepage": "https://ambar.li/reiconify/md.icons",
   "repository": "ambar/reiconify",
@@ -28,6 +28,6 @@
     "@ambarli/mdi.svg": "^1.0.2",
     "gh-pages": "^1.0.0",
     "globby": "^6.1.0",
-    "reiconify-cli": "^2.2.2"
+    "reiconify-cli": "^2.3.0"
   }
 }
