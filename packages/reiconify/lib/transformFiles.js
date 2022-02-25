@@ -9,13 +9,9 @@ const resolveConfig = require('./resolveConfig')
 const transform = require('./transform')
 const esTransform = require('./esTransform')
 
-const getIndex = async (names) => {
-  names = names.slice().sort()
-  const lines = names.map(
-    (name) => `export {default as ${name}} from './${name}'`
-  )
+const getIndex = (names, {indexTemplate}) => {
   log(`exporting ${names.length} icons: ${names.join(', ')}`)
-  return prettier(lines.join('\n'))
+  return prettier(indexTemplate(names))
 }
 
 const writeFiles = async (contents, path) => {
@@ -68,6 +64,7 @@ const transformFiles = async (options = {}) => {
     defaultProps,
     baseDefaultProps,
     filenameTemplate,
+    indexTemplate,
     svgoPlugins,
     camelCaseProps,
   } = await resolveConfig(cwd)
@@ -99,7 +96,7 @@ const transformFiles = async (options = {}) => {
       name: 'Icon',
       code: prettier(baseTemplate({baseDefaultProps})),
     },
-    {name: 'index', code: await getIndex(namesToExport)}
+    {name: 'index', code: await getIndex(namesToExport, {indexTemplate})}
   )
 
   const operations = [

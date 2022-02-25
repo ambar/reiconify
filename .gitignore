@@ -6,3 +6,6 @@ dist
 # Files
 *.log
 .DS_Store
+
+# webstorm
+.idea
