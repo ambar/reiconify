@@ -11,6 +11,7 @@ Object {
   "camelCaseProps": true,
   "defaultProps": Object {},
   "filenameTemplate": [Function],
+  "indexTemplate": [Function],
   "name": "Icon",
   "svgoPlugins": Array [],
   "template": [Function],
@@ -28,6 +29,7 @@ Object {
   "camelCaseProps": true,
   "defaultProps": Object {},
   "filenameTemplate": [Function],
+  "indexTemplate": [Function],
   "name": "Icon",
   "svgoPlugins": Array [
     Object {

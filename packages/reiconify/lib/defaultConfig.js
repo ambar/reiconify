@@ -86,6 +86,14 @@ const baseDefaultProps = {
 
 const filenameTemplate = (name) => pascalCase(name).replace(/_/g, '')
 
+const indexTemplate = (names) => {
+  names = names.slice().sort()
+  const lines = names.map(
+    (name) => `export {default as ${name}} from './${name}'`
+  )
+  return lines.join('\n')
+}
+
 const defaults = {
   name: 'Icon',
   baseName: './Icon',
@@ -95,6 +103,7 @@ const defaults = {
   defaultProps: {},
   baseDefaultProps,
   filenameTemplate,
+  indexTemplate,
   svgoPlugins: [],
   camelCaseProps: true,
 }
