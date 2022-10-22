@@ -1,9 +1,15 @@
 {
-  "version": "2.3.0",
+  "version": "independent",
   "npmClient": "yarn",
   "useWorkspaces": true,
-  "packages": [
-    "packages/*"
+  "packages": ["packages/*"],
+  "ignoreChanges": [
+    "**/docs/**",
+    "**/fixtures/**",
+    "**/__tests__/**",
+    "**/test/**",
+    "**/*.mdx",
+    "**/*.md"
   ],
   "command": {
     "publish": {
