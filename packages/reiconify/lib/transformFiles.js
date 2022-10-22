@@ -52,13 +52,14 @@ const transformFiles = async (options = {}) => {
 
   const cwd = options.cwd || process.cwd()
   const files = await globby(options.inputs, {cwd})
+  console.info(cwd)
+
   if (!files.length) {
     throw new Error('Cannot find source files')
   }
 
   const {
     baseName,
-    baseClassName,
     template,
     baseTemplate,
     defaultProps,
@@ -78,7 +79,6 @@ const transformFiles = async (options = {}) => {
       const code = await transform(svg, {
         name,
         baseName,
-        baseClassName,
         template,
         defaultProps,
         svgoPlugins,

@@ -1,16 +1,9 @@
 const pascalCase = require('pascal-case')
 
 const template = (data) => {
+  // should import helper: https://github.com/evanw/esbuild/issues/1230
   const jsxWithProps = data.jsxString
-    .replace(
-      /<svg([\s\S]*?)>/,
-      (match, group) =>
-        `<SVG${group} {...props} ${
-          data.baseClassName
-            ? `className={'${data.baseClassName} ${data.baseClassName}--${data.name}' + (props.className ? \` \${props.className}\` : '')}`
-            : ``
-        }>`
-    )
+    .replace(/<svg([\s\S]*?)>/, (match, group) => `<SVG${group} {...props} >`)
     .replace(/<\/svg>$/, '</SVG>')
 
   return `
@@ -97,7 +90,6 @@ const indexTemplate = (names) => {
 const defaults = {
   name: 'Icon',
   baseName: './Icon',
-  baseClassName: '',
   template,
   baseTemplate,
   defaultProps: {},

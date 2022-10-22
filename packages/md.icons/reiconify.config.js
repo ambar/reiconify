@@ -16,7 +16,6 @@ module.exports = {
       },
     },
   ],
-  baseClassName: 'Mdi',
   baseDefaultProps: {
     viewBox: '0 0 24 24',
     width: 24,

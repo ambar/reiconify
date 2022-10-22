@@ -2,7 +2,6 @@
 
 exports[`resolveConfig gets default config 1`] = `
 {
-  "baseClassName": "",
   "baseDefaultProps": {
     "fill": "currentColor",
   },
@@ -20,7 +19,6 @@ exports[`resolveConfig gets default config 1`] = `
 
 exports[`resolveConfig overwrites default config 1`] = `
 {
-  "baseClassName": "MyIcon",
   "baseDefaultProps": {
     "fill": "currentColor",
   },

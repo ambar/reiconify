@@ -27,7 +27,6 @@ describe('component', () => {
       await transform(sampleSvg, {
         usePrettier: true,
         name: 'Heart',
-        baseClassName: 'Mdi',
       })
     ).toMatchSnapshot()
   })
@@ -37,7 +36,6 @@ describe('component', () => {
       await transform(sampleSvg, {
         usePrettier: true,
         name: 'Heart',
-        baseClassName: 'Mdi',
         format: 'esm',
       })
     ).toMatchSnapshot()

@@ -6,7 +6,6 @@ const transform = async (svg, options) => {
   const {
     name,
     baseName,
-    baseClassName,
     template,
     defaultProps,
     svgoPlugins,
@@ -18,7 +17,6 @@ const transform = async (svg, options) => {
   let code = template({
     name,
     baseName,
-    baseClassName,
     defaultProps,
     jsxString,
   })
