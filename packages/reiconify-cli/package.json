@@ -1,6 +1,6 @@
 {
   "name": "reiconify-cli",
-  "version": "2.3.0",
+  "version": "2.4.0",
   "description": "Convert SVG icons to React components",
   "repository": "ambar/reiconify",
   "bin": {
@@ -32,7 +32,7 @@
     "playland": "^4.1.1",
     "react": ">=16.14.0",
     "react-dom": ">=16.14.0",
-    "reiconify": "^2.3.0",
+    "reiconify": "^2.4.0",
     "yargs": "^17.6.0"
   }
 }
