@@ -14,8 +14,7 @@
   "command": {
     "publish": {
       "allowBranch": "main",
-      "conventionalCommits": true,
-      "message": "chore(release): publish %s"
+      "conventionalCommits": true
     }
   }
 }
