@@ -11,12 +11,12 @@
     "cjs"
   ],
   "scripts": {
-    "start": "reiconify --serve",
+    "start": "reiconify-serve",
+    "build-docs": "npm run build && rm -rf .reiconify/build && reiconify-serve --build",
     "clean": "rm -rf src/** es/** cjs/**",
-    "build:static": "npm run build && rm -rf dist && reiconify --static",
     "build": "npm run clean && reiconify --src --es --cjs '../../node_modules/@ambarli/mdi.svg/icons/*.svg'",
     "prepare": "npm run build && npm test",
-    "ghpages": "PUBLIC_PATH=/reiconify/md.icons/ npm run build:static && gh-pages -o github -d .reiconify/build -e md.icons",
+    "ghpages": "PUBLIC_PATH=/reiconify/md.icons/ npm run build-docs && gh-pages -o github -d .reiconify/build -e md.icons",
     "test": "jest"
   },
   "license": "MIT",
@@ -31,6 +31,7 @@
     "gh-pages": "^1.0.0",
     "globby": "^6.1.0",
     "pascal-case": "^3.1.2",
-    "reiconify-cli": "^2.4.0"
+    "reiconify": "^2.4.0",
+    "reiconify-serve": "^1.0.0"
   }
 }
