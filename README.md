@@ -13,14 +13,16 @@ Convert SVG icons to React components.
 
 ## Install
 
-```
-npm install reiconify-cli --save-dev
+```bash
+npm install reiconify --save-dev
+# optional serving icons
+npm install reiconify-serve --save-dev
 ```
 
 ## CLI Options
 
-```
-reiconify [options] [files]
+```bash
+reiconify -h
 
 Options:
   --version  Show version number                                       [boolean]
@@ -30,9 +32,15 @@ Options:
   --es-dir   ES output directory                        [string] [default: "es"]
   --cjs      Build CommonJS files                     [boolean] [default: false]
   --cjs-dir  CommonJS output directory                 [string] [default: "cjs"]
-  --serve    Serve source icons                       [boolean] [default: false]
-  --static   Build static site                        [boolean] [default: false]
   -h         Show help                                                 [boolean]
+
+reiconify-serve -h
+
+Options:
+      --version  Show version number                                   [boolean]
+      --src-dir  JSX output directory                  [string] [default: "src"]
+      --build    Build static site                    [boolean] [default: false]
+  -h             Show help                                             [boolean]
 ```
 
 ## Configuration File

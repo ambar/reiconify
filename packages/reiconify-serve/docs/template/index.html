@@ -12,10 +12,10 @@
     <script type="module">
       import React from 'react'
       import ReactDOM from 'react-dom'
-      import App from 'reiconify-cli/docs/App'
+      import App from 'reiconify-serve/docs/App'
 
       const entries = import.meta.glob(
-        ['./*.md', 'reiconify-cli/docs/Browse.mdx'],
+        ['./*.md', 'reiconify-serve/docs/Browse.mdx'],
         {eager: true}
       )
       ReactDOM.render(<App entries={entries} />, document.getElementById('root'))

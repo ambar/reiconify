@@ -1,5 +1,5 @@
 import React from 'react'
-import * as Icons from 'reiconify:icons'
+import * as Icons from 'reiconify-serve:icons'
 import LineBox from './components/LineBox'
 // import DebugGrid from './components/DebugGrid'
 // import styles from './Align.module.css'

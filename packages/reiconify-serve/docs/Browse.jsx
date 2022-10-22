@@ -9,7 +9,7 @@ import {
 } from '@adobe/react-spectrum'
 import cx from 'classnames'
 import Fuse from 'fuse.js'
-import * as Icons from 'reiconify:icons'
+import * as Icons from 'reiconify-serve:icons'
 import Batch from './components/Batch'
 import LineBox from './components/LineBox'
 import styles from './Browse.module.css'

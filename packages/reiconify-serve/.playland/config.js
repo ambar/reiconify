@@ -8,9 +8,9 @@ module.exports = {
     config.base = process.env.PUBLIC_PATH || '/'
     config.resolve.alias = {
       ...config.resolve.alias,
-      'reiconify:cwd': resolveCwd(),
-      'reiconify:cli': resolveCli(),
-      'reiconify:icons': process.env.SRC_DIR,
+      'reiconify-serve:cwd': resolveCwd(),
+      'reiconify-serve:cli': resolveCli(),
+      'reiconify-serve:icons': process.env.SRC_DIR,
     }
   },
 }
