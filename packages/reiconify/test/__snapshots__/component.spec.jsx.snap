@@ -3,7 +3,7 @@
 exports[`component renders \`center\` and \`style\` prop 1`] = `
 <span
   style={
-    Object {
+    {
       "alignItems": "center",
       "display": "inline-flex",
     }
@@ -15,7 +15,7 @@ exports[`component renders \`center\` and \`style\` prop 1`] = `
     fill="currentColor"
     height="24"
     style={
-      Object {
+      {
         "color": "red",
       }
     }
@@ -32,7 +32,7 @@ exports[`component renders \`center\` and \`style\` prop 1`] = `
 exports[`component renders \`center\` prop 1`] = `
 <span
   style={
-    Object {
+    {
       "alignItems": "center",
       "display": "inline-flex",
     }
@@ -84,7 +84,7 @@ exports[`component renders \`size\` prop 1`] = `
 exports[`component renders \`text\` and \`center\` prop 1`] = `
 <span
   style={
-    Object {
+    {
       "alignItems": "center",
       "display": "inline-flex",
     }

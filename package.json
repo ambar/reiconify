@@ -4,15 +4,14 @@
     "packages/*"
   ],
   "scripts": {
-    "build": "lerna run build",
-    "test": "lerna run test"
+    "build": "yarn workspaces run build",
+    "test": "yarn workspaces run test"
   },
   "devDependencies": {
-    "es-jest": "^0.0.1",
-    "jest": "^26.6.3",
-    "lerna": "^3.4.3",
-    "react": "^16.0.1",
-    "react-test-renderer": "^16.8.4",
+    "es-jest": "^2.0.0",
+    "jest": "^29.2.1",
+    "react": ">=16.14.0",
+    "react-test-renderer": ">=16.14.0",
     "rimraf": "^2.6.3"
   }
 }

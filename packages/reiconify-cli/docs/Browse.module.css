@@ -1,0 +1,65 @@
+.root {
+  margin-top: 2em;
+}
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.gridIsNameShown {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 230px));
+  grid-gap: 0.1rem 0;
+}
+
+.cell {
+  display: flex;
+  align-items: center;
+  padding: 0.5em;
+  cursor: pointer;
+  line-height: normal;
+}
+
+/*
+- 用 Popover 有更好的样式，但不支持 hover 显示 tooltip
+- 用 Tooltip 有更好的行为，但默认不支持背景、宽度
+- 用 useTooltip 又太麻烦，需要完全定义样式，没有剪头
+*/
+.tooltip > span {
+  max-width: unset;
+}
+
+.bar {
+  margin-top: 0.5em;
+  display: flex;
+}
+
+/* .toggle {
+  display: flex;
+  align-items: center;
+  margin: 0.5em 1em 0 0;
+
+  & label {
+    margin-right: 0.5em;
+  }
+} */
+
+.name {
+  display: none;
+  margin-left: 6px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.searchBox {
+  margin: 1em 0;
+  padding: 0 0.5em;
+}
+
+.searchInput {
+  width: 100%;
+  line-height: 2;
+  padding: 0 0.5em;
+}

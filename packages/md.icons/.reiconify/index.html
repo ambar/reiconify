@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="/favicon.ico">
+    <title>md.icons</title>
+  </head>
+
+  <body>
+    <div id="root"></div>
+    <script type="module">
+      import React from 'react'
+      import ReactDOM from 'react-dom'
+      import App from 'reiconify-cli/docs/App'
+
+      const entries = import.meta.glob(
+        ['../*.md', 'reiconify:cli/docs/{Align,Browse}.mdx'],
+        {eager: true}
+      )
+      ReactDOM.render(React.createElement(App, {entries}), document.getElementById('root'))
+    </script>
+  </body>
+</html>

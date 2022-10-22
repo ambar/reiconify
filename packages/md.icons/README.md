@@ -17,15 +17,19 @@ import * as mdi from 'md.icons'
 
 <mdi.Check />
 <mdi.ThumbUp size={20} fill="gray" />
+// magically aligned to text
+<button>
+  <mdi.ThumbUp center /> Like
+</button>
 ```
 
 ## Props
 
-| Prop     | Type             | Default | Description                   |
-| -------- | ---------------- | ------- | ----------------------------- |
-| `size`   | `number, string` | `void`  | Set `width` and `height` prop |
-| `center` | `boolean`        | `false` | Align icon to text            |
-| `text`   | `boolean`        | `false` | Shortcut for `size="1.2em"`   |
+| Prop     | Type               | Default | Description                                                                                                      |
+| -------- | ------------------ | ------- | ---------------------------------------------------------------------------------------------------------------- |
+| `size`   | `number \| string` | `void`  | Set `width` and `height` prop                                                                                    |
+| `center` | `boolean`          | `false` | Align icon to text, magically, see also [react-inline-center](https://www.npmjs.com/package/react-inline-center) |
+| `text`   | `boolean`          | `false` | Shortcut for `size="1.2em"`                                                                                      |
 
 ## Development
 

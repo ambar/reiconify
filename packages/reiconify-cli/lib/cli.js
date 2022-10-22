@@ -2,6 +2,10 @@ const path = require('path')
 const yargs = require('yargs')
 const {shell} = require('execa')
 const transformFiles = require('reiconify/lib/transformFiles')
+const {ensureTemplate} = require('./copy')
+
+const resolveCwd = path.resolve.bind(null, process.cwd())
+const resolveCli = path.resolve.bind(null, __dirname, '..')
 
 yargs
   .option('src', {
@@ -50,16 +54,19 @@ yargs
 const argv = yargs.argv
 
 const run = async () => {
-  const root = path.resolve(__dirname, '..')
+  const root = resolveCwd('.reiconify')
   const shellOpts = {
-    cwd: root,
+    // use CLI's .playland/config
+    cwd: resolveCli(),
     stdio: 'inherit',
     env: {CWD: process.cwd(), SRC_DIR: path.resolve(argv.srcDir)},
   }
   if (argv.serve) {
-    await shell(`playland`, shellOpts)
+    await ensureTemplate(root)
+    await shell(`playland start ${root}`, shellOpts)
   } else if (argv.static) {
-    await shell(`playland --build`, shellOpts)
+    await ensureTemplate(root)
+    await shell(`playland build ${root}`, shellOpts)
   } else if (argv.src || argv.es || argv.cjs) {
     await transformFiles({
       ...argv,

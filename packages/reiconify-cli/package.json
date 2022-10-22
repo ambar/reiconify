@@ -13,22 +13,26 @@
   },
   "files": [
     "bin",
+    ".playland",
+    "public",
+    "index.html",
     "docs",
     "lib"
   ],
   "scripts": {
     "prepare": "npm test",
+    "build": "echo passWithNoBuild",
     "test": "jest --passWithNoTests"
   },
   "dependencies": {
-    "@uifabric/icons": "^5.0.1",
+    "@adobe/react-spectrum": "^3.22.0",
     "classnames": "^2.2.5",
     "execa": "^1.0.0",
-    "office-ui-fabric-react": "^5.0.1",
-    "playland": "^2.1.0",
-    "react": "^16.0.0",
-    "react-dom": "^16.0.0",
+    "fuse.js": "^6.6.2",
+    "playland": "^4.1.1",
+    "react": ">=16.14.0",
+    "react-dom": ">=16.14.0",
     "reiconify": "^2.3.0",
-    "yargs": "^9.0.1"
+    "yargs": "^17.6.0"
   }
 }

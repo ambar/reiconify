@@ -1,22 +1,16 @@
 const path = require('path')
-const webpack = require('webpack')
 
+const resolveCli = path.resolve.bind(null, __dirname, '..')
 const resolveCwd = path.resolve.bind(null, process.env.CWD)
-const userPkg = require(resolveCwd('package.json'))
 
 module.exports = {
-  home: '🏠',
-  title: userPkg.name,
-  buildPath: resolveCwd('dist'),
-  webpack(config) {
-    config.plugins.push(
-      new webpack.EnvironmentPlugin({REICONIFY_SHOW_ALIGN: false})
-    )
+  vite(/** @type {import('vite').UserConfig} */ config) {
+    config.base = process.env.PUBLIC_PATH || '/'
     config.resolve.alias = {
-      '~cwd/README.md': resolveCwd('README.md'),
       ...config.resolve.alias,
-      '~icons': process.env.SRC_DIR,
+      'reiconify:cwd': resolveCwd(),
+      'reiconify:cli': resolveCli(),
+      'reiconify:icons': process.env.SRC_DIR,
     }
-    return config
   },
 }

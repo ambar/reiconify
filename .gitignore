@@ -2,6 +2,7 @@
 node_modules
 coverage
 dist
+build
 
 # Files
 *.log
@@ -9,3 +10,7 @@ dist
 
 # webstorm
 .idea
+
+# yalc
+.yalc
+yalc.lock

@@ -7,27 +7,30 @@
   "main": "cjs/index.js",
   "module": "es/index.js",
   "files": [
-    "src",
     "es",
     "cjs"
   ],
   "scripts": {
-    "start": "REICONIFY_SHOW_ALIGN=true reiconify --serve",
+    "start": "reiconify --serve",
     "clean": "rm -rf src/** es/** cjs/**",
-    "build:static": "npm run build && rm -rf dist && REICONIFY_SHOW_ALIGN=true reiconify --static",
+    "build:static": "npm run build && rm -rf dist && reiconify --static",
     "build": "npm run clean && reiconify --src --es --cjs '../../node_modules/@ambarli/mdi.svg/icons/*.svg'",
     "prepare": "npm run build && npm test",
-    "ghpages": "PUBLIC_PATH=/reiconify/md.icons/ npm run build:static && gh-pages -o github -d dist -e md.icons",
+    "ghpages": "PUBLIC_PATH=/reiconify/md.icons/ npm run build:static && gh-pages -o github -d .reiconify/build -e md.icons",
     "test": "jest"
   },
   "license": "MIT",
   "jest": {
     "preset": "es-jest"
   },
+  "peerDependencies": {
+    "react": ">=16.14.0"
+  },
   "devDependencies": {
     "@ambarli/mdi.svg": "^1.0.2",
     "gh-pages": "^1.0.0",
     "globby": "^6.1.0",
+    "pascal-case": "^3.1.2",
     "reiconify-cli": "^2.3.0"
   }
 }

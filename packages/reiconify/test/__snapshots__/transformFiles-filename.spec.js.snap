@@ -1,10 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`transform-filename transforms icons 1`] = `
-Array [
-  "Icon.js",
-  "MdCheck.js",
-  "MdThumbUp.js",
-  "index.js",
+[
+  "Icon.jsx",
+  "MdCheck.jsx",
+  "MdThumbUp.jsx",
+  "index.jsx",
 ]
 `;

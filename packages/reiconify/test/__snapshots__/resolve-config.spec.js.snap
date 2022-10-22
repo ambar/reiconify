@@ -1,39 +1,39 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`resolveConfig gets default config 1`] = `
-Object {
+{
   "baseClassName": "",
-  "baseDefaultProps": Object {
+  "baseDefaultProps": {
     "fill": "currentColor",
   },
   "baseName": "./Icon",
   "baseTemplate": [Function],
   "camelCaseProps": true,
-  "defaultProps": Object {},
+  "defaultProps": {},
   "filenameTemplate": [Function],
   "indexTemplate": [Function],
   "name": "Icon",
-  "svgoPlugins": Array [],
+  "svgoPlugins": [],
   "template": [Function],
 }
 `;
 
 exports[`resolveConfig overwrites default config 1`] = `
-Object {
+{
   "baseClassName": "MyIcon",
-  "baseDefaultProps": Object {
+  "baseDefaultProps": {
     "fill": "currentColor",
   },
   "baseName": "./Icon",
   "baseTemplate": [Function],
   "camelCaseProps": true,
-  "defaultProps": Object {},
+  "defaultProps": {},
   "filenameTemplate": [Function],
   "indexTemplate": [Function],
   "name": "Icon",
-  "svgoPlugins": Array [
-    Object {
-      "removeAttrs": Object {
+  "svgoPlugins": [
+    {
+      "removeAttrs": {
         "attrs": "fill",
       },
     },

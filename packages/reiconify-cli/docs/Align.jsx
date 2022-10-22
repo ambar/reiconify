@@ -1,43 +1,37 @@
 import React from 'react'
-import * as Icons from '~icons'
-import LineBox from './LineBox'
+import * as Icons from 'reiconify:icons'
+import LineBox from './components/LineBox'
 // import DebugGrid from './components/DebugGrid'
 // import styles from './Align.module.css'
 
 const size = '1.2em'
 const iconKeys = Object.keys(Icons)
   // filter CJS `__esModule: true`
-  .filter(k => typeof Icons[k] === 'function')
+  .filter((k) => typeof Icons[k] === 'function')
 const RandomIcon =
   Icons[iconKeys[Math.floor(Math.random() * iconKeys.length)]] || (() => '？')
 
-export default () => (
-  <div>
-    <h2>Demos</h2>
-
-    <h3>a: inline-flex wrapper and strut hack</h3>
-    <LineBox>
+export const CenterDemo = () => {
+  return (
+    <LineBox style={{margin: '.5em 0'}}>
       <RandomIcon size={size} center />
       东西南北 Stylex
     </LineBox>
+  )
+}
 
-    <h3>b: flex container</h3>
-    <LineBox>
-      <div
-        style={{
-          display: 'inline-flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          verticalAlign: 'top',
-        }}
-      >
-        <RandomIcon size={size} />
-        东西南北 Stylex
-      </div>
+export const FlexContainerDemo = () => {
+  return (
+    <LineBox style={{margin: '.5em 0'}}>
+      <RandomIcon size={size} center />
+      东西南北 Stylex
     </LineBox>
+  )
+}
 
-    <h3>c: vertical-align middle</h3>
-    <LineBox>
+export const VerticalAlignMiddleDemo = () => {
+  return (
+    <LineBox style={{margin: '.5em 0'}}>
       <RandomIcon
         size={size}
         align="middle"
@@ -45,18 +39,28 @@ export default () => (
       />
       <span style={{verticalAlign: 'middle'}}>东西南北 Stylex</span>
     </LineBox>
+  )
+}
 
-    <h3>d: top offset hack</h3>
-    <LineBox>
+/*
+// top = (xHeight/2 - capHeight/2) / unitsPerEm ≈ .5em/2 - .7em/2
+// query font metrics: https://opentype.js.org/font-inspector.html
+*/
+export const TopOffsetHackDemo = () => {
+  return (
+    <LineBox style={{margin: '.5em 0'}}>
       <RandomIcon
         size={size}
-        style={{verticalAlign: 'middle', position: 'relative', top: '-.1em'}}
+        align="middle"
+        style={{verticalAlign: 'middle'}}
       />
-      东西南北 Stylex
+      <span style={{verticalAlign: 'middle'}}>东西南北 Stylex</span>
     </LineBox>
+  )
+}
 
-    {/* <DebugGrid /> */}
-    {/* <h2>Default Size</h2>
+/*     <DebugGrid />
+    <h2>Default Size</h2>
     <div className={styles.grid}>
       {Object.entries(Icons).map(
         ([name, Icon]) =>
@@ -66,6 +70,5 @@ export default () => (
             </span>
           )
       )}
-    </div> */}
-  </div>
-)
+    </div>
+ */

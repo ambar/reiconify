@@ -14,14 +14,14 @@ const getIndex = (names, {indexTemplate}) => {
   return prettier(indexTemplate(names))
 }
 
-const writeFiles = async (contents, path) => {
+const writeFiles = async (contents, path, ext = 'js') => {
   if (!fs.existsSync(path)) {
     await promisify(mkdirp)(path)
   }
 
   return await Promise.all(
     contents.map(({name, code}) =>
-      promisify(fs.writeFile)(`${path}/${name}.js`, code)
+      promisify(fs.writeFile)(`${path}/${name}.${ext}`, code)
     )
   )
 }
@@ -104,7 +104,7 @@ const transformFiles = async (options = {}) => {
       if (options.src) {
         log('writing src files...')
         const srcPath = resolveDir(options.srcDir)
-        await writeFiles(contents, srcPath)
+        await writeFiles(contents, srcPath, 'jsx')
       }
     },
 

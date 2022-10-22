@@ -19,7 +19,10 @@
     "build": "esbuild src/BaseIcon.jsx --outfile=dist/index.cjs.js --format=cjs && esbuild src/BaseIcon.jsx --outfile=dist/index.esm.js --format=esm",
     "test": "jest"
   },
+  "peerDependencies": {
+    "react": ">=16.14.0"
+  },
   "devDependencies": {
-    "esbuild": "^0.8.34"
+    "esbuild": ">=0.8.34"
   }
 }

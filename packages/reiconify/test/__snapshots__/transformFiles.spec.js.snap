@@ -7,30 +7,30 @@ exports[`transform throws if no matched files 1`] = `[Error: Cannot find source 
 exports[`transform throws if no output dir 1`] = `[Error: Missing output directory]`;
 
 exports[`transform transforms icons to src only 1`] = `
-Array [
-  "Check.js",
-  "Gold.js",
-  "Icon.js",
-  "ThumbUp.js",
-  "index.js",
+[
+  "Check.jsx",
+  "Gold.jsx",
+  "Icon.jsx",
+  "ThumbUp.jsx",
+  "index.jsx",
 ]
 `;
 
 exports[`transform transforms icons to src/es/cjs 1`] = `
-Array [
-  Object {
+[
+  {
     "dir": "test/fixtures/transform/src",
-    "files": Array [
-      "Check.js",
-      "Gold.js",
-      "Icon.js",
-      "ThumbUp.js",
-      "index.js",
+    "files": [
+      "Check.jsx",
+      "Gold.jsx",
+      "Icon.jsx",
+      "ThumbUp.jsx",
+      "index.jsx",
     ],
   },
-  Object {
+  {
     "dir": "test/fixtures/transform/es",
-    "files": Array [
+    "files": [
       "Check.js",
       "Gold.js",
       "Icon.js",
@@ -38,9 +38,9 @@ Array [
       "index.js",
     ],
   },
-  Object {
+  {
     "dir": "test/fixtures/transform/cjs",
-    "files": Array [
+    "files": [
       "Check.js",
       "Gold.js",
       "Icon.js",
@@ -106,7 +106,7 @@ exports[`transform transforms icons to src/es/cjs 3`] = `
       fillOpacity=".59"
       fillRule="nonzero"
       style={
-        Object {
+        {
           "mixBlendMode": "overlay",
         }
       }

@@ -1,4 +1,4 @@
-const pascalCase = require('pascal-case')
+const {pascalCase} = require('pascal-case')
 
 /* 3d_rotation -> Md3dRotation */
 const filenameTemplate = (name) =>

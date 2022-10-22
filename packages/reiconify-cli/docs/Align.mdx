@@ -1,6 +1,20 @@
-## How to Align
+---
+name: Align
+route: /Align
+---
 
-a. Using `inline-flex` wrapper and [strut](https://www.w3.org/TR/CSS22/visudet.html#strut) hack. (Perfect.)
+# How to Align
+
+## RECOMMENDED
+
+import {
+  CenterDemo,
+  FlexContainerDemo,
+  VerticalAlignMiddleDemo,
+  TopOffsetHackDemo,
+} from './Align'
+
+### Use strut hack with a `inline-flex` wrapper, simply and self contained, see also [react-inline-center](https://www.npmjs.com/package/react-inline-center).
 
 ```js
 <button>
@@ -18,16 +32,22 @@ a. Using `inline-flex` wrapper and [strut](https://www.w3.org/TR/CSS22/visudet.h
 </button>
 ```
 
-b. Using `flex` or `inline-flex` container. (Perfect.)
+<CenterDemo />
+
+### Use `flex` or `inline-flex` container.
 
 ```js
-<button style={{display: 'flex', alignItems: 'center'}}>
+<button style={{display: 'inline-flex', alignItems: 'center'}}>
   <Icons.Heart text />
   Like
 </button>
 ```
 
-c. Using `vertical-align: middle`. (Perfect, but requires extra tag to wrap text.)
+<FlexContainerDemo />
+
+## NOT RECOMMENDED
+
+### Use `vertical-align: middle`, requires extra style and tag for text.
 
 ```js
 <button>
@@ -36,7 +56,9 @@ c. Using `vertical-align: middle`. (Perfect, but requires extra tag to wrap text
 </button>
 ```
 
-d. Using `top` offset hack. (Acceptable, font-specific offset.)
+<VerticalAlignMiddleDemo />
+
+### Use `top` offset hack, it's font-specific.
 
 ```js
 <button>
@@ -44,13 +66,10 @@ d. Using `top` offset hack. (Acceptable, font-specific offset.)
     text
     style={{verticalAlign: 'middle', position: 'relative', top: '-.1em'}}
   />
-  Like
 </button>
 
 // top = (xHeight/2 - capHeight/2) / unitsPerEm ≈ .5em/2 - .7em/2
 // query font metrics: https://opentype.js.org/font-inspector.html
 ```
 
-import Align from './components/Align'
-
-<Align />
+<TopOffsetHackDemo />
