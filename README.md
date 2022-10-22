@@ -22,7 +22,9 @@ npm install reiconify-serve --save-dev
 ## CLI Options
 
 ```bash
-reiconify -h
+# reiconify -h
+
+reiconify [options] [files]
 
 Options:
   --version  Show version number                                       [boolean]
@@ -34,7 +36,7 @@ Options:
   --cjs-dir  CommonJS output directory                 [string] [default: "cjs"]
   -h         Show help                                                 [boolean]
 
-reiconify-serve -h
+# reiconify-serve -h
 
 Options:
       --version  Show version number                                   [boolean]
@@ -53,7 +55,6 @@ module.exports = {
   baseTemplate: Function,
   filenameTemplate: Function,
   defaultProps: {},
-  baseClassName: 'Icon',
   baseDefaultProps: {
     viewBox: '0 0 24 24',
   },
@@ -76,7 +77,7 @@ Add npm scripts:
   "module": "es/index.js",
   "files": ["src", "es", "cjs"],
   "scripts": {
-    "start": "reiconify --serve",
+    "start": "reiconify-serve",
     "build": "reiconify --src --es --cjs icons/*.svg"
   }
 }
