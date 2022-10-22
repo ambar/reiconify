@@ -1,9 +1,12 @@
 const pascalCase = require('pascal-case')
 
 const template = (data) => {
-  // should import helper: https://github.com/evanw/esbuild/issues/1230
+  // 应该每文件共享（除非改 target=es2018）: https://github.com/evanw/esbuild/issues/1230
   const jsxWithProps = data.jsxString
-    .replace(/<svg([\s\S]*?)>/, (match, group) => `<SVG${group} {...props} >`)
+    .replace(
+      /<svg([\s\S]*?)>/,
+      (match, group) => `<SVG${group} data-name="${data.name}" {...props} >`
+    )
     .replace(/<\/svg>$/, '</SVG>')
 
   return `
