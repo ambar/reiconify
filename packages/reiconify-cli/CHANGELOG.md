@@ -3,21 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-# [3.0.0](https://github.com/ambar/reiconify/compare/reiconify-cli@2.4.0...reiconify-cli@3.0.0) (2022-10-22)
+## [3.0.1](https://github.com/ambar/reiconify/compare/reiconify-cli@3.0.0...reiconify-cli@3.0.1) (2022-10-24)
 
+**Note:** Version bump only for package reiconify-cli
+
+# [3.0.0](https://github.com/ambar/reiconify/compare/reiconify-cli@2.4.0...reiconify-cli@3.0.0) (2022-10-22)
 
 ### Features
 
-* rename reiconify-cli to reiconify-serve ([79f08ab](https://github.com/ambar/reiconify/commit/79f08abff1a0202a10489da163fe1221a55ad2e2))
-
+- rename reiconify-cli to reiconify-serve ([79f08ab](https://github.com/ambar/reiconify/commit/79f08abff1a0202a10489da163fe1221a55ad2e2))
 
 ### BREAKING CHANGES
 
-* rename reiconify-cli to reiconify-serve
-
-
-
-
+- rename reiconify-cli to reiconify-serve
 
 # 2.4.0 (2022-10-22)
 
