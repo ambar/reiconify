@@ -60,7 +60,7 @@ const transformFiles = async (options = {}) => {
   }
 
   const {
-    baseName,
+    baseName = './Icon',
     baseClassName,
     template,
     baseTemplate,
@@ -97,6 +97,7 @@ const transformFiles = async (options = {}) => {
           camelCaseProps,
           // format source only
           usePrettier: true,
+          format: 'jsx',
         })
         return {name, code}
       })

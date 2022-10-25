@@ -12,7 +12,7 @@ const transform = async (svg, options) => {
     svgoPlugins,
     camelCaseProps,
     usePrettier = false,
-    format = null,
+    format = 'esm',
   } = Object.assign({}, defaultConfig, options)
   const jsxString = await svg2jsx(svg, {svgoPlugins, camelCaseProps})
   let code = template({
@@ -22,7 +22,7 @@ const transform = async (svg, options) => {
     defaultProps,
     jsxString,
   })
-  if (format) {
+  if (format !== 'jsx') {
     code = await esTransform(code, {format})
   }
   return usePrettier ? require('./prettier')(code) : code

@@ -6,7 +6,7 @@ exports[`resolveConfig gets default config 1`] = `
   "baseDefaultProps": {
     "fill": "currentColor",
   },
-  "baseName": "./Icon",
+  "baseName": undefined,
   "baseTemplate": [Function],
   "camelCaseProps": true,
   "defaultProps": {},
@@ -24,7 +24,7 @@ exports[`resolveConfig overwrites default config 1`] = `
   "baseDefaultProps": {
     "fill": "currentColor",
   },
-  "baseName": "./Icon",
+  "baseName": undefined,
   "baseTemplate": [Function],
   "camelCaseProps": true,
   "defaultProps": {},

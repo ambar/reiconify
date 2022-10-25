@@ -1,21 +1,23 @@
 const pascalCase = require('pascal-case')
 
 const template = (data) => {
+  const hasBaseName = !!data.baseName
+  const tag = hasBaseName ? `SVG` : 'svg'
   const jsxWithProps = data.jsxString
     .replace(
       /<svg([\s\S]*?)>/,
       (match, group) =>
-        `<SVG${group} {...props} ${
+        `<${tag}${group} {...props} ${
           data.baseClassName
             ? `className={'${data.baseClassName} ${data.baseClassName}--${data.name}' + (props.className ? \` \${props.className}\` : '')}`
             : ``
         }>`
     )
-    .replace(/<\/svg>$/, '</SVG>')
+    .replace(/<\/svg>$/, `</${tag}>`)
 
   return `
     import React from 'react'
-    import SVG from '${data.baseName}'
+    ${hasBaseName ? `import SVG from '${data.baseName}'` : ''}
 
     function ${data.name}(props) {
       return ${jsxWithProps}
@@ -96,7 +98,7 @@ const indexTemplate = (names) => {
 
 const defaults = {
   name: 'Icon',
-  baseName: './Icon',
+  baseName: undefined,
   baseClassName: '',
   template,
   baseTemplate,

@@ -2,13 +2,12 @@
 
 exports[`component transforms svg 1`] = `
 "import React from 'react'
-import SVG from './Icon'
 
 function Icon(props) {
   return (
-    <SVG width="24" height="24" viewBox="0 0 24 24" {...props}>
+    <svg width="24" height="24" viewBox="0 0 24 24" {...props}>
       <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
-    </SVG>
+    </svg>
   )
 }
 
@@ -19,10 +18,9 @@ export default Icon
 exports[`component transforms svg to ESM format 1`] = `
 "var __assign = Object.assign
 import React from 'react'
-import SVG from './Icon'
 function Heart(props) {
   return /* @__PURE__ */ React.createElement(
-    SVG,
+    'svg',
     __assign(
       __assign(
         {
@@ -49,11 +47,10 @@ export {stdin_default as default}
 
 exports[`component transforms svg with baseClassName 1`] = `
 "import React from 'react'
-import SVG from './Icon'
 
 function Heart(props) {
   return (
-    <SVG
+    <svg
       width="24"
       height="24"
       viewBox="0 0 24 24"
@@ -63,7 +60,7 @@ function Heart(props) {
       }
     >
       <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
-    </SVG>
+    </svg>
   )
 }
 
