@@ -1,17 +1,26 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`component transforms svg 1`] = `
-"import React from 'react'
-
+"var __assign = Object.assign
+import React from 'react'
 function Icon(props) {
-  return (
-    <svg width="24" height="24" viewBox="0 0 24 24" {...props}>
-      <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
-    </svg>
+  return /* @__PURE__ */ React.createElement(
+    'svg',
+    __assign(
+      {
+        width: '24',
+        height: '24',
+        viewBox: '0 0 24 24',
+      },
+      props
+    ),
+    /* @__PURE__ */ React.createElement('path', {
+      d: 'M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z',
+    })
   )
 }
-
-export default Icon
+var stdin_default = Icon
+export {stdin_default as default}
 "
 `;
 
@@ -46,42 +55,57 @@ export {stdin_default as default}
 `;
 
 exports[`component transforms svg with baseClassName 1`] = `
-"import React from 'react'
-
+"var __assign = Object.assign
+import React from 'react'
 function Heart(props) {
-  return (
-    <svg
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      {...props}
-      className={
-        'Mdi Mdi--Heart' + (props.className ? \` \${props.className}\` : '')
+  return /* @__PURE__ */ React.createElement(
+    'svg',
+    __assign(
+      __assign(
+        {
+          width: '24',
+          height: '24',
+          viewBox: '0 0 24 24',
+        },
+        props
+      ),
+      {
+        className:
+          'Mdi Mdi--Heart' + (props.className ? \` \${props.className}\` : ''),
       }
-    >
-      <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
-    </svg>
+    ),
+    /* @__PURE__ */ React.createElement('path', {
+      d: 'M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z',
+    })
   )
 }
-
-export default Heart
+var stdin_default = Heart
+export {stdin_default as default}
 "
 `;
 
 exports[`component transforms svg with options 1`] = `
-"import React from 'react'
+"var __assign = Object.assign
+import React from 'react'
 import SVG from 'base-icon'
-
 function Component(props) {
-  return (
-    <SVG width="24" height="24" viewBox="0 0 24 24" {...props}>
-      <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
-    </SVG>
+  return /* @__PURE__ */ React.createElement(
+    SVG,
+    __assign(
+      {
+        width: '24',
+        height: '24',
+        viewBox: '0 0 24 24',
+      },
+      props
+    ),
+    /* @__PURE__ */ React.createElement('path', {
+      d: 'M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z',
+    })
   )
 }
-
 Component.defaultProps = {width: 24, height: 24}
-
-export default Component
+var stdin_default = Component
+export {stdin_default as default}
 "
 `;
