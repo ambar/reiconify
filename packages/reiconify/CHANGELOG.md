@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.6.0](https://github.com/ambar/reiconify/compare/reiconify@2.5.1...reiconify@2.6.0) (2022-10-25)
+
+### Bug Fixes
+
+- remove default baseName in lib/transform ([a772052](https://github.com/ambar/reiconify/commit/a772052125526e01d4903a7ea2ed03c1ad4d9a7b))
+
+### Features
+
+- add options for output optimized SVG files ([8b55247](https://github.com/ambar/reiconify/commit/8b55247449a85162230832f142b08c2074883efe))
+
 ## [2.5.1](https://github.com/ambar/reiconify/compare/reiconify@2.5.0...reiconify@2.5.1) (2022-10-24)
 
 ### Bug Fixes

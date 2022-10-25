@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.4.3](https://github.com/ambar/reiconify/compare/md.icons@2.4.2...md.icons@2.4.3) (2022-10-25)
+
+**Note:** Version bump only for package md.icons
+
 ## [2.4.2](https://github.com/ambar/reiconify/compare/md.icons@2.4.1...md.icons@2.4.2) (2022-10-24)
 
 **Note:** Version bump only for package md.icons
