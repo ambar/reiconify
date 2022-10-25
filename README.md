@@ -119,3 +119,5 @@ import {transform} from 'reiconify'
 
 const code = transform(svg, {format: 'esm', baseName: 'base-icon'})
 ```
+
+- Use with Vite, see [vite-plugin-reiconify](./packages/vite-plugin-reiconify/README.md)

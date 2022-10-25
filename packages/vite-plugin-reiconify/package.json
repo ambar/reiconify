@@ -1,0 +1,36 @@
+{
+  "name": "vite-plugin-reiconify",
+  "version": "1.0.0",
+  "description": "Convert SVG files to React icons",
+  "homepage": "https://github.com/ambar/reiconify",
+  "repository": {
+    "type": "git",
+    "url": "ambar/reiconify",
+    "directory": "vite-plugin-reiconify"
+  },
+  "main": "dist/index.cjs.js",
+  "license": "MIT",
+  "files": [
+    "client.d.ts",
+    "dist"
+  ],
+  "jest": {
+    "preset": "es-jest"
+  },
+  "scripts": {
+    "start": "vite example",
+    "build-example": "vite build example",
+    "prepare": "npm test && npm run build",
+    "prebuild": "rm -rf dist",
+    "build": "esbuild index.ts --outfile=dist/index.cjs.js --format=cjs",
+    "test": "jest --passWithNoTests"
+  },
+  "dependencies": {
+    "base-icon": "^2.2.1",
+    "reiconify": "^2.5.1"
+  },
+  "peerDependencies": {
+    "vite": "^3.1.8",
+    "react": ">=16.14.0"
+  }
+}
