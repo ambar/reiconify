@@ -52,11 +52,11 @@ const svgWithNamespace = `
 </svg>`
 
 describe('svg2jsx', () => {
-  it('converts svg to jsx', async () => {
-    expect(await svg2jsx(svg)).toMatchSnapshot()
+  it('converts svg to jsx with camelCaseProps=false', async () => {
+    expect(await svg2jsx(svg, {camelCaseProps: false})).toMatchSnapshot()
   })
 
-  it('converts svg to jsx (React <= 15)', async () => {
+  it('converts svg to jsx with camelCaseProps=true', async () => {
     expect(await svg2jsx(svg, {camelCaseProps: true})).toMatchSnapshot()
   })
 
@@ -76,7 +76,7 @@ describe('svg2jsx', () => {
   })
 
   it('reuses svgo instance', async () => {
-    const toJsx = svg2jsx.createSvg2jsx({
+    const toJsx = svg2jsx.createOptimizer({
       camelCaseProps: true,
       svgoPlugins: [
         {

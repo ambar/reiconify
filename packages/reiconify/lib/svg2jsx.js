@@ -69,6 +69,7 @@ const getDefaultSvgoPlugins = ({idPrefix}) => [
 const defaults = {
   svgoPlugins: [],
   camelCaseProps: false,
+  styleToObject: false,
   idPrefix: '',
 }
 
@@ -76,26 +77,36 @@ const styleToJSXStyle = (style) => {
   return JSON5.stringify(mapKeys(styleToObject(style), (v, k) => camelCase(k)))
 }
 
-const replaceInlineStyles = (jsx) =>
-  jsx.replace(
+const replaceInlineStyles = (svg) =>
+  svg.replace(
     /style="([^"]+)"/g,
     (match, str) => `style={${styleToJSXStyle(str)}}`
   )
 
-const createSvg2jsx = (options) => {
+const createOptimizer = (options) => {
   options = Object.assign({}, defaults, options)
   const plugins = getDefaultSvgoPlugins({idPrefix: options.idPrefix})
     .concat(options.svgoPlugins)
     .concat(options.camelCaseProps ? camelCaseProps : [])
   const svgo = new SVGO({plugins})
 
-  return (svg) => svgo.optimize(svg).then(({data}) => replaceInlineStyles(data))
+  return (svg) =>
+    svgo
+      .optimize(svg)
+      .then(({data}) =>
+        options.styleToObject ? replaceInlineStyles(data) : data
+      )
+}
+
+const optimize = (svg, options) => {
+  const idPrefix = `id-${hash(svg)}-`
+  return createOptimizer(Object.assign({idPrefix}, options))(svg)
 }
 
 const svg2jsx = (svg, options) => {
-  const idPrefix = `id-${hash(svg)}-`
-  return createSvg2jsx(Object.assign({idPrefix}, options))(svg)
+  return optimize(svg, {styleToObject: true, camelCaseProps: true, ...options})
 }
 
 module.exports = svg2jsx
-module.exports.createSvg2jsx = createSvg2jsx
+module.exports.optimize = optimize
+module.exports.createOptimizer = createOptimizer

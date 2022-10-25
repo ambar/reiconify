@@ -1,14 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`svg2jsx adds unique id prefix 1`] = `"<svg width="24" height="24" viewBox="0 0 24 24"><defs><linearGradient id="id-2703904526-a" x1="63.313%" x2="46.604%" y1="-13.472%" y2="117.368%"><stop offset="2.35%" stop-color="#EC471E"/><stop offset="100%" stop-color="#FF6DC4"/></linearGradient></defs><path fill="url(#id-2703904526-a)" fill-rule="evenodd" d="M0 0h24v24H0z"/></svg>"`;
+exports[`svg2jsx adds unique id prefix 1`] = `"<svg width="24" height="24" viewBox="0 0 24 24"><defs><linearGradient id="id-2703904526-a" x1="63.313%" x2="46.604%" y1="-13.472%" y2="117.368%"><stop offset="2.35%" stopColor="#EC471E"/><stop offset="100%" stopColor="#FF6DC4"/></linearGradient></defs><path fill="url(#id-2703904526-a)" d="M0 0h24v24H0z" fillRule="evenodd"/></svg>"`;
 
 exports[`svg2jsx converts inline styles to style objects 1`] = `"<svg width="24" height="24" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" style={{background:'red'}}/><path d="M0 0h24v24H0z" style={{background:'red',mixBlendMode:'overlay'}}/></svg>"`;
 
 exports[`svg2jsx converts namespaced attrs to camel case 1`] = `"<svg width="24" height="24" viewBox="0 0 24 24" xmlnsXlink="http://www.w3.org/1999/xlink"><path id="id-2183265438-a" d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/><use xlinkHref="#id-2183265438-a"/></svg>"`;
 
-exports[`svg2jsx converts svg to jsx (React <= 15) 1`] = `"<svg width="24" height="24" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fillOpacity=".5" pointerEvents="none"/></svg>"`;
+exports[`svg2jsx converts svg to jsx with camelCaseProps=false 1`] = `"<svg width="24" height="24" viewBox="0 0 24 24"><path fill-opacity=".5" d="M0 0h24v24H0z" pointer-events="none"/></svg>"`;
 
-exports[`svg2jsx converts svg to jsx 1`] = `"<svg width="24" height="24" viewBox="0 0 24 24"><path fill-opacity=".5" d="M0 0h24v24H0z" pointer-events="none"/></svg>"`;
+exports[`svg2jsx converts svg to jsx with camelCaseProps=true 1`] = `"<svg width="24" height="24" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fillOpacity=".5" pointerEvents="none"/></svg>"`;
 
 exports[`svg2jsx reuses svgo instance 1`] = `"<svg width="24" height="24" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" pointerEvents="none"/></svg>"`;
 

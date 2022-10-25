@@ -5,7 +5,7 @@ const transformFiles = require('../lib/transformFiles')
 
 yargs
   .option('src', {
-    describe: 'Build JSX source files',
+    describe: 'Whether to output JSX files',
     type: 'boolean',
     default: false,
   })
@@ -15,7 +15,7 @@ yargs
     default: 'src',
   })
   .option('es', {
-    describe: 'Build ES module files',
+    describe: 'Whether to output ES module files',
     type: 'boolean',
     default: false,
   })
@@ -25,7 +25,7 @@ yargs
     default: 'es',
   })
   .option('cjs', {
-    describe: 'Build CommonJS files',
+    describe: 'Whether to output CommonJS files',
     type: 'boolean',
     default: false,
   })
@@ -34,12 +34,28 @@ yargs
     type: 'string',
     default: 'cjs',
   })
+  .option('svg', {
+    describe: 'Whether to output optimized SVG files',
+    type: 'boolean',
+    default: false,
+  })
+  .option('svg-dir', {
+    describe: 'Optimized SVG output directory',
+    type: 'string',
+    default: 'svg',
+  })
+  .option('svg-rename', {
+    describe:
+      'Whether to rename optimized SVG files (based on filename template)',
+    type: 'boolean',
+    default: true,
+  })
   .detectLocale(false)
   .help('h')
 
 const run = async () => {
   const argv = yargs.argv
-  if (argv.src || argv.es || argv.cjs) {
+  if (argv.src || argv.es || argv.cjs || argv.svg) {
     await transformFiles({...argv, inputs: argv._})
   } else {
     yargs.showHelp()

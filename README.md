@@ -27,14 +27,19 @@ npm install reiconify-serve --save-dev
 reiconify [options] [files]
 
 Options:
-  --version  Show version number                                       [boolean]
-  --src      Build JSX source files                   [boolean] [default: false]
-  --src-dir  JSX output directory                      [string] [default: "src"]
-  --es       Build ES module files                    [boolean] [default: false]
-  --es-dir   ES output directory                        [string] [default: "es"]
-  --cjs      Build CommonJS files                     [boolean] [default: false]
-  --cjs-dir  CommonJS output directory                 [string] [default: "cjs"]
-  -h         Show help                                                 [boolean]
+      --version     Show version number                                [boolean]
+      --src         Whether to output JSX files       [boolean] [default: false]
+      --src-dir     JSX output directory               [string] [default: "src"]
+      --es          Whether to output ES module files [boolean] [default: false]
+      --es-dir      ES output directory                 [string] [default: "es"]
+      --cjs         Whether to output CommonJS files  [boolean] [default: false]
+      --cjs-dir     CommonJS output directory          [string] [default: "cjs"]
+      --svg         Whether to output optimized SVG files
+                                                      [boolean] [default: false]
+      --svg-dir     Optimized SVG output directory     [string] [default: "svg"]
+      --svg-rename  Whether to rename optimized SVG files (based on filename
+                    template)                          [boolean] [default: true]
+  -h                Show help                                          [boolean]
 
 # reiconify-serve -h
 

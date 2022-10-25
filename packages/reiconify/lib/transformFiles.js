@@ -8,6 +8,7 @@ const prettier = require('./prettier')
 const resolveConfig = require('./resolveConfig')
 const transform = require('./transform')
 const esTransform = require('./esTransform')
+const {optimize} = require('./svg2jsx')
 
 const getIndex = (names, {indexTemplate}) => {
   log(`exporting ${names.length} icons: ${names.join(', ')}`)
@@ -46,7 +47,9 @@ const transformFiles = async (options = {}) => {
     throw new Error('Missing input files')
   }
 
-  if (!options.srcDir && !options.esDir && !options.cjsDir) {
+  const shouldOutputJS = !!(options.srcDir || options.esDir || options.cjsDir)
+  const shouldOutputSVG = !!options.svgDir
+  if (!shouldOutputJS && !shouldOutputSVG) {
     throw new Error('Missing output directory')
   }
 
@@ -73,38 +76,54 @@ const transformFiles = async (options = {}) => {
   const contents = await Promise.all(
     files.map(async (file) => {
       const filePath = path.resolve(cwd, file)
-      const svg = String(await promisify(fs.readFile)(filePath))
-      const name = filenameTemplate(path.basename(file, '.svg'))
-      const code = await transform(svg, {
-        name,
-        baseName,
-        baseClassName,
-        template,
-        defaultProps,
-        svgoPlugins,
-        camelCaseProps,
-        // format source only
-        usePrettier: true,
-      })
-      return {name, code}
+      const content = String(await promisify(fs.readFile)(filePath))
+      const basename = path.basename(file, '.svg')
+      const name = filenameTemplate(basename)
+      return {name, basename, content}
     })
   )
 
-  const namesToExport = contents.map(({name}) => name)
-  contents.push(
-    {
-      name: 'Icon',
-      code: prettier(baseTemplate({baseDefaultProps})),
-    },
-    {name: 'index', code: await getIndex(namesToExport, {indexTemplate})}
-  )
+  let jsContents = []
+  if (shouldOutputJS) {
+    jsContents = await Promise.all(
+      contents.map(async ({content, name}) => {
+        const code = await transform(content, {
+          name,
+          baseName,
+          baseClassName,
+          template,
+          defaultProps,
+          svgoPlugins,
+          camelCaseProps,
+          // format source only
+          usePrettier: true,
+        })
+        return {name, code}
+      })
+    )
+    jsContents.push(
+      // generate base icon
+      {
+        name: 'Icon',
+        code: prettier(baseTemplate({baseDefaultProps})),
+      },
+      // generate index.js
+      {
+        name: 'index',
+        code: await getIndex(
+          contents.map(({name}) => name),
+          {indexTemplate}
+        ),
+      }
+    )
+  }
 
   const operations = [
     async () => {
       if (options.src) {
         log('writing src files...')
         const srcPath = resolveDir(options.srcDir)
-        await writeFiles(contents, srcPath, 'jsx')
+        await writeFiles(jsContents, srcPath, 'jsx')
       }
     },
 
@@ -112,7 +131,7 @@ const transformFiles = async (options = {}) => {
       if (options.es) {
         log('writing esm files...')
         const esPath = resolveDir(options.esDir)
-        const transformedContents = await esTransformContents(contents, {
+        const transformedContents = await esTransformContents(jsContents, {
           format: 'esm',
         })
         await writeFiles(transformedContents, esPath)
@@ -123,10 +142,24 @@ const transformFiles = async (options = {}) => {
       if (options.cjs) {
         log('writing cjs files...')
         const cjsPath = resolveDir(options.cjsDir)
-        const transformedContents = await esTransformContents(contents, {
+        const transformedContents = await esTransformContents(jsContents, {
           format: 'cjs',
         })
         await writeFiles(transformedContents, cjsPath)
+      }
+    },
+
+    async () => {
+      if (options.svg) {
+        log('writing svg files...')
+        const svgPath = resolveDir(options.svgDir)
+        const svgContents = await Promise.all(
+          contents.map(async ({name, basename, content}) => ({
+            name: options.svgRename ? name : basename,
+            code: await optimize(content, {svgoPlugins}),
+          }))
+        )
+        await writeFiles(svgContents, svgPath, 'svg')
       }
     },
   ]
