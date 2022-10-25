@@ -120,4 +120,10 @@ import {transform} from 'reiconify'
 const code = transform(svg, {format: 'esm', baseName: 'base-icon'})
 ```
 
-- Use with Vite, see [vite-plugin-reiconify](./packages/vite-plugin-reiconify/README.md)
+## Use with Vite
+
+See [vite-plugin-reiconify](./packages/vite-plugin-reiconify/README.md)
+
+## Use with webpack
+
+See [reiconify-loader](./packages/reiconify-loader/README.md)

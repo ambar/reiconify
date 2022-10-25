@@ -4,10 +4,12 @@
     "packages/*"
   ],
   "scripts": {
+    "release": "yarn test && yarn build && lerna publish",
     "build": "yarn workspaces run build",
     "test": "yarn workspaces run test"
   },
   "devDependencies": {
+    "@types/jest": "^29.2.0",
     "es-jest": "^2.0.0",
     "jest": "^29.2.1",
     "react": ">=16.14.0",

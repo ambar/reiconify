@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`compiler svg 1`] = `
+"var __assign = Object.assign;
+import React from "react";
+import SVG from "base-icon";
+function Icon(props) {
+  return /* @__PURE__ */ React.createElement(SVG, __assign({
+    width: "24",
+    height: "24",
+    viewBox: "0 0 24 24"
+  }, props), /* @__PURE__ */ React.createElement("path", {
+    d: "M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"
+  }));
+}
+var stdin_default = Icon;
+export {
+  stdin_default as default
+};
+"
+`;
