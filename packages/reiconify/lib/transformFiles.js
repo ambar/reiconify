@@ -1,6 +1,6 @@
 const fsp = require('fs/promises')
 const path = require('path')
-const globby = require('globby')
+const glob = require('fast-glob')
 const log = require('fancy-log')
 const prettier = require('./prettier')
 const resolveConfig = require('./resolveConfig')
@@ -52,7 +52,7 @@ const transformFiles = async (options = {}) => {
   }
 
   const cwd = options.cwd || process.cwd()
-  const files = await globby(options.inputs, {cwd})
+  const files = await glob(options.inputs, {cwd})
   if (!files.length) {
     throw new Error('Cannot find source files')
   }
