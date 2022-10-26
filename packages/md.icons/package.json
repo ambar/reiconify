@@ -1,6 +1,6 @@
 {
   "name": "md.icons",
-  "version": "2.4.3",
+  "version": "2.4.4",
   "description": "Material design icons for React",
   "homepage": "https://ambar.li/reiconify/md.icons",
   "repository": "ambar/reiconify",
@@ -29,7 +29,7 @@
   "devDependencies": {
     "@ambarli/mdi.svg": "^1.0.2",
     "pascal-case": "^3.1.2",
-    "reiconify": "^2.6.0",
+    "reiconify": "^2.7.0",
     "reiconify-serve": "^2.0.0"
   }
 }

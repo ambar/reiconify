@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.1](https://github.com/ambar/reiconify/compare/vite-plugin-reiconify@1.1.0...vite-plugin-reiconify@1.1.1) (2022-10-26)
+
+**Note:** Version bump only for package vite-plugin-reiconify
+
 # 1.1.0 (2022-10-25)
 
 ### Features

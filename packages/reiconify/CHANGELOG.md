@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.7.0](https://github.com/ambar/reiconify/compare/reiconify@2.6.0...reiconify@2.7.0) (2022-10-26)
+
+### Features
+
+- drop Node 8 support ([aed1ca0](https://github.com/ambar/reiconify/commit/aed1ca00313b4bb7c19dc8567213524448ab7a83))
+
 # [2.6.0](https://github.com/ambar/reiconify/compare/reiconify@2.5.1...reiconify@2.6.0) (2022-10-25)
 
 ### Bug Fixes
