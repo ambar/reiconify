@@ -1,8 +1,6 @@
-const fs = require('fs')
+const fsp = require('fs/promises')
 const path = require('path')
-const {promisify} = require('util')
 const globby = require('globby')
-const mkdirp = require('mkdirp')
 const log = require('fancy-log')
 const prettier = require('./prettier')
 const resolveConfig = require('./resolveConfig')
@@ -16,13 +14,13 @@ const getIndex = (names, {indexTemplate}) => {
 }
 
 const writeFiles = async (contents, path, ext = 'js') => {
-  if (!fs.existsSync(path)) {
-    await promisify(mkdirp)(path)
+  if (!(await fsp.stat(path).catch(() => false))) {
+    await fsp.mkdir(path, {recursive: true})
   }
 
   return await Promise.all(
     contents.map(({name, code}) =>
-      promisify(fs.writeFile)(`${path}/${name}.${ext}`, code)
+      fsp.writeFile(`${path}/${name}.${ext}`, code)
     )
   )
 }
@@ -76,7 +74,7 @@ const transformFiles = async (options = {}) => {
   const contents = await Promise.all(
     files.map(async (file) => {
       const filePath = path.resolve(cwd, file)
-      const content = String(await promisify(fs.readFile)(filePath))
+      const content = String(await fsp.readFile(filePath))
       const basename = path.basename(file, '.svg')
       const name = filenameTemplate(basename)
       return {name, basename, content}

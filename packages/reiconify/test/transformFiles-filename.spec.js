@@ -1,7 +1,5 @@
-const fs = require('fs')
+const fsp = require('fs/promises')
 const path = require('path')
-const {promisify} = require('util')
-const rimraf = require('rimraf')
 const {transformFiles} = require('../lib')
 
 describe('transform-filename', () => {
@@ -9,7 +7,7 @@ describe('transform-filename', () => {
   const cwd = path.resolve(__dirname, 'fixtures/transform-filename')
   const srcDir = path.resolve(cwd, 'src')
   const cleanup = async () => {
-    await promisify(rimraf)(srcDir)
+    await fsp.rm(srcDir, {recursive: true, force: true})
   }
 
   beforeAll(() => {
@@ -32,7 +30,7 @@ describe('transform-filename', () => {
       srcDir,
     })
 
-    const files = await promisify(fs.readdir)(srcDir)
+    const files = await fsp.readdir(srcDir)
     expect(files).toMatchSnapshot()
   })
 })

@@ -1,8 +1,7 @@
 const React = require('react')
 const renderer = require('react-test-renderer')
+const fsp = require('fs/promises')
 const path = require('path')
-const {promisify} = require('util')
-const rimraf = require('rimraf')
 const transformFiles = require('../lib/transformFiles')
 
 describe('component', () => {
@@ -22,7 +21,7 @@ describe('component', () => {
   })
 
   afterAll(async () => {
-    await promisify(rimraf)(esDir)
+    await fsp.rm(esDir, {recursive: true, force: true})
   })
 
   it('renders `size` prop', () => {

@@ -1,9 +1,7 @@
 const React = require('react')
 const renderer = require('react-test-renderer')
-const fs = require('fs')
+const fsp = require('fs/promises')
 const path = require('path')
-const {promisify} = require('util')
-const rimraf = require('rimraf')
 const {transformFiles} = require('../lib')
 
 describe('transform', () => {
@@ -12,7 +10,9 @@ describe('transform', () => {
   const cjsDir = 'test/fixtures/transform/cjs'
   const cleanup = async () => {
     await Promise.all(
-      [srcDir, esDir, cjsDir].map((dir) => promisify(rimraf)(dir))
+      [srcDir, esDir, cjsDir].map((dir) =>
+        fsp.rm(dir, {recursive: true, force: true})
+      )
     )
   }
 
@@ -41,7 +41,7 @@ describe('transform', () => {
       srcDir,
     })
 
-    const files = await promisify(fs.readdir)(srcDir)
+    const files = await fsp.readdir(srcDir)
     expect(files).toMatchSnapshot()
   })
 
@@ -57,7 +57,7 @@ describe('transform', () => {
     })
 
     const readDir = async (dir) => {
-      const files = await promisify(fs.readdir)(dir)
+      const files = await fsp.readdir(dir)
       return {dir, files}
     }
 
