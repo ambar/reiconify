@@ -7,7 +7,8 @@ const filenameTemplate = (name) =>
 module.exports = {
   svgoPlugins: [
     {
-      removeAttrs: {
+      name: 'removeAttrs',
+      params: {
         attrs: [
           // remove `fill` attributes: https://github.com/google/material-design-icons/issues/281
           'fill',
