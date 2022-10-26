@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.8.0](https://github.com/ambar/reiconify/compare/reiconify@2.7.0...reiconify@2.8.0) (2022-10-26)
+
+### Features
+
+- upgrade to svgo v3 ([3d47946](https://github.com/ambar/reiconify/commit/3d47946b66432802ba00547521e0f773e25ed372))
+
 # [2.7.0](https://github.com/ambar/reiconify/compare/reiconify@2.6.0...reiconify@2.7.0) (2022-10-26)
 
 ### Features
