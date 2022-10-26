@@ -67,7 +67,8 @@ describe('svg2jsx', () => {
   it('uses `removeAttrs` plugin', async () => {
     const svgoPlugins = [
       {
-        removeAttrs: {
+        name: 'removeAttrs',
+        params: {
           attrs: ['svg:(width|height|viewBox)'],
         },
       },
@@ -80,7 +81,8 @@ describe('svg2jsx', () => {
       camelCaseProps: true,
       svgoPlugins: [
         {
-          removeAttrs: {attrs: 'fill-opacity'},
+          name: 'removeAttrs',
+          params: {attrs: 'fill-opacity'},
         },
       ],
     })

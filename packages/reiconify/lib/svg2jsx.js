@@ -10,46 +10,30 @@ const toCamelCase = (s) =>
 
 // Custom Plugin: https://github.com/svg/svgo/issues/564#issuecomment-241468596
 // 也可以用 DOMParser/cheerio 等遍历 DOM，但用 svgo 插件少一点依赖（更快）
-// 并且 React v16+ 不再需要这个处理
+/**
+ * React v16+ 虽然可以直接使用 dash-case prop，但仍然有 warning
+ * @type {import('svgo').PluginDef}
+ */
 const camelCaseProps = {
   name: 'camelCaseProps',
-  type: 'perItem',
   description: 'convert attrs to camel case',
   params: {},
-  fn(item) {
-    if (item.isElem()) {
-      item.eachAttr((attr) => {
-        if (attr.name.includes('-')) {
-          const newAttr = Object.assign({}, attr, {
-            name: toCamelCase(attr.name),
-          })
-          item.attrs[newAttr.name] = newAttr
-          item.removeAttr(attr.name)
-        }
-      })
-    }
-  },
-}
-
-// `xlink:href` => `xlinkHref`
-const camelCaseNamespacedProps = {
-  camelCaseProps: {
-    type: 'perItem',
-    description: 'convert namespaced attrs to camel case',
-    params: {},
-    fn(item) {
-      if (item.isElem()) {
-        item.eachAttr((attr) => {
-          if (attr.name.includes(':')) {
-            const newAttr = Object.assign({}, attr, {
-              name: toCamelCase(attr.name),
-            })
-            item.attrs[newAttr.name] = newAttr
-            item.removeAttr(attr.name)
+  fn() {
+    return {
+      element: {
+        enter(item) {
+          if (item.type === 'element') {
+            for (const [name, value] of Object.entries(item.attributes)) {
+              if (name.includes('-')) {
+                const newName = toCamelCase(name)
+                item.attributes[newName] = value
+                delete item.attributes[name]
+              }
+            }
           }
-        })
-      }
-    },
+        },
+      },
+    }
   },
 }
 
@@ -62,28 +46,33 @@ const getDefaultSvgoPlugins = ({idPrefix}) => [
     params: {
       overrides: {
         removeViewBox: false,
-        // // customize default plugin options
-        // inlineStyles: {
-        //   onlyMatchedOnce: false,
-        // },
-        // // or disable plugins
-        // removeDoctype: false,
       },
     },
   },
+  // 除了移除 svg[xmlns=]，v3 还移除了 [xlink:href]
   {
     name: 'removeXMLNS',
   },
   {
     name: 'sortAttrs',
   },
-
+  {
+    name: 'prefixIds',
+    params: {
+      prefix: idPrefix,
+    },
+  },
+  // {
+  //   name: 'cleanupIds',
+  //   params: {
+  //     prefix: idPrefix,
+  //   },
+  // },
   // {removeViewBox: false},
   // {removeDesc: {removeAny: true}},
   // {removeXMLNS: true},
   // {sortAttrs: true},
   // {cleanupIDs: {prefix: idPrefix}},
-  // camelCaseNamespacedProps,
 ]
 
 const defaults = {
@@ -105,11 +94,9 @@ const replaceInlineStyles = (svg) =>
 
 const createOptimizer = (options) => {
   options = Object.assign({}, defaults, options)
-  const plugins = getDefaultSvgoPlugins({idPrefix: options.idPrefix}).concat(
-    options.svgoPlugins
-  )
-  // .concat(options.camelCaseProps ? camelCaseProps : [])
-  // const svgo = new SVGO({plugins})
+  const plugins = getDefaultSvgoPlugins({idPrefix: options.idPrefix})
+    .concat(options.svgoPlugins)
+    .concat(options.camelCaseProps ? camelCaseProps : [])
 
   return (svg) =>
     new Promise((resolve) => {
