@@ -1,4 +1,4 @@
-const {svg2jsx} = require('..')
+const svg2jsx = require('../lib/svg2jsx')
 
 const svg = `
 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
@@ -38,6 +38,19 @@ const svgWithId = `
 </svg>
 `
 
+// 旧版本不能处理 defs 后置的情况
+const svgWithIdDefsLast = `
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <path fill="url(#hot-a)" fill-rule="evenodd" d="M0 0h24v24H0z"/>
+  <defs>
+    <linearGradient id="hot-a" x1="63.313%" x2="46.604%" y1="-13.472%" y2="117.368%">
+      <stop offset="2.35%" stop-color="#EC471E"/>
+      <stop offset="100%" stop-color="#FF6DC4"/>
+    </linearGradient>
+  </defs>
+</svg>
+`
+
 const svgWithStyles = `
 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
   <path d="M0 0h24v24H0z" style="background: red" />
@@ -67,7 +80,8 @@ describe('svg2jsx', () => {
   it('uses `removeAttrs` plugin', async () => {
     const svgoPlugins = [
       {
-        removeAttrs: {
+        name: 'removeAttrs',
+        params: {
           attrs: ['svg:(width|height|viewBox)'],
         },
       },
@@ -80,7 +94,8 @@ describe('svg2jsx', () => {
       camelCaseProps: true,
       svgoPlugins: [
         {
-          removeAttrs: {attrs: 'fill-opacity'},
+          name: 'removeAttrs',
+          params: {attrs: 'fill-opacity'},
         },
       ],
     })
@@ -89,6 +104,10 @@ describe('svg2jsx', () => {
 
   it('adds unique id prefix', async () => {
     expect(await svg2jsx(svgWithId)).toMatchSnapshot()
+  })
+
+  it('adds unique id prefix - svgWithIdDefsLast', async () => {
+    expect(await svg2jsx(svgWithIdDefsLast)).toMatchSnapshot()
   })
 
   it('converts inline styles to style objects', async () => {

@@ -1,4 +1,4 @@
-const SVGO = require('svgo')
+const svgo = require('svgo')
 const hash = require('string-hash')
 const JSON5 = require('json5')
 const mapKeys = require('lodash/mapKeys')
@@ -10,47 +10,55 @@ const toCamelCase = (s) =>
 
 // Custom Plugin: https://github.com/svg/svgo/issues/564#issuecomment-241468596
 // 也可以用 DOMParser/cheerio 等遍历 DOM，但用 svgo 插件少一点依赖（更快）
-// 并且 React v16+ 不再需要这个处理
+/**
+ * React v16+ 虽然可以直接使用 dash-case prop，但仍然有 warning
+ * @type {import('svgo').PluginDef}
+ */
 const camelCaseProps = {
-  camelCaseProps: {
-    type: 'perItem',
-    description: 'convert attrs to camel case',
-    params: {},
-    fn(item) {
-      if (item.isElem()) {
-        item.eachAttr((attr) => {
-          if (attr.name.includes('-')) {
-            const newAttr = Object.assign({}, attr, {
-              name: toCamelCase(attr.name),
-            })
-            item.attrs[newAttr.name] = newAttr
-            item.removeAttr(attr.name)
+  name: 'camelCaseProps',
+  description: 'convert attrs to camel case',
+  params: {},
+  fn() {
+    return {
+      element: {
+        enter(item) {
+          if (item.type === 'element') {
+            item.attributes = Object.fromEntries(
+              Object.entries(item.attributes).map(([name, value]) => [
+                name.includes('-') ? toCamelCase(name) : name,
+                value,
+              ])
+            )
           }
-        })
-      }
-    },
+        },
+      },
+    }
   },
 }
 
-// `xlink:href` => `xlinkHref`
-const camelCaseNamespacedProps = {
-  camelCaseProps: {
-    type: 'perItem',
-    description: 'convert namespaced attrs to camel case',
-    params: {},
-    fn(item) {
-      if (item.isElem()) {
-        item.eachAttr((attr) => {
-          if (attr.name.includes(':')) {
-            const newAttr = Object.assign({}, attr, {
-              name: toCamelCase(attr.name),
-            })
-            item.attrs[newAttr.name] = newAttr
-            item.removeAttr(attr.name)
+/**
+ * `xlink:href` => `xlinkHref`
+ * @type {import('svgo').PluginDef}
+ */
+const camelCaseNamespaceProps = {
+  name: 'camelCaseNamespaceProps',
+  description: 'convert namespaced attrs to camel case',
+  params: {},
+  fn() {
+    return {
+      element: {
+        enter(item) {
+          if (item.type === 'element') {
+            item.attributes = Object.fromEntries(
+              Object.entries(item.attributes).map(([name, value]) => [
+                name.includes(':') ? toCamelCase(name) : name,
+                value,
+              ])
+            )
           }
-        })
-      }
-    },
+        },
+      },
+    }
   },
 }
 
@@ -58,12 +66,28 @@ const camelCaseNamespacedProps = {
 // https://github.com/svg/svgo/issues/646
 // https://github.com/BohemianCoding/svgo-compressor/blob/develop/src/defaultConfig.js
 const getDefaultSvgoPlugins = ({idPrefix}) => [
-  {removeViewBox: false},
-  {removeDesc: {removeAny: true}},
-  {removeXMLNS: true},
-  {sortAttrs: true},
-  {cleanupIDs: {prefix: idPrefix}},
-  camelCaseNamespacedProps,
+  {
+    name: 'preset-default',
+    params: {
+      overrides: {
+        removeViewBox: false,
+      },
+    },
+  },
+  {
+    name: 'removeXMLNS',
+  },
+  // NOTE: 它内置了一个 order 数组，会使结果不完全是按照字母顺序排列的
+  {
+    name: 'sortAttrs',
+  },
+  {
+    name: 'prefixIds',
+    params: {
+      prefix: idPrefix,
+      delim: '-',
+    },
+  },
 ]
 
 const defaults = {
@@ -88,23 +112,26 @@ const createOptimizer = (options) => {
   const plugins = getDefaultSvgoPlugins({idPrefix: options.idPrefix})
     .concat(options.svgoPlugins)
     .concat(options.camelCaseProps ? camelCaseProps : [])
-  const svgo = new SVGO({plugins})
+    .concat(options.camelCaseNamespaceProps ? camelCaseNamespaceProps : [])
 
-  return (svg) =>
-    svgo
-      .optimize(svg)
-      .then(({data}) =>
-        options.styleToObject ? replaceInlineStyles(data) : data
-      )
+  return async (svg) => {
+    const {data} = svgo.optimize(svg, {plugins})
+    return options.styleToObject ? replaceInlineStyles(data) : data
+  }
 }
 
 const optimize = (svg, options) => {
-  const idPrefix = `id-${hash(svg)}-`
+  const idPrefix = `id-${hash(svg)}`
   return createOptimizer(Object.assign({idPrefix}, options))(svg)
 }
 
 const svg2jsx = (svg, options) => {
-  return optimize(svg, {styleToObject: true, camelCaseProps: true, ...options})
+  return optimize(svg, {
+    styleToObject: true,
+    camelCaseProps: true,
+    camelCaseNamespaceProps: true,
+    ...options,
+  })
 }
 
 module.exports = svg2jsx

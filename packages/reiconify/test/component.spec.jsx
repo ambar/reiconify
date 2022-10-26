@@ -5,7 +5,6 @@ const path = require('path')
 const transformFiles = require('../lib/transformFiles')
 
 describe('component', () => {
-  const cwd = process.cwd()
   const fixtureDir = path.resolve(path.resolve(__dirname, 'fixtures/component'))
   const esDir = path.resolve(fixtureDir, 'src')
   let Icons

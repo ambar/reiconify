@@ -1,6 +1,6 @@
 const fsp = require('fs/promises')
 const path = require('path')
-const {transformFiles} = require('../lib')
+const transformFiles = require('../lib/transformFiles')
 
 describe('transform-filename', () => {
   // const orignalCwd = process.cwd()

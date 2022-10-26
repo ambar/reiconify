@@ -1,4 +1,4 @@
-const {resolveConfig} = require('..')
+const resolveConfig = require('../lib/resolveConfig')
 
 describe('resolveConfig', () => {
   const cwd = process.cwd()

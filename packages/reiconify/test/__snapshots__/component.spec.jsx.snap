@@ -23,7 +23,7 @@ exports[`component renders \`center\` and \`style\` prop 1`] = `
     width="24"
   >
     <path
-      d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"
+      d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"
     />
   </svg>
 </span>
@@ -47,7 +47,7 @@ exports[`component renders \`center\` prop 1`] = `
     width="24"
   >
     <path
-      d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"
+      d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"
     />
   </svg>
 </span>
@@ -62,7 +62,7 @@ exports[`component renders \`className\` prop 1`] = `
   width="24"
 >
   <path
-    d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"
+    d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"
   />
 </svg>
 `;
@@ -76,7 +76,7 @@ exports[`component renders \`size\` prop 1`] = `
   width={20}
 >
   <path
-    d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"
+    d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"
   />
 </svg>
 `;
@@ -99,7 +99,7 @@ exports[`component renders \`text\` and \`center\` prop 1`] = `
     width="1.2em"
   >
     <path
-      d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"
+      d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"
     />
   </svg>
 </span>
@@ -114,7 +114,7 @@ exports[`component renders \`text\` prop 1`] = `
   width="1.2em"
 >
   <path
-    d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"
+    d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"
   />
 </svg>
 `;
@@ -128,7 +128,7 @@ exports[`component renders \`text\` prop 2`] = `
   width="24"
 >
   <path
-    d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"
+    d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"
   />
 </svg>
 `;

@@ -2,7 +2,7 @@ const React = require('react')
 const renderer = require('react-test-renderer')
 const fsp = require('fs/promises')
 const path = require('path')
-const {transformFiles} = require('../lib')
+const transformFiles = require('../lib/transformFiles')
 
 describe('transform', () => {
   const srcDir = 'test/fixtures/transform/src'
