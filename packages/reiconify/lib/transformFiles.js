@@ -95,7 +95,7 @@ const transformFiles = async (options = {}) => {
           camelCaseProps,
           // format source only
           usePrettier: true,
-          format: 'jsx',
+          jsx: 'preserve',
         })
         return {name, code}
       })

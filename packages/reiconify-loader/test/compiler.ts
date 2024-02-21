@@ -3,7 +3,7 @@ import webpack from 'webpack'
 import {createFsFromVolume, Volume} from 'memfs'
 
 // https://webpack.js.org/contribute/writing-a-loader/#testing
-export default function compiler(fixture) {
+export default function compiler(fixture, native = false) {
   const compiler = webpack({
     context: __dirname,
     entry: `./${fixture}`,
@@ -18,6 +18,12 @@ export default function compiler(fixture) {
       path: path.resolve(__dirname),
       filename: 'bundle.js',
     },
+    resolve: {
+      alias: {
+        // skip installing react-native-svg and react-native
+        'react-native-svg': 'identity-obj-proxy',
+      },
+    },
     module: {
       rules: [
         {
@@ -25,7 +31,12 @@ export default function compiler(fixture) {
           oneOf: [
             {
               resourceQuery: /react/,
-              use: require.resolve('../index.ts'),
+              use: {
+                loader: require.resolve('../index.ts'),
+                options: {
+                  native,
+                },
+              },
             },
           ],
         },

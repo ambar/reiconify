@@ -12,6 +12,7 @@
   "license": "MIT",
   "files": [
     "client.d.ts",
+    "native.d.ts",
     "dist"
   ],
   "jest": {

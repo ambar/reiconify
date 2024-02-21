@@ -16,8 +16,15 @@ module.exports = {
         oneOf: [
           {
             resourceQuery: /react/,
-            use: 'reiconify-loader',
+            use: {
+              loader: 'reiconify-loader',
+              // whether to use React Native
+              // options: {
+              //   native: true,
+              // },
+            },
           },
+          // optional fallback
           {
             use: 'file-loader',
           },
@@ -31,7 +38,11 @@ module.exports = {
 Import icons:
 
 ```js
+// types for web
 /// <reference types="reiconify-loader/client" />
+
+// types for React Native
+/// <reference types="reiconify-loader/native" />
 
 // import React icon
 import AlarmIcon from './icons/alarm.svg?react'
