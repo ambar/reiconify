@@ -14,8 +14,10 @@ import reiconify from 'vite-plugin-reiconify'
 export default {
   plugins: [
     react(),
-    //
+    // for web
     reiconify(),
+    // for React Native
+    // reiconify({native: true}),
   ],
 }
 ```
@@ -24,7 +26,12 @@ Import icons:
 
 ```js
 /// <reference types="vite/client" />
+
+// types for web
 /// <reference types="vite-plugin-reiconify/client" />
+
+// types for React Native
+/// <reference types="vite-plugin-reiconify/native" />
 
 // top-level import
 import AlarmIcon from './icons/alarm.svg?react'

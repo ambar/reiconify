@@ -12,6 +12,7 @@
   "license": "MIT",
   "files": [
     "client.d.ts",
+    "native.d.ts",
     "dist"
   ],
   "jest": {
@@ -27,9 +28,17 @@
     "base-icon": "^2.2.1"
   },
   "peerDependencies": {
-    "webpack": "^4 || ^5"
+    "webpack": "^4 || ^5",
+    "react": "*",
+    "react-native-svg": "*"
+  },
+  "peerDependenciesMeta": {
+    "react-native-svg": {
+      "optional": true
+    }
   },
   "devDependencies": {
+    "identity-obj-proxy": "^3.0.0",
     "memfs": "^3.4.7",
     "webpack": "^5.74.0"
   }
