@@ -1,12 +1,12 @@
 {
   "version": "independent",
   "npmClient": "yarn",
-  "useWorkspaces": true,
   "packages": ["packages/*"],
   "ignoreChanges": [
     "**/docs/**",
     "**/fixtures/**",
     "**/__tests__/**",
+    "**/__snapshots__/**",
     "**/test/**",
     "**/*.mdx",
     "**/*.md"

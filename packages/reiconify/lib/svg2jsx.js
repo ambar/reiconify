@@ -4,6 +4,7 @@ const JSON5 = require('json5')
 const mapKeys = require('lodash/mapKeys')
 const camelCase = require('lodash/camelCase')
 const styleToObject = require('style-to-object')
+const pascalCase = require('pascal-case')
 
 const toCamelCase = (s) =>
   s.replace(/([-_:])([a-z])/g, (s, a, b) => b.toUpperCase())
@@ -62,6 +63,24 @@ const camelCaseNamespaceProps = {
   },
 }
 
+/**
+ * @type {import('svgo').PluginDef}
+ */
+const reactNativeSVG = {
+  name: 'reactNativeSVG',
+  description: 'Convert SVG to React Native SVG',
+  fn: () => {
+    return {
+      element: {
+        enter: (item) => {
+          // use namespace import
+          item.name = `svg.${pascalCase(item.name)}`
+        },
+      },
+    }
+  },
+}
+
 // svgo 默认就会启用一批插件，参考：
 // https://github.com/svg/svgo/issues/646
 // https://github.com/BohemianCoding/svgo-compressor/blob/develop/src/defaultConfig.js
@@ -113,6 +132,7 @@ const createOptimizer = (options) => {
     .concat(options.svgoPlugins)
     .concat(options.camelCaseProps ? camelCaseProps : [])
     .concat(options.camelCaseNamespaceProps ? camelCaseNamespaceProps : [])
+    .concat(options.native ? reactNativeSVG : [])
 
   return async (svg) => {
     const {data} = svgo.optimize(svg, {plugins})

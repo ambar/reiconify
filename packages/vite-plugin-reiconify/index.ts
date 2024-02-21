@@ -6,7 +6,10 @@ import transform from 'reiconify/lib/transform'
  *
  * @type {() => import('vite').Plugin}
  */
-export default function reiconify(pattern = /\.svg\?react$/) {
+export default function reiconify({
+  pattern = /\.svg\?react$/,
+  native = false,
+} = {}) {
   return {
     name: 'vite-plugin-reiconify',
     enforce: 'pre',
@@ -15,7 +18,10 @@ export default function reiconify(pattern = /\.svg\?react$/) {
         const [file] = id.split('?')
         const source = await (await fsp.readFile(file)).toString()
         return {
-          code: await transform(source, {baseName: 'base-icon'}),
+          code: await transform(
+            source,
+            native ? {native} : {baseName: 'base-icon'}
+          ),
           map: null,
         }
       }

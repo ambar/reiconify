@@ -1,6 +1,20 @@
 const pascalCase = require('pascal-case')
 
 const template = (data) => {
+  if (data.native) {
+    const jsxWithProps = data.jsxString.replace(
+      /<svg\.Svg([\s\S]*?)>/,
+      (match, group) =>
+        `<svg.Svg${group} {...props} {...(size && {width: size, height: size})}>`
+    )
+    return `
+    import React from 'react'
+    import * as svg from 'react-native-svg'
+    export default function ${data.name}(props) {
+      return ${jsxWithProps}
+    }
+`.trim()
+  }
   const hasBaseName = !!data.baseName
   const tag = hasBaseName ? `SVG` : 'svg'
   const jsxWithProps = data.jsxString
@@ -96,6 +110,9 @@ const indexTemplate = (names) => {
   return lines.join('\n')
 }
 
+/**
+ * @type {import('./types').Options}
+ */
 const defaults = {
   name: 'Icon',
   baseName: undefined,
@@ -108,6 +125,7 @@ const defaults = {
   indexTemplate,
   svgoPlugins: [],
   camelCaseProps: true,
+  native: false,
 }
 
 module.exports = defaults
