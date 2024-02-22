@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.9.0](https://github.com/ambar/reiconify/compare/reiconify@2.8.0...reiconify@2.9.0) (2024-02-22)
+
+
+### Features
+
+* support React Native ([9761d1e](https://github.com/ambar/reiconify/commit/9761d1e0adfafe209679f34c52a66a387ee6e90c))
+
+
+
+
+
 # [2.8.0](https://github.com/ambar/reiconify/compare/reiconify@2.7.0...reiconify@2.8.0) (2022-10-26)
 
 ### Features

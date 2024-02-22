@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.2.0](https://github.com/ambar/reiconify/compare/reiconify-loader@1.1.0...reiconify-loader@1.2.0) (2024-02-22)
+
+
+### Features
+
+* support React Native ([9761d1e](https://github.com/ambar/reiconify/commit/9761d1e0adfafe209679f34c52a66a387ee6e90c))
+
+
+
+
+
 # 1.1.0 (2022-10-25)
 
 ### Features
