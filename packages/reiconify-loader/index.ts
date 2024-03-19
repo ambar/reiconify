@@ -6,11 +6,16 @@ import transform from 'reiconify/lib/transform'
  * SVG to React Component loader
  */
 export default function reiconifyLoader(
-  this: LoaderContext<{native?: boolean}>,
+  this: LoaderContext<{native?: boolean; baseName?: string}>,
   source: string
 ) {
-  const {native} = this.getOptions()
+  const {native, baseName} = this.getOptions()
   callbackify(() =>
-    transform(source, native ? {native} : {baseName: 'base-icon'})
+    transform(
+      source,
+      native
+        ? {native, baseName: baseName ?? 'base-icon/native'}
+        : {baseName: baseName ?? 'base-icon'}
+    )
   )(this.async())
 }
