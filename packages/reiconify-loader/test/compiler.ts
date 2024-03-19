@@ -3,7 +3,7 @@ import webpack from 'webpack'
 import {createFsFromVolume, Volume} from 'memfs'
 
 // https://webpack.js.org/contribute/writing-a-loader/#testing
-export default function compiler(fixture, native = false) {
+export default function compiler(fixture, options = {}) {
   const compiler = webpack({
     context: __dirname,
     entry: `./${fixture}`,
@@ -33,9 +33,7 @@ export default function compiler(fixture, native = false) {
               resourceQuery: /react/,
               use: {
                 loader: require.resolve('../index.ts'),
-                options: {
-                  native,
-                },
+                options,
               },
             },
           ],

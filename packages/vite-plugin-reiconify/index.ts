@@ -9,6 +9,7 @@ import transform from 'reiconify/lib/transform'
 export default function reiconify({
   pattern = /\.svg\?react$/,
   native = false,
+  baseName = null,
 } = {}) {
   return {
     name: 'vite-plugin-reiconify',
@@ -20,7 +21,9 @@ export default function reiconify({
         return {
           code: await transform(
             source,
-            native ? {native} : {baseName: 'base-icon'}
+            native
+              ? {native, baseName: baseName ?? 'base-icon/native'}
+              : {baseName: baseName ?? 'base-icon'}
           ),
           map: null,
         }

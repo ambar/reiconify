@@ -4,10 +4,11 @@
   "description": "React base icon",
   "repository": "ambar/reiconify",
   "homepage": "https://github.com/ambar/reiconify/tree/master/packages/base-icon",
-  "module": "dist/index.esm.js",
-  "main": "dist/index.cjs.js",
+  "module": "dist/esm/BaseIcon.js",
+  "main": "dist/cjs/BaseIcon.js",
   "license": "MIT",
   "files": [
+    "native",
     "dist"
   ],
   "jest": {
@@ -16,7 +17,7 @@
   "scripts": {
     "prepare": "npm test && npm run build",
     "prebuild": "rm -rf dist",
-    "build": "esbuild src/BaseIcon.jsx --outfile=dist/index.cjs.js --format=cjs && esbuild src/BaseIcon.jsx --outfile=dist/index.esm.js --format=esm",
+    "build": "esbuild src/BaseIcon.jsx src/native/BaseIcon.jsx --outbase=src --outdir=dist/cjs --format=cjs && esbuild src/BaseIcon.jsx src/native/BaseIcon.jsx --outbase=src --outdir=dist/esm --format=esm",
     "test": "jest"
   },
   "peerDependencies": {

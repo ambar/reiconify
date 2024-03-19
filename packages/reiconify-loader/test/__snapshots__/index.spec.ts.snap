@@ -20,16 +20,56 @@ export {
 "
 `;
 
-exports[`compiler svg for RN 1`] = `
+exports[`compiler svg for RN with base-icon 1`] = `
+"var __assign = Object.assign;
+import React from "react";
+import SVGBase from "base-icon";
+import * as svg from "react-native-svg";
+function Icon(props) {
+  return /* @__PURE__ */ React.createElement(SVGBase, __assign({
+    width: "24",
+    height: "24",
+    viewBox: "0 0 24 24"
+  }, props), /* @__PURE__ */ React.createElement(svg.Path, {
+    d: "M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"
+  }));
+}
+export {
+  Icon as default
+};
+"
+`;
+
+exports[`compiler svg for RN with default 1`] = `
+"var __assign = Object.assign;
+import React from "react";
+import SVGBase from "base-icon/native";
+import * as svg from "react-native-svg";
+function Icon(props) {
+  return /* @__PURE__ */ React.createElement(SVGBase, __assign({
+    width: "24",
+    height: "24",
+    viewBox: "0 0 24 24"
+  }, props), /* @__PURE__ */ React.createElement(svg.Path, {
+    d: "M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"
+  }));
+}
+export {
+  Icon as default
+};
+"
+`;
+
+exports[`compiler svg for RN with empty base 1`] = `
 "var __assign = Object.assign;
 import React from "react";
 import * as svg from "react-native-svg";
 function Icon(props) {
-  return /* @__PURE__ */ React.createElement(svg.Svg, __assign(__assign({
+  return /* @__PURE__ */ React.createElement(svg.Svg, __assign({
     width: "24",
     height: "24",
     viewBox: "0 0 24 24"
-  }, props), size && {width: size, height: size}), /* @__PURE__ */ React.createElement(svg.Path, {
+  }, props), /* @__PURE__ */ React.createElement(svg.Path, {
     d: "M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"
   }));
 }
