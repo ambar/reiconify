@@ -1,6 +1,5 @@
-import type {SvgProps} from 'react-native-svg'
-
 declare module '*.svg?react' {
-  const Icon: React.FC<SVGProps & {size?: string | number}>
+  import type {SvgProps} from 'react-native-svg'
+  const Icon: React.FC<SvgProps & {size?: string | number}>
   export default Icon
 }
