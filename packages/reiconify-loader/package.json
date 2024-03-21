@@ -25,7 +25,8 @@
     "test": "jest --passWithNoTests"
   },
   "dependencies": {
-    "base-icon": "^2.3.0"
+    "base-icon": "^2.3.0",
+    "reiconify": "^2.10.0"
   },
   "peerDependencies": {
     "react": "*",
