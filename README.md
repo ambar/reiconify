@@ -1,5 +1,7 @@
 # reiconify
 
+[![test workflow](https://github.com/ambar/reiconify/actions/workflows/test.yml/badge.svg)](https://github.com/ambar/reiconify/actions/workflows/test.yml)
+
 Convert SVG icons to React components.
 
 ## Features
