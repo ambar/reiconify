@@ -1,6 +1,6 @@
 {
   "name": "reiconify-loader",
-  "version": "1.3.1",
+  "version": "1.3.2",
   "description": "Convert SVG files to React icons",
   "homepage": "https://github.com/ambar/reiconify",
   "repository": {
@@ -25,7 +25,7 @@
     "test": "jest --passWithNoTests"
   },
   "dependencies": {
-    "base-icon": "^2.3.0",
+    "base-icon": "^2.3.1",
     "reiconify": "^2.10.0"
   },
   "peerDependencies": {
