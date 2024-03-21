@@ -1,6 +1,6 @@
 {
   "name": "reiconify-cli",
-  "version": "3.0.5",
+  "version": "3.0.6",
   "description": "Convert SVG icons to React components",
   "repository": "ambar/reiconify",
   "license": "MIT",
@@ -14,6 +14,6 @@
     "test": "jest --passWithNoTests"
   },
   "dependencies": {
-    "reiconify": "^2.9.0"
+    "reiconify": "^2.10.0"
   }
 }
