@@ -1,7 +1,7 @@
 {
   "name": "base-icon/native",
-  "module": "../dist/esm/BaseIcon.js",
-  "main": "../dist/cjs/BaseIcon.js",
+  "module": "../dist/esm/native/BaseIcon.js",
+  "main": "../dist/cjs/native/BaseIcon.js",
   "peerDependencies": {
     "react": "*",
     "react-native-svg": "*"
