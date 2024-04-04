@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.5.0](https://github.com/ambar/reiconify/compare/md.icons@2.4.7...md.icons@2.5.0) (2024-04-04)
+
+
+### Features
+
+* add sideEffects flag to package.json ([5257861](https://github.com/ambar/reiconify/commit/52578614612ae66609ec0ec3d8a4bcabf5d4bce0))
+
+
+
+
+
 ## [2.4.7](https://github.com/ambar/reiconify/compare/md.icons@2.4.6...md.icons@2.4.7) (2024-03-21)
 
 **Note:** Version bump only for package md.icons
