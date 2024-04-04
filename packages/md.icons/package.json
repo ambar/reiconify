@@ -6,6 +6,7 @@
   "repository": "ambar/reiconify",
   "main": "cjs/index.js",
   "module": "es/index.js",
+  "sideEffects": false,
   "files": [
     "es",
     "cjs"
