@@ -4966,18 +4966,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cosmiconfig@npm:^3.1.0":
-  version: 3.1.0
-  resolution: "cosmiconfig@npm:3.1.0"
-  dependencies:
-    is-directory: "npm:^0.3.1"
-    js-yaml: "npm:^3.9.0"
-    parse-json: "npm:^3.0.0"
-    require-from-string: "npm:^2.0.1"
-  checksum: 10c0/e1296f91fc8b3b633f91a02da42b19753a794c801f830b404529c880973745c6eb299d5e13d8ae229a6273529e456405e2d29d0e6d6c625b0033c99b5997a99c
-  languageName: node
-  linkType: hard
-
 "cosmiconfig@npm:^7.0.0":
   version: 7.0.1
   resolution: "cosmiconfig@npm:7.0.1"
@@ -6117,13 +6105,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"is-directory@npm:^0.3.1":
-  version: 0.3.1
-  resolution: "is-directory@npm:0.3.1"
-  checksum: 10c0/1c39c7d1753b04e9483b89fb88908b8137ab4743b6f481947e97ccf93ecb384a814c8d3f0b95b082b149c5aa19c3e9e4464e2791d95174bce95998c26bb1974b
-  languageName: node
-  linkType: hard
-
 "is-extendable@npm:^0.1.0":
   version: 0.1.1
   resolution: "is-extendable@npm:0.1.1"
@@ -6751,7 +6732,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"js-yaml@npm:^3.13.1, js-yaml@npm:^3.9.0":
+"js-yaml@npm:^3.13.1":
   version: 3.14.1
   resolution: "js-yaml@npm:3.14.1"
   dependencies:
@@ -6827,6 +6808,13 @@ __metadata:
   version: 3.1.0
   resolution: "leven@npm:3.1.0"
   checksum: 10c0/cd778ba3fbab0f4d0500b7e87d1f6e1f041507c56fdcd47e8256a3012c98aaee371d4c15e0a76e0386107af2d42e2b7466160a2d80688aaa03e66e49949f42df
+  languageName: node
+  linkType: hard
+
+"lilconfig@npm:^3.1.1":
+  version: 3.1.1
+  resolution: "lilconfig@npm:3.1.1"
+  checksum: 10c0/311b559794546894e3fe176663427326026c1c644145be9e8041c58e268aa9328799b8dfe7e4dd8c6a4ae305feae95a1c9e007db3569f35b42b6e1bc8274754c
   languageName: node
   linkType: hard
 
@@ -8060,15 +8048,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"parse-json@npm:^3.0.0":
-  version: 3.0.0
-  resolution: "parse-json@npm:3.0.0"
-  dependencies:
-    error-ex: "npm:^1.3.1"
-  checksum: 10c0/b6bdc33943bec54a8efa48ba84d6903ca6f68d6ce037110ea31bc6985cb650ce4c52b6d17ea44cae42f3d84619a224eaab5c5e7bd2aab51184dfae9564b8ab90
-  languageName: node
-  linkType: hard
-
 "parse-json@npm:^5.0.0, parse-json@npm:^5.2.0":
   version: 5.2.0
   resolution: "parse-json@npm:5.2.0"
@@ -8508,11 +8487,11 @@ __metadata:
   dependencies:
     camel-case: "npm:^4.1.2"
     concat-merge: "npm:^1.1.0"
-    cosmiconfig: "npm:^3.1.0"
     esbuild: "npm:^0.8.34"
     fancy-log: "npm:^1.3.0"
     fast-glob: "npm:^3.2.12"
     json5: "npm:^2.2.1"
+    lilconfig: "npm:^3.1.1"
     pascal-case: "npm:^3.1.2"
     prettier: "npm:^3.2.5"
     string-hash: "npm:^1.1.3"
@@ -8573,13 +8552,6 @@ __metadata:
   version: 2.1.1
   resolution: "require-directory@npm:2.1.1"
   checksum: 10c0/83aa76a7bc1531f68d92c75a2ca2f54f1b01463cb566cf3fbc787d0de8be30c9dbc211d1d46be3497dac5785fe296f2dd11d531945ac29730643357978966e99
-  languageName: node
-  linkType: hard
-
-"require-from-string@npm:^2.0.1":
-  version: 2.0.2
-  resolution: "require-from-string@npm:2.0.2"
-  checksum: 10c0/aaa267e0c5b022fc5fd4eef49d8285086b15f2a1c54b28240fdf03599cbd9c26049fee3eab894f2e1f6ca65e513b030a7c264201e3f005601e80c49fb2937ce2
   languageName: node
   linkType: hard
 

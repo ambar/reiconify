@@ -1,22 +1,14 @@
+const path = require('path')
 const resolveConfig = require('../lib/resolveConfig')
 
 describe('resolveConfig', () => {
-  const cwd = process.cwd()
-
-  beforeEach(() => {
-    process.chdir(__dirname)
-  })
-
-  afterAll(() => {
-    process.chdir(cwd)
-  })
-
   it('gets default config', async () => {
-    expect(await resolveConfig()).toMatchSnapshot()
+    const cwd = __dirname
+    expect(await resolveConfig(cwd)).toMatchSnapshot()
   })
 
   it('overwrites default config', async () => {
-    process.chdir('fixtures/resolve-config/')
-    expect(await resolveConfig()).toMatchSnapshot()
+    const cwd = path.resolve(__dirname, 'fixtures/resolve-config')
+    expect(await resolveConfig(cwd)).toMatchSnapshot()
   })
 })
