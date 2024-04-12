@@ -2,7 +2,7 @@ const fsp = require('fs/promises')
 const path = require('path')
 const glob = require('fast-glob')
 const log = require('fancy-log')
-const prettier = require('./prettier')
+const {format} = require('./prettier')
 const resolveConfig = require('./resolveConfig')
 const transform = require('./transform')
 const esTransform = require('./esTransform')
@@ -10,7 +10,7 @@ const {optimize} = require('./svg2jsx')
 
 const getIndex = (names, {indexTemplate}) => {
   log(`exporting ${names.length} icons: ${names.join(', ')}`)
-  return prettier(indexTemplate(names))
+  return format(indexTemplate(names))
 }
 
 const writeFiles = async (contents, path, ext = 'js') => {
@@ -104,7 +104,7 @@ const transformFiles = async (options = {}) => {
       // generate base icon
       {
         name: 'Icon',
-        code: prettier(baseTemplate({baseDefaultProps})),
+        code: await format(baseTemplate({baseDefaultProps})),
       },
       // generate index.js
       {

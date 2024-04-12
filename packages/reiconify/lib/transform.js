@@ -35,7 +35,7 @@ const transform = async (svg, options) => {
   if (jsx !== 'preserve') {
     code = await esTransform(code, {format})
   }
-  return usePrettier ? require('./prettier')(code) : code
+  return usePrettier ? await require('./prettier').format(code) : code
 }
 
 module.exports = transform
