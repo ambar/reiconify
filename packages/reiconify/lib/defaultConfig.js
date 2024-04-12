@@ -1,4 +1,4 @@
-const pascalCase = require('pascal-case')
+const {pascalCase} = require('pascal-case')
 
 const template = (data) => {
   if (data.native) {

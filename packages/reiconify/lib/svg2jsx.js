@@ -1,10 +1,10 @@
 const svgo = require('svgo')
 const hash = require('string-hash')
 const JSON5 = require('json5')
-const mapKeys = require('lodash/mapKeys')
-const camelCase = require('lodash/camelCase')
+// TODO: upgrade to ESM `change-case` package
+const {camelCase} = require('camel-case')
+const {pascalCase} = require('pascal-case')
 const styleToObject = require('style-to-object')
-const pascalCase = require('pascal-case')
 
 const toCamelCase = (s) =>
   s.replace(/([-_:])([a-z])/g, (s, a, b) => b.toUpperCase())
@@ -117,7 +117,11 @@ const defaults = {
 }
 
 const styleToJSXStyle = (style) => {
-  return JSON5.stringify(mapKeys(styleToObject(style), (v, k) => camelCase(k)))
+  return JSON5.stringify(
+    Object.fromEntries(
+      Object.entries(styleToObject(style)).map(([k, v]) => [camelCase(k), v])
+    )
+  )
 }
 
 const replaceInlineStyles = (svg) =>
