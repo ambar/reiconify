@@ -17,6 +17,7 @@ describe('transform', () => {
   }
 
   beforeAll(async () => {
+    process.chdir(path.resolve(__dirname, '..'))
     await cleanup()
   })
 

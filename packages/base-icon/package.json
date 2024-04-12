@@ -22,5 +22,8 @@
   },
   "peerDependencies": {
     "react": ">=16.14.0"
+  },
+  "devDependencies": {
+    "esbuild": "^0.18.20"
   }
 }

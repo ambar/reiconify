@@ -8,9 +8,7 @@
   "engines": {
     "node": ">=10"
   },
-  "bin": {
-    "reiconify": "./bin/reiconify.js"
-  },
+  "bin": "./bin/reiconify.js",
   "files": [
     "lib",
     "index.js",

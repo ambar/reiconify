@@ -7,9 +7,7 @@
   "engines": {
     "node": ">=8"
   },
-  "bin": {
-    "reiconify-serve": "./bin/reiconify-serve.js"
-  },
+  "bin": "./bin/reiconify-serve.js",
   "files": [
     "bin",
     ".playland",
@@ -26,7 +24,7 @@
     "classnames": "^2.2.5",
     "execa": "^1.0.0",
     "fuse.js": "^6.6.2",
-    "playland": "^4.1.1",
+    "playland": "^4.7.1",
     "react": ">=16.14.0",
     "react-dom": ">=16.14.0",
     "yargs": "^17.6.0"

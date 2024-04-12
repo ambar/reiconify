@@ -22,14 +22,16 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
-      - name: test
+      - name: setup
         run: |
+          corepack enable
           yarn
           yarn build
+      - name: test
+        run: |
           yarn test
           # yarn test --coverage
       # - name: report
-      #   uses: coverallsapp/github-action@v1.0.1
+      #   uses: coverallsapp/github-action@v2
       #   with:
       #     github-token: ${{ secrets.GITHUB_TOKEN }}
-      #     path-to-lcov: ./coverage/lcov.info

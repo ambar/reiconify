@@ -12,6 +12,8 @@ Convert SVG icons to React components.
 - Provide dev tool for generating static icon site.
 - Generate unique IDs for SVG elements if needed.
 - Format codes with [Prettier](https://github.com/prettier/prettier)
+- Transpile by [esbuild](https://github.com/evanw/esbuild)
+- Support webpack (via [reiconify-loader](./packages/reiconify-loader)), Vite (via [vite-plugin-reiconify](./packages/vite-plugin-reiconify))
 
 ## Install
 
