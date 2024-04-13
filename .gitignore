@@ -23,3 +23,8 @@ yalc.lock
 !.yarn/sdks
 !.yarn/versions
 .pnp.*
+
+# biome does not support nested ignore files
+/packages/md.icons/src
+/packages/md.icons/cjs
+/packages/md.icons/es
