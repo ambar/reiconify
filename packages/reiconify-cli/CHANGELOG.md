@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.7](https://github.com/ambar/reiconify/compare/reiconify-cli@3.0.6...reiconify-cli@3.0.7) (2024-04-13)
+
+**Note:** Version bump only for package reiconify-cli
+
+
+
+
+
 ## [3.0.6](https://github.com/ambar/reiconify/compare/reiconify-cli@3.0.5...reiconify-cli@3.0.6) (2024-03-21)
 
 **Note:** Version bump only for package reiconify-cli

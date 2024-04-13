@@ -1,6 +1,6 @@
 {
   "name": "reiconify",
-  "version": "2.10.0",
+  "version": "2.11.0",
   "description": "Convert SVG icons to React components",
   "repository": "ambar/reiconify",
   "main": "lib/index.js",

@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.3.4](https://github.com/ambar/reiconify/compare/reiconify-loader@1.3.3...reiconify-loader@1.3.4) (2024-04-13)
+
+**Note:** Version bump only for package reiconify-loader
+
+
+
+
+
 ## [1.3.3](https://github.com/ambar/reiconify/compare/reiconify-loader@1.3.2...reiconify-loader@1.3.3) (2024-03-21)
 
 

@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.3.2](https://github.com/ambar/reiconify/compare/base-icon@2.3.1...base-icon@2.3.2) (2024-04-13)
+
+**Note:** Version bump only for package base-icon
+
+
+
+
+
 ## [2.3.1](https://github.com/ambar/reiconify/compare/base-icon@2.3.0...base-icon@2.3.1) (2024-03-21)
 
 

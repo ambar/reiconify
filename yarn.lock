@@ -4655,7 +4655,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"base-icon@npm:^2.3.1, base-icon@workspace:packages/base-icon":
+"base-icon@npm:^2.3.2, base-icon@workspace:packages/base-icon":
   version: 0.0.0-use.local
   resolution: "base-icon@workspace:packages/base-icon"
   dependencies:
@@ -7053,8 +7053,8 @@ __metadata:
   dependencies:
     "@ambarli/mdi.svg": "npm:^1.0.2"
     pascal-case: "npm:^3.1.2"
-    reiconify: "npm:^2.10.0"
-    reiconify-serve: "npm:^2.0.0"
+    reiconify: "npm:^2.11.0"
+    reiconify-serve: "npm:^2.0.1"
   peerDependencies:
     react: ">=16.14.0"
   languageName: unknown
@@ -8552,7 +8552,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "reiconify-cli@workspace:packages/reiconify-cli"
   dependencies:
-    reiconify: "npm:^2.10.0"
+    reiconify: "npm:^2.11.0"
   languageName: unknown
   linkType: soft
 
@@ -8560,11 +8560,11 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "reiconify-loader@workspace:packages/reiconify-loader"
   dependencies:
-    base-icon: "npm:^2.3.1"
+    base-icon: "npm:^2.3.2"
     esbuild: "npm:^0.18.20"
     identity-obj-proxy: "npm:^3.0.0"
     memfs: "npm:^3.4.7"
-    reiconify: "npm:^2.10.0"
+    reiconify: "npm:^2.11.0"
     webpack: "npm:^5.74.0"
   peerDependencies:
     react: "*"
@@ -8576,7 +8576,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"reiconify-serve@npm:^2.0.0, reiconify-serve@workspace:packages/reiconify-serve":
+"reiconify-serve@npm:^2.0.1, reiconify-serve@workspace:packages/reiconify-serve":
   version: 0.0.0-use.local
   resolution: "reiconify-serve@workspace:packages/reiconify-serve"
   dependencies:
@@ -8593,7 +8593,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"reiconify@npm:^2.10.0, reiconify@workspace:packages/reiconify":
+"reiconify@npm:^2.11.0, reiconify@workspace:packages/reiconify":
   version: 0.0.0-use.local
   resolution: "reiconify@workspace:packages/reiconify"
   dependencies:
@@ -9576,9 +9576,9 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "vite-plugin-reiconify@workspace:packages/vite-plugin-reiconify"
   dependencies:
-    base-icon: "npm:^2.3.1"
+    base-icon: "npm:^2.3.2"
     esbuild: "npm:^0.18.20"
-    reiconify: "npm:^2.10.0"
+    reiconify: "npm:^2.11.0"
   peerDependencies:
     react: ">=16.14.0"
     vite: ^3 || ^4 || ^5

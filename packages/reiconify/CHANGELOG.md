@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.11.0](https://github.com/ambar/reiconify/compare/reiconify@2.10.0...reiconify@2.11.0) (2024-04-13)
+
+
+### Features
+
+* upgrade prettier to v3 ([bbc67fd](https://github.com/ambar/reiconify/commit/bbc67fd42bd446050e6a840753b9454c263de671))
+
+
+
+
+
 # [2.10.0](https://github.com/ambar/reiconify/compare/reiconify@2.9.0...reiconify@2.10.0) (2024-03-21)
 
 
