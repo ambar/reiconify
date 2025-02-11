@@ -31,7 +31,7 @@
     "reiconify": "^2.11.0"
   },
   "devDependencies": {
-    "esbuild": "^0.18.20"
+    "esbuild": "^0.25.0"
   },
   "peerDependencies": {
     "react": ">=16.14.0",
